@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ことば表</title>
+<meta name="description" content="アプリやマニュアルで使う英語・略語と、協力者向けの日本語の言い方（v2試作）">
+<style>
+:root{--bg:#eef1ee;--surface:#fff;--surface2:#f6f8f6;--ink:#1c2622;--muted:#5d6a64;--line:#c9d3cd;
+  --deep:#2f6688;--deep-bg:#e6eef3;--broad:#8a5b2c;--broad-bg:#f4ece3;--central:#3f6b45;--central-bg:#e8f0e7;--other:#6a6475;--other-bg:#efedf2;--app:#1c2622;--app-bg:#e9ece9;--rd:#8a6d00;--rd-bg:#fbf3d2;--warn:#c2362b;--warn-bg:#fbe7e4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151b19;--surface:#1e2623;--surface2:#19211e;--ink:#e4ebe7;--muted:#9aa8a1;--line:#34413c;
+  --deep:#7fb2d4;--deep-bg:#1d2c36;--broad:#d6a571;--broad-bg:#33281d;--central:#8cc394;--central-bg:#1f2f22;--other:#b7aec4;--other-bg:#2a2730;--app:#e4ebe7;--app-bg:#26302c;--rd:#e3c55a;--rd-bg:#332b10;--warn:#ff7b6e;--warn-bg:#3a1f1c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151b19;--surface:#1e2623;--surface2:#19211e;--ink:#e4ebe7;--muted:#9aa8a1;--line:#34413c;
+  --deep:#7fb2d4;--deep-bg:#1d2c36;--broad:#d6a571;--broad-bg:#33281d;--central:#8cc394;--central-bg:#1f2f22;--other:#b7aec4;--other-bg:#2a2730;--app:#e4ebe7;--app-bg:#26302c;--rd:#e3c55a;--rd-bg:#332b10;--warn:#ff7b6e;--warn-bg:#3a1f1c;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",system-ui,sans-serif;line-height:1.6;font-size:16px}
+main{max-width:820px;margin:0 auto;padding:16px 16px 60px}
+h1{font-size:1.55rem;line-height:1.35;margin:6px 0 4px;font-weight:900}
+h2{font-size:1.2rem;margin:0 0 4px;font-weight:900}
+h3{font-size:1rem;margin:0;font-weight:800}
+p{margin:4px 0}
+.muted{color:var(--muted)}
+.small{font-size:.85rem}
+section.blk{margin:26px 0 0}
+.k{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 10px;margin-bottom:6px;background:var(--surface)}
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 18px 14px;position:relative;overflow:hidden}
+.hero .tag{font-size:.8rem;color:var(--muted)}
+.hero .catch{font-size:1.35rem;font-weight:900;color:var(--central);margin:8px 0 2px;line-height:1.35}
+.hero .sub{font-size:1rem;color:var(--ink)}
+.flow4{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:6px;align-items:stretch;margin-top:14px}
+.fk{background:var(--surface2);border:1px solid var(--line);border-top:5px solid var(--g,var(--ink));border-radius:12px;padding:10px 10px 10px;--pic-fill:var(--deep-bg)}
+.fk.central{--g:var(--central);--pic-fill:var(--central-bg)} .fk.broad{--g:var(--broad);--pic-fill:var(--broad-bg)} .fk.deep{--g:var(--deep)} .fk.rd{--g:var(--rd);--pic-fill:var(--rd-bg)}
+.fk .fh{font-size:.74rem;font-weight:800;color:var(--g);letter-spacing:.04em}
+.fk .pic{width:52px;height:52px;margin:6px 0 4px}
+.fk .st{display:inline-block;font-size:.76rem;font-weight:800;color:#fff;background:var(--g);border-radius:999px;padding:2px 9px;margin:0 0 6px}
+.fk h3{font-size:.95rem;line-height:1.35;margin:0}
+.fk p{font-size:.8rem;color:var(--muted);line-height:1.45;margin-top:4px}
+.fa{align-self:center;color:var(--muted);font-size:1.4rem;line-height:1}
+@media (max-width:760px){.flow4{grid-template-columns:1fr}.fa{text-align:center;transform:rotate(90deg);font-size:1.2rem}.fk{display:grid;grid-template-columns:52px 1fr;column-gap:10px}.fk .fh{grid-column:1/3}.fk .pic{margin:2px 0;grid-row:2/4}.fk .st{grid-column:2;justify-self:start;align-self:start}.fk h3{grid-column:2}.fk p{grid-column:2}}
+.pic{width:64px;height:64px;color:var(--ink);display:block}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;--pic-fill:var(--deep-bg)}
+.tile .pic{margin:0 auto}
+.tile .n{font-size:1.3rem;font-weight:900;margin-top:4px;line-height:1.2}
+.tile .t{font-weight:800;font-size:.92rem;margin-top:2px}
+.tile .s{font-size:.78rem;color:var(--muted);margin-top:2px;line-height:1.4}
+.lead{margin-top:10px;font-weight:800;color:var(--central);font-size:1.05rem}
+.comic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.koma{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g,var(--ink));border-radius:14px;padding:12px 10px 10px;position:relative}
+.koma.deep{--g:var(--deep);--pic-fill:var(--deep-bg)} .koma.broad{--g:var(--broad);--pic-fill:var(--broad-bg)} .koma.app{--g:var(--app);--pic-fill:var(--app-bg)} .koma.central{--g:var(--central);--pic-fill:var(--central-bg)} .koma.rd{--g:var(--rd);--pic-fill:var(--rd-bg)} .koma.other{--g:var(--other);--pic-fill:var(--other-bg)}
+.koma .no{position:absolute;left:10px;top:8px;font-size:.78rem;font-weight:800;color:var(--muted)}
+.koma .who{font-size:.74rem;font-weight:800;color:var(--g);margin:0 0 2px}
+.koma .pic{margin:6px auto 2px;width:72px;height:72px}
+.koma h3{text-align:center;font-size:1rem;line-height:1.3}
+.koma p{font-size:.85rem;color:var(--muted);margin-top:4px;line-height:1.45}
+.koma .fact{font-size:.8rem;color:var(--ink);background:var(--surface2);border-radius:8px;padding:4px 8px;margin-top:6px;text-align:center}
+.arrows{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.arrows div{font-size:.82rem;color:var(--central);font-weight:700;background:var(--central-bg);border-radius:10px;padding:6px 10px;text-align:center}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.ask{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
+.ask .koma h3{font-size:.98rem}
+.note{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.note span{font-size:.8rem;background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.deliver{display:grid;grid-template-columns:1.2fr 1fr;gap:12px;margin-top:8px;align-items:stretch}
+.deliver .mock{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px}
+.deliver .mock svg{width:100%;height:auto;display:block}
+.deliver .list{display:grid;gap:8px}
+.deliver .list .card{padding:10px 12px;display:flex;gap:10px;align-items:center}
+.deliver .list .card .pic{width:44px;height:44px;flex:0 0 auto}
+.deliver .list b{display:block;font-size:.9rem}
+.deliver .list span{font-size:.8rem;color:var(--muted)}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.chip{border-radius:12px;padding:9px 8px;text-align:center;font-weight:800;font-size:.9rem;background:var(--deep-bg);border:1.5px solid var(--deep);color:var(--ink)}
+.chip small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
+.chip.old{background:var(--surface2);border-color:var(--line)}
+.years{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px;position:relative}
+.years:before{content:"";position:absolute;left:12%;right:12%;top:46px;height:3px;background:var(--line);z-index:0}
+.year{position:relative;z-index:1;text-align:center}
+.year .pic{margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:50%;padding:12px;width:92px;height:92px;--pic-fill:var(--central-bg)}
+.year .y{font-weight:900;margin-top:6px}
+.year .t{font-size:.85rem;color:var(--muted);line-height:1.4}
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:8px}
+a.role{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--g,var(--ink));border-radius:14px;padding:12px 12px}
+a.role .pic{width:56px;height:56px;flex:0 0 auto;--pic-fill:var(--deep-bg)}
+a.role b{display:block;font-size:1rem}
+a.role span{font-size:.8rem;color:var(--muted)}
+a.role.deep{--g:var(--deep)} a.role.broad{--g:var(--broad);--pic-fill:var(--broad-bg)} a.role.central{--g:var(--central);--pic-fill:var(--central-bg)} a.role.other{--g:var(--other);--pic-fill:var(--other-bg)} a.role.app{--g:var(--app)}
+.ring{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px;margin-top:8px}
+.ring svg{width:100%;height:auto;display:block}
+.hidden{display:none}
+footer{margin-top:30px;font-size:.8rem;color:var(--muted)}
+@media (max-width:640px){
+  .tiles,.comic,.ask{grid-template-columns:1fr}
+  .tiles .tile{display:flex;align-items:center;gap:12px;text-align:left} .tiles .tile .pic{margin:0}
+  .chips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .deliver{grid-template-columns:1fr}
+  .roles{grid-template-columns:1fr}
+  .years:before{display:none} .years{grid-template-columns:1fr} .year{display:flex;gap:12px;align-items:center;text-align:left} .year .pic{margin:0;width:72px;height:72px;padding:8px}
+}
+
+.tnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px;font-size:.82rem}
+.tnav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 12px}
+.tnav a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.flow6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:14px}
+.flow6 .fa{display:none}
+.flow6.f7{grid-template-columns:repeat(7,minmax(0,1fr))}
+.flow6.f7 .fk p{font-size:.76rem}
+.fk.app{--g:var(--app);--pic-fill:var(--app-bg)}
+.flow6 .fk h3{font-size:.9rem}
+@media (max-width:760px){.flow6,.flow6.f7{grid-template-columns:1fr}.flow6 .fa{display:block}}
+.routes{display:grid;gap:8px;margin-top:8px}
+.route,.back{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.back{border:2px solid var(--central);background:var(--central-bg);margin-top:10px}
+.rh,.bh{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rh .pic,.bh .pic{width:36px;height:36px;--pic-fill:var(--deep-bg)}
+.rr{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rr i{font-style:normal;color:var(--muted)}
+.nd{font-size:.84rem;border-radius:999px;padding:3px 10px;border:1.5px solid var(--g);background:var(--surface);line-height:1.4}
+.nd.v{--g:var(--deep)} .nd.c{--g:var(--central)} .nd.x{--g:var(--other)} .nd.f{--g:var(--broad)} .nd.a{--g:var(--app);font-weight:800}
+.rn{font-size:.8rem;color:var(--muted);margin-top:6px}
+.cal{display:grid;gap:4px;margin-top:8px}
+.ch,.cr{display:grid;grid-template-columns:64px repeat(4,minmax(0,1fr)) 54px;gap:4px;align-items:stretch}
+.ch span{font-size:.74rem;color:var(--muted);text-align:center}
+.cr b{align-self:center;font-weight:900}
+.cr span{border-radius:8px;text-align:center;font-weight:800;padding:8px 2px;font-size:.95rem}
+.c0{background:var(--surface2);color:var(--muted);font-size:.78rem!important;font-weight:600!important}
+.c1{background:var(--deep-bg)} .c2{background:color-mix(in srgb,var(--deep) 35%,var(--surface))} .c3{background:color-mix(in srgb,var(--deep) 60%,var(--surface));color:#fff}
+.ct{background:var(--surface);border:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.two .card h3{margin-bottom:6px}
+.farm3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.farm3 div{border:1px solid var(--line);border-radius:10px;padding:6px;text-align:center;background:var(--surface2)}
+.farm3 b{display:block}
+.farm3 span{font-size:.78rem;color:var(--muted)}
+.farm3 span.on{color:var(--deep);font-weight:800}
+.chain{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--g);border-radius:14px;padding:10px 12px;margin-top:8px}
+.chain.deep{--g:var(--deep);--pic-fill:var(--deep-bg)} .chain.broad{--g:var(--broad);--pic-fill:var(--broad-bg)}
+.ct2{display:flex;align-items:center;gap:8px}
+.ct2 .pic{width:36px;height:36px}
+.chain ol{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;counter-reset:s}
+.chain li{counter-increment:s;background:var(--surface2);border-radius:10px;padding:6px 8px;position:relative}
+.chain li::before{content:counter(s);font-size:.72rem;font-weight:800;color:var(--g)}
+.chain li b{display:block;font-size:.86rem;line-height:1.35}
+.chain li span{display:block;font-size:.75rem;color:var(--muted);line-height:1.4;margin-top:2px}
+.stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:8px}
+.sg{border-radius:10px;padding:6px;text-align:center;border:1.5px solid var(--g)}
+.sg.m{--g:var(--broad);background:var(--broad-bg)} .sg.p{--g:var(--deep);background:var(--deep-bg)} .sg.rd{--g:var(--rd);background:var(--rd-bg)}
+.sg b{display:block;font-size:1.05rem}
+.sg span{font-size:.72rem;color:var(--muted);line-height:1.35;display:block}
+.six{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.dom{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--deep);border-radius:12px;padding:8px 10px}
+.dom.old{border-top-color:var(--muted)}
+.dom .dn{font-size:.72rem;font-weight:800;color:var(--muted)}
+.dom h3{margin:0 0 4px}
+.dom p{font-size:.8rem;line-height:1.45}
+.rolegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
+.rc{display:flex;gap:10px;background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--g);border-radius:12px;padding:10px}
+.rc.deep{--g:var(--deep);--pic-fill:var(--deep-bg)} .rc.broad{--g:var(--broad);--pic-fill:var(--broad-bg)} .rc.central{--g:var(--central);--pic-fill:var(--central-bg)} .rc.other{--g:var(--other);--pic-fill:var(--other-bg)}
+.rc .pic{width:44px;height:44px;flex:0 0 auto}
+.rc ul{margin:4px 0 0;padding-left:1.1em;font-size:.82rem;color:var(--muted)}
+.rules6{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;counter-reset:r}
+.rules6 li{counter-increment:r;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 10px 8px 40px;position:relative}
+.rules6 li::before{content:counter(r);position:absolute;left:10px;top:8px;width:22px;height:22px;border-radius:50%;background:var(--central);color:#fff;font-size:.8rem;font-weight:800;text-align:center;line-height:22px}
+.rules6 b{display:block;font-size:.92rem}
+.rules6 span{font-size:.8rem;color:var(--muted)}
+details.gl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+details.gl summary{cursor:pointer;font-weight:800}
+details.gl dl{display:grid;grid-template-columns:minmax(0,13em) 1fr;gap:4px 12px;margin:10px 0 0;font-size:.86rem}
+details.gl dt{font-weight:800}
+details.gl dd{margin:0;color:var(--muted)}
+@media (max-width:760px){
+  .two,.rolegrid,.rules6{grid-template-columns:1fr}
+  .six{grid-template-columns:1fr 1fr}
+  .stages{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .chain ol{grid-template-columns:1fr 1fr}
+  .ch,.cr{grid-template-columns:44px repeat(4,minmax(0,1fr)) 40px}
+  .ch span{font-size:.62rem}
+  details.gl dl{grid-template-columns:1fr} details.gl dd{margin-bottom:6px}
+}
+@media (max-width:420px){.six{grid-template-columns:1fr}}
+
+.chain ol{margin-top:0}
+ul.plain{margin:4px 0 0;padding-left:1.1em;font-size:.86rem}
+ul.plain li{margin:2px 0}
+.order{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:6px}
+.order span{font-size:.82rem;border:1.5px solid var(--deep);border-radius:999px;padding:2px 10px;background:var(--surface)}
+.order i{font-style:normal;color:var(--muted)}
+.cg{color:var(--central)} .co{color:var(--broad)}
+.scenes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+.sc{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g);border-radius:12px;padding:8px 10px}
+.sc.m{--g:var(--broad)} .sc.p{--g:var(--deep)} .sc.o{--g:var(--warn)} .sc.z{--g:var(--central)}
+.sc .sh{font-weight:900;font-size:.95rem}
+.sc .sh b{display:inline-block;font-size:.72rem;color:#fff;background:var(--g);border-radius:6px;padding:0 6px;margin-right:6px;vertical-align:2px}
+.sc .t{font-size:.78rem;color:var(--muted);margin:2px 0 4px}
+.sc p{font-size:.8rem;line-height:1.45}
+.boxc{display:flex;gap:10px;align-items:flex-start;--pic-fill:var(--deep-bg)}
+.boxc .pic{width:48px;height:48px;flex:0 0 auto}
+.numgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+.nm{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 10px;text-align:center}
+.nm b{display:block;font-size:1.15rem;color:var(--deep)}
+.nm span{font-size:.76rem;color:var(--muted);line-height:1.4;display:block}
+.rdcard{margin-top:8px;background:var(--rd-bg);border-color:var(--rd);font-size:.86rem}
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
+.faq div{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--central);border-radius:10px;padding:8px 10px}
+.faq b{display:block;font-size:.88rem}
+.faq span{font-size:.8rem;color:var(--muted)}
+@media (max-width:760px){.scenes,.numgrid{grid-template-columns:1fr 1fr}.faq{grid-template-columns:1fr}}
+@media (max-width:420px){.scenes{grid-template-columns:1fr}}
+
+.mockrow{display:grid;grid-template-columns:300px 1fr;gap:12px;margin:8px 0 10px;align-items:start}
+.phone{background:var(--surface);border:2px solid var(--ink);border-radius:22px;padding:12px 12px 10px;box-shadow:0 2px 0 var(--line)}
+.ph-h b{display:block;font-size:1rem}
+.ph-h span{font-size:.74rem;color:var(--muted)}
+.ph-s{font-size:.78rem;font-weight:800;margin:8px 0 4px;color:var(--deep)}
+.phone ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.phone li{display:grid;grid-template-columns:1fr auto;gap:2px 6px;font-size:.8rem;background:var(--surface2);border-radius:8px;padding:5px 8px}
+.phone li em{font-style:normal;font-weight:800;color:var(--deep)}
+.phone li i{grid-column:1/3;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--deep) var(--v),var(--line) var(--v))}
+.phone li.done em{color:var(--central)} .phone li.done i{background:var(--central)}
+.ph-f{font-size:.76rem;margin-top:8px;border-top:1px dashed var(--line);padding-top:6px;color:var(--broad);font-weight:700}
+.mocknote{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+@media (max-width:760px){.mockrow{grid-template-columns:1fr}.phone{max-width:320px;margin:0 auto}}
+.chain ol.c5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:760px){.chain ol.c5{grid-template-columns:1fr 1fr}}
+.chain.central{--g:var(--central);--pic-fill:var(--central-bg)}
+.ph-row{display:grid;grid-template-columns:1fr auto;font-size:.8rem;background:var(--surface2);border-radius:8px;padding:5px 8px;margin-top:5px}
+.ph-row em{font-style:normal;font-weight:800;color:var(--deep)}
+.ph-row.warn em{color:var(--warn)}
+.ph-row.ok em{color:var(--central)}
+.flow6.f5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:760px){.flow6.f5{grid-template-columns:1fr}}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who .card h3{margin-top:0}
+.who .card.no{background:var(--surface2)}
+@media (max-width:760px){.who{grid-template-columns:1fr}}
+.routes{display:grid;gap:8px;margin-top:8px}
+.route,.back{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.back{border:2px solid var(--central);background:var(--central-bg);margin-top:10px}
+.rh,.bh{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.rh .pic,.bh .pic{width:36px;height:36px;--pic-fill:var(--deep-bg)}
+.rr{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.rr i{font-style:normal;color:var(--muted)}
+.nd{font-size:.84rem;border-radius:999px;padding:3px 10px;border:1.5px solid var(--g);background:var(--surface);line-height:1.4}
+.nd.v{--g:var(--deep)} .nd.c{--g:var(--central)} .nd.x{--g:var(--other)} .nd.f{--g:var(--broad)} .nd.a{--g:var(--app);font-weight:800}
+.rn{font-size:.8rem;color:var(--muted);margin-top:6px}
+.roles4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:8px}
+.roles4 .card h3{margin:0 0 2px;font-size:.98rem}
+.roles4 .card .r{font-size:.74rem;font-weight:800;color:var(--central)}
+.roles4 .card ul{margin:4px 0 0;padding-left:1.1em;font-size:.82rem}
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px;counter-reset:r}
+.rules div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px 8px 38px;position:relative;font-size:.86rem}
+.rules div::before{counter-increment:r;content:counter(r);position:absolute;left:10px;top:8px;width:20px;height:20px;border-radius:50%;background:var(--central);color:#fff;font-size:.74rem;font-weight:800;display:grid;place-items:center}
+@media (max-width:760px){.roles4{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}}
+@media (max-width:420px){.roles4{grid-template-columns:1fr}}
+.roles3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.roles3 .card h3{margin:0 0 2px;font-size:.98rem}
+.roles3 .card .r{font-size:.74rem;font-weight:800;color:var(--central)}
+.roles3 .card ul{margin:4px 0 0;padding-left:1.1em;font-size:.82rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chips span{font-size:.84rem;border:1.5px solid var(--central);border-radius:999px;padding:3px 10px;background:var(--surface)}
+.chain.other{--g:var(--other);--pic-fill:var(--other-bg)}
+@media (max-width:760px){.roles3{grid-template-columns:1fr}}
+.search{display:flex;gap:8px;align-items:center;margin-top:10px}
+.search input{flex:1;font:inherit;font-size:1rem;padding:9px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink)}
+.search input:focus{outline:2px solid var(--deep);outline-offset:1px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.jump a{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--ink);text-decoration:none;background:var(--surface)}
+.grp h2 .cnt{font-size:.74rem;font-weight:700;color:var(--muted);margin-left:8px}
+.terms{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.terms li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+.terms .tn b{font-size:1rem;margin-right:8px}
+.terms .tn i{font-style:normal;font-weight:800;color:var(--deep);font-size:.9rem}
+.terms p{margin:3px 0 4px;font-size:.84rem;color:var(--ink);line-height:1.55}
+.pg{display:flex;flex-wrap:wrap;gap:4px}
+.pg a{font-size:.7rem;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:0 6px;color:var(--muted);text-decoration:none}
+.terms li:target{outline:2px solid var(--deep)}
+.none{display:none;margin-top:10px}
+.hide{display:none!important}
+@media (max-width:760px){.terms{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<div style="background:#fbf3d2;color:#5a4500;border:1px solid #8a6d00;border-radius:10px;padding:6px 12px;margin:0 0 10px;font-size:.85rem">BRDC Frontiers メンバー確認用（2026年10月23日（金）まで公開）。応募準備中の内容です。外部への転送・転載はご遠慮ください。</div>
+<nav class="tnav" aria-label="ページ一覧"><a href="index.html">← 目次</a><a href="overview.html">全体図</a><a href="deep-vet.html">Deepの獣医師</a><a href="broad-vet.html">Broadの獣医師</a><a href="farmer.html">農家さん</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎大学</a><a href="glossary.html" aria-current="page">ことば表</a></nav>
+
+<section class="hero" aria-labelledby="h-top">
+  <div class="tag">全員の共通のことば　／　109語</div>
+  <h1 id="h-top">ことば表：英語・略語と、日本語の言い方</h1>
+  <p class="sub">アプリやマニュアルは英語・略語をそのまま使います。ここでは、それぞれの日本語の言い方と意味をまとめました。下の小さなボタンは、そのことばが出てくるページです。</p>
+  <div class="search"><input id="q" type="search" placeholder="さがす（例：NPS、季節、まとめ役、送り状）" autocomplete="off" aria-label="ことばをさがす"></div>
+  <div class="jump"><a href="#h-0">事業・季節のことば</a><a href="#h-1">成績・記録・送り方</a><a href="#h-2">牛の段階（Stage）</a><a href="#h-3">検体・測るもの</a><a href="#h-4">容器・道具・入れ物</a><a href="#h-5">人・場所・アプリ</a></div>
+  <p class="none muted" id="none">見つかりませんでした。別の言い方でさがしてください。</p>
+</section>
+
+<section class="blk grp" aria-labelledby="h-0"><h2 id="h-0">事業・季節のことば<span class="cnt">13</span></h2><ul class="terms"><li id="g-deep" data-q="Deep 重点調査農場 くわしく測る50農場。3年間登録する。病気・治療・死亡・出荷は聞き取らず、個体識別と共済の記録で見る。"><div class="tn"><b>Deep</b><i>重点調査農場</i></div><p>くわしく測る50農場。3年間登録する。病気・治療・死亡・出荷は聞き取らず、個体識別と共済の記録で見る。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-broad" data-q="Broad 実証協力農場 ふだんの診療でできる簡単なことだけを集める農場。年50農場（目標）（100まで受け入れ）。"><div class="tn"><b>Broad</b><i>実証協力農場</i></div><p>ふだんの診療でできる簡単なことだけを集める農場。年50農場（目標）（100まで受け入れ）。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-season" data-q="Season 季節 春3〜5月（採材は4〜5月）・夏6〜8月・秋9〜11月・冬12〜2月。3月は測定・QC・準備。"><div class="tn"><b>Season</b><i>季節</i></div><p>春3〜5月（採材は4〜5月）・夏6〜8月・秋9〜11月・冬12〜2月。3月は測定・QC・準備。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-assigned" data-q="Assigned Season くわしく測る季節 その農場に割り当てられた季節。1年に1つ。採材計画で決まる。"><div class="tn"><b>Assigned Season</b><i>くわしく測る季節</i></div><p>その農場に割り当てられた季節。1年に1つ。採材計画で決まる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a></div></li>
+<li id="g-fs" data-q="farm-season 農場×季節 1つの農場が、1つの季節にくわしく測ること。50農場で100 farm-season（年度30／35／35）。"><div class="tn"><b>farm-season</b><i>農場×季節</i></div><p>1つの農場が、1つの季節にくわしく測ること。50農場で100 farm-season（年度30／35／35）。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-routine" data-q="Routine いつもの採材 くわしく測る季節の中で、決めた数まで採ること。"><div class="tn"><b>Routine</b><i>いつもの採材</i></div><p>くわしく測る季節の中で、決めた数まで採ること。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-event" data-q="Event 病気のときの採材 呼吸器の初診のNPSと、下痢の便。季節に関係なく1年中。Broadでは Clinical Event とも言う。"><div class="tn"><b>Event</b><i>病気のときの採材</i></div><p>呼吸器の初診のNPSと、下痢の便。季節に関係なく1年中。Broadでは Clinical Event とも言う。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-exception" data-q="Stage Exception 季節の外の例外 中央が先に承認したときだけ、季節の外で特定の段階を採る。1年に1回まで。"><div class="tn"><b>Stage Exception</b><i>季節の外の例外</i></div><p>中央が先に承認したときだけ、季節の外で特定の段階を採る。1年に1回まで。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-rd" data-q="R&amp;D 研究開発 農場が関わるものは2028・2029年度だけ。対象の農場には中央が知らせる。"><div class="tn"><b>R&D</b><i>研究開発</i></div><p>農場が関わるものは2028・2029年度だけ。対象の農場には中央が知らせる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-reference" data-q="Reference ものさし作りの検体 標準（ものさし）を作るために別に測る検体。アプリが受け取ったときに選ぶ。"><div class="tn"><b>Reference</b><i>ものさし作りの検体</i></div><p>標準（ものさし）を作るために別に測る検体。アプリが受け取ったときに選ぶ。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-window" data-q="Window 採る期間 Add-onで採材する期間。目安で、担当とセンターの獣医師の2人が決める。過ぎたら待たない・追加で行かない。"><div class="tn"><b>Window</b><i>採る期間</i></div><p>Add-onで採材する期間。目安で、担当とセンターの獣医師の2人が決める。過ぎたら待たない・追加で行かない。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-cycle" data-q="Profile Cycle 1まわり Broadで、Profile → Add-on → Action → Re-profile を1まわりと数える。"><div class="tn"><b>Profile Cycle</b><i>1まわり</i></div><p>Broadで、Profile → Add-on → Action → Re-profile を1まわりと数える。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-inactive" data-q="Inactive年 くわしく測らない年 Deepで、くわしく測る季節がない年度。病気のときの採材と記録は続ける。"><div class="tn"><b>Inactive年</b><i>くわしく測らない年</i></div><p>Deepで、くわしく測る季節がない年度。病気のときの採材と記録は続ける。</p><div class="pg"><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li></ul></section>
+<section class="blk grp" aria-labelledby="h-1"><h2 id="h-1">成績・記録・送り方<span class="cnt">8</span></h2><ul class="terms"><li id="g-ship" data-q="事業の送り状 送料の支払いがいらない送り状 大阪公立大学のヤマト法人契約の送り状。宮崎・大阪・全酪連へ送るときも、現場で送料は払わない。"><div class="tn"><b>事業の送り状</b><i>送料の支払いがいらない送り状</i></div><p>大阪公立大学のヤマト法人契約の送り状。宮崎・大阪・全酪連へ送るときも、現場で送料は払わない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-kotai" data-q="個体識別の記録 牛個体識別の届出の記録 出生・死亡・転出（出荷・移動）の日付など。家畜改良センターから、農家さんの同意書を添えて大阪が年度ごとに取り寄せる。"><div class="tn"><b>個体識別の記録</b><i>牛個体識別の届出の記録</i></div><p>出生・死亡・転出（出荷・移動）の日付など。家畜改良センターから、農家さんの同意書を添えて大阪が年度ごとに取り寄せる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-kyosai" data-q="共済の記録 家畜共済（NOSAI）の記録 子牛の診療・死廃事故の件数と日付、共済金・診療費。事業の同意書の写しを添えて共済組合から取り寄せる。"><div class="tn"><b>共済の記録</b><i>家畜共済（NOSAI）の記録</i></div><p>子牛の診療・死廃事故の件数と日付、共済金・診療費。事業の同意書の写しを添えて共済組合から取り寄せる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-consent" data-q="同意書2枚 記録の利用の同意 家畜改良センターの様式（別添）と事業の同意書。Deepにはお願い、Broadは任意。原本はCoordinatorの箱で大阪へ。同意がなくても採材はできる。"><div class="tn"><b>同意書2枚</b><i>記録の利用の同意</i></div><p>家畜改良センターの様式（別添）と事業の同意書。Deepにはお願い、Broadは任意。原本はCoordinatorの箱で大阪へ。同意がなくても採材はできる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-code" data-q="管理者等コード番号 届出に使う10桁の番号 家畜改良センターの同意書に書く。氏名・住所と一緒に、届出の登録と同じでないと出し直しになる。"><div class="tn"><b>管理者等コード番号</b><i>届出に使う10桁の番号</i></div><p>家畜改良センターの同意書に書く。氏名・住所と一緒に、届出の登録と同じでないと出し直しになる。</p><div class="pg"><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-yen" data-q="円換算・経済評価 成績の変化をお金で見る Deep 50農場で、死亡・治療・増体の変化を基準年の単価（共済金・市場価格）で円にし、検査費・作業時間と比べる。明治大学が担当。"><div class="tn"><b>円換算・経済評価</b><i>成績の変化をお金で見る</i></div><p>Deep 50農場で、死亡・治療・増体の変化を基準年の単価（共済金・市場価格）で円にし、検査費・作業時間と比べる。明治大学が担当。</p><div class="pg"><a href="overview.html">全体図</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-oplog" data-q="操作記録 アプリの操作の記録 容器の読み取りから保存まで、訪問の最初と最後の操作。現場の作業時間を、聞き取りでなくここから出す。"><div class="tn"><b>操作記録</b><i>アプリの操作の記録</i></div><p>容器の読み取りから保存まで、訪問の最初と最後の操作。現場の作業時間を、聞き取りでなくここから出す。</p><div class="pg"><a href="overview.html">全体図</a></div></li>
+<li id="g-quota" data-q="予約枠 発症牛のqPCRの取り置き 呼吸器のNPSと下痢の便を、Deep・Broadに分けて取っておく数。12月1日に残りを共通の枠へ（アプリが行う）。"><div class="tn"><b>予約枠</b><i>発症牛のqPCRの取り置き</i></div><p>呼吸器のNPSと下痢の便を、Deep・Broadに分けて取っておく数。12月1日に残りを共通の枠へ（アプリが行う）。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li></ul></section>
+<section class="blk grp" aria-labelledby="h-2"><h2 id="h-2">牛の段階（Stage）<span class="cnt">10</span></h2><ul class="terms"><li id="g-stage" data-q="Stage 牛の段階 母牛はM1・M2、子牛はP0・P2・P4（P1は採らない、P3は2028年度のR&amp;Dだけ）。アプリが自動で決める。"><div class="tn"><b>Stage</b><i>牛の段階</i></div><p>母牛はM1・M2、子牛はP0・P2・P4（P1は採らない、P3は2028年度のR&Dだけ）。アプリが自動で決める。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-m1" data-q="M1 分娩前の母牛 分娩の8〜60日前。"><div class="tn"><b>M1</b><i>分娩前の母牛</i></div><p>分娩の8〜60日前。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-m2" data-q="M2 分娩後の母牛 分娩後8〜60日。"><div class="tn"><b>M2</b><i>分娩後の母牛</i></div><p>分娩後8〜60日。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-p0" data-q="P0 生まれて2〜7日の子牛 初乳を飲んだあと。出生日が分からない子牛は選ばない。"><div class="tn"><b>P0</b><i>生まれて2〜7日の子牛</i></div><p>初乳を飲んだあと。出生日が分からない子牛は選ばない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-p1" data-q="P1 哺乳前期の子牛 8〜29日齢。この事業では採らない。"><div class="tn"><b>P1</b><i>哺乳前期の子牛</i></div><p>8〜29日齢。この事業では採らない。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-p2" data-q="P2 哺乳後期の子牛 30日齢から、離乳を始める前まで。"><div class="tn"><b>P2</b><i>哺乳後期の子牛</i></div><p>30日齢から、離乳を始める前まで。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-p3" data-q="P3 離乳のころの子牛 離乳を始めてから、離乳が終わって14日まで。2028年度のR&amp;Dの農場だけ。"><div class="tn"><b>P3</b><i>離乳のころの子牛</i></div><p>離乳を始めてから、離乳が終わって14日まで。2028年度のR&Dの農場だけ。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-p4" data-q="P4 離乳後の子牛 離乳が終わって15〜60日。採血と健常便。"><div class="tn"><b>P4</b><i>離乳後の子牛</i></div><p>離乳が終わって15〜60日。採血と健常便。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-weaning" data-q="哺乳中／離乳中／離乳済み 農家に聞く3択 離乳済みなら離乳日（「◯週間前」でもよい）。段階はアプリが自動で決める。"><div class="tn"><b>哺乳中／離乳中／離乳済み</b><i>農家に聞く3択</i></div><p>離乳済みなら離乳日（「◯週間前」でもよい）。段階はアプリが自動で決める。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-primarystage" data-q="Primary Stage 主に見る段階 Broad A3で、P2かP4のどちらを測るか、2人で先に決める。"><div class="tn"><b>Primary Stage</b><i>主に見る段階</i></div><p>Broad A3で、P2かP4のどちらを測るか、2人で先に決める。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li></ul></section>
+<section class="blk grp" aria-labelledby="h-3"><h2 id="h-3">検体・測るもの<span class="cnt">22</span></h2><ul class="terms"><li id="g-nps" data-q="NPS 鼻の奥の拭い液 鼻咽頭スワブ。鼻から咽頭まで綿棒を入れて拭う。呼吸器の病原体を調べる。"><div class="tn"><b>NPS</b><i>鼻の奥の拭い液</i></div><p>鼻咽頭スワブ。鼻から咽頭まで綿棒を入れて拭う。呼吸器の病原体を調べる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-wts" data-q="WTS 水槽の拭い液 共用の水槽の内側を拭う。DeepもBroadも、共用の水槽があるZoneごとに1本・最大4本。"><div class="tn"><b>WTS</b><i>水槽の拭い液</i></div><p>共用の水槽の内側を拭う。DeepもBroadも、共用の水槽があるZoneごとに1本・最大4本。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-tus" data-q="TUS 肺のエコー 胸部の超音波検査。ふだんから行っている先生だけ。"><div class="tn"><b>TUS</b><i>肺のエコー</i></div><p>胸部の超音波検査。ふだんから行っている先生だけ。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-crs" data-q="CRS 呼吸器の症状の点数 咳・耳・鼻汁・眼脂・体温を点数にしたもの。アプリが合計する。"><div class="tn"><b>CRS</b><i>呼吸器の症状の点数</i></div><p>咳・耳・鼻汁・眼脂・体温を点数にしたもの。アプリが合計する。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-spo2" data-q="SpO₂ 血液中の酸素の値 パルスオキシメーターで。測れればでよい。"><div class="tn"><b>SpO₂</b><i>血液中の酸素の値</i></div><p>パルスオキシメーターで。測れればでよい。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-bcs" data-q="BCS 母牛の肉付きの点数 棘突起・肋骨・腰角・尾根部・肛門周辺の5か所を、必ず触って決める。"><div class="tn"><b>BCS</b><i>母牛の肉付きの点数</i></div><p>棘突起・肋骨・腰角・尾根部・肛門周辺の5か所を、必ず触って決める。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-rs" data-q="RS 第一胃の張り（手で） ルーメンスコア。牛の右側から背越しに左膁部へ手を伸ばして決める。"><div class="tn"><b>RS</b><i>第一胃の張り（手で）</i></div><p>ルーメンスコア。牛の右側から背越しに左膁部へ手を伸ばして決める。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-rfs" data-q="RFS 第一胃の張り（目で） ルーメンフィルスコア。左後方から左膁部を見て1〜5。"><div class="tn"><b>RFS</b><i>第一胃の張り（目で）</i></div><p>ルーメンフィルスコア。左後方から左膁部を見て1〜5。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-hg" data-q="胸囲・HGR 胸の周り（cm）とその充足率 肩甲骨のすぐ後ろで測る。HGR（胸囲÷同じ日齢の標準胸囲）は現場の画面には出ない。"><div class="tn"><b>胸囲・HGR</b><i>胸の周り（cm）とその充足率</i></div><p>肩甲骨のすぐ後ろで測る。HGR（胸囲÷同じ日齢の標準胸囲）は現場の画面には出ない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a></div></li>
+<li id="g-basic" data-q="Basic-12 血液生化学の12項目 NOSAIで測る。M1・M2・P2・P4の血清。"><div class="tn"><b>Basic-12</b><i>血液生化学の12項目</i></div><p>NOSAIで測る。M1・M2・P2・P4の血清。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-vit" data-q="ビタミンA/E ビタミンAとE M1とP4の血清で測る。Broadは2人で決めたときだけ。"><div class="tn"><b>ビタミンA/E</b><i>ビタミンAとE</i></div><p>M1とP4の血清で測る。Broadは2人で決めたときだけ。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-brix" data-q="Brix・TP 初乳の濃さと血清の総たんぱく P0の子牛の血清と初乳で、大阪が測る。"><div class="tn"><b>Brix・TP</b><i>初乳の濃さと血清の総たんぱく</i></div><p>P0の子牛の血清と初乳で、大阪が測る。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-fsc" data-q="便スコア・FSC 便のゆるさ（0〜3）と便のデンプン 2・3は下痢。FSC（デンプン）はP4の健常便で大阪が測る。"><div class="tn"><b>便スコア・FSC</b><i>便のゆるさ（0〜3）と便のデンプン</i></div><p>2・3は下痢。FSC（デンプン）はP4の健常便で大阪が測る。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-dm" data-q="DM 便の乾物（水分を除いた割合） 105℃で乾かして測る。大阪。"><div class="tn"><b>DM</b><i>便の乾物（水分を除いた割合）</i></div><p>105℃で乾かして測る。大阪。</p><div class="pg"><a href="osaka.html">大阪</a></div></li>
+<li id="g-igg" data-q="IgG・SRID 血清・初乳の免疫（IgG）の量と、その測り方 2028年度に大阪で測る（Referenceの血清・初乳）。"><div class="tn"><b>IgG・SRID</b><i>血清・初乳の免疫（IgG）の量と、その測り方</i></div><p>2028年度に大阪で測る（Referenceの血清・初乳）。</p><div class="pg"><a href="osaka.html">大阪</a></div></li>
+<li id="g-qpcr" data-q="qPCR 病原体の遺伝子を増やして数える検査 宮崎で行う。NPS・WTS・下痢の便。"><div class="tn"><b>qPCR</b><i>病原体の遺伝子を増やして数える検査</i></div><p>宮崎で行う。NPS・WTS・下痢の便。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-unit" data-q="Unit 1〜3・Unit 4 qPCRの組（呼吸器・WTS） Unit 1〜3は呼吸器の病原体の組。Unit 4は水槽（WTS）の定量のReference。"><div class="tn"><b>Unit 1〜3・Unit 4</b><i>qPCRの組（呼吸器・WTS）</i></div><p>Unit 1〜3は呼吸器の病原体の組。Unit 4は水槽（WTS）の定量のReference。</p><div class="pg"><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-rpp30" data-q="RPP30 採れているかの確認 牛の遺伝子。スワブがきちんと採れたかを見る。"><div class="tn"><b>RPP30</b><i>採れているかの確認</i></div><p>牛の遺伝子。スワブがきちんと採れたかを見る。</p><div class="pg"><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-load50" data-q="load50 陰性の扱い 陰性はCt 50として記録する決まり。"><div class="tn"><b>load50</b><i>陰性の扱い</i></div><p>陰性はCt 50として記録する決まり。</p><div class="pg"><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-nir" data-q="NIR・化学分析 飼料の分析の2つの方法 ふだんはNIR（近赤外）。NIRで測れないときだけ、教員が化学分析を承認。"><div class="tn"><b>NIR・化学分析</b><i>飼料の分析の2つの方法</i></div><p>ふだんはNIR（近赤外）。NIRで測れないときだけ、教員が化学分析を承認。</p><div class="pg"><a href="osaka.html">大阪</a></div></li>
+<li id="g-feck" data-q="Fe・CK 鉄と筋肉の酵素 ふだんは測らない。必要なときだけ保存用のB1で足す。"><div class="tn"><b>Fe・CK</b><i>鉄と筋肉の酵素</i></div><p>ふだんは測らない。必要なときだけ保存用のB1で足す。</p><div class="pg"><a href="osaka.html">大阪</a></div></li>
+<li id="g-nucleic" data-q="核酸 DNA・RNA 抽出してqPCRにかける。糞便は大阪で抽出して宮崎へ。"><div class="tn"><b>核酸</b><i>DNA・RNA</i></div><p>抽出してqPCRにかける。糞便は大阪で抽出して宮崎へ。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li></ul></section>
+<section class="blk grp" aria-labelledby="h-4"><h2 id="h-4">容器・道具・入れ物<span class="cnt">25</span></h2><ul class="terms"><li id="g-qr" data-q="QR 容器やカードのQRコード すべての作業はQRを読むところから始まる。Broadのはじめの水槽スワブだけ手書きの短いID。"><div class="tn"><b>QR</b><i>容器やカードのQRコード</i></div><p>すべての作業はQRを読むところから始まる。Broadのはじめの水槽スワブだけ手書きの短いID。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-band" data-q="緑の帯／橙の帯 健常用／診療牛OK 緑＝健康な牛だけ。橙＝診療する牛に使える。母牛の採血管とWTSは帯なし。"><div class="tn"><b>緑の帯／橙の帯</b><i>健常用／診療牛OK</i></div><p>緑＝健康な牛だけ。橙＝診療する牛に使える。母牛の採血管とWTSは帯なし。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-bundle" data-q="束（分注の束） 小さな管3本のセット 採血管と同じ番号。A1（測定用）・B1（保存・再測定用）・C1（研究用）。"><div class="tn"><b>束（分注の束）</b><i>小さな管3本のセット</i></div><p>採血管と同じ番号。A1（測定用）・B1（保存・再測定用）・C1（研究用）。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-conical" data-q="遠沈管 先のとがった筒 採便25 mL、NPS 15 mL、WTS 50 mL。"><div class="tn"><b>遠沈管</b><i>先のとがった筒</i></div><p>採便25 mL、NPS 15 mL、WTS 50 mL。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-bloodbox" data-q="血液ボックス 遠心する前の採血管を運ぶ箱 保冷剤なし・遮光。今の保冷箱を使う。"><div class="tn"><b>血液ボックス</b><i>遠心する前の採血管を運ぶ箱</i></div><p>保冷剤なし・遮光。今の保冷箱を使う。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-coolbag" data-q="保冷袋 凍らせるものを運ぶ袋 保冷剤入り。便・初乳・NPS・WTSと、遠心したあとの採血管。"><div class="tn"><b>保冷袋</b><i>凍らせるものを運ぶ袋</i></div><p>保冷剤入り。便・初乳・NPS・WTSと、遠心したあとの採血管。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-rack" data-q="試験管立て 採血管を立てる台 採血管は立てたまま血液ボックスへ。"><div class="tn"><b>試験管立て</b><i>採血管を立てる台</i></div><p>採血管は立てたまま血液ボックスへ。</p><div class="pg"><a href="deep-vet.html">Deep</a></div></li>
+<li id="g-zone" data-q="Zone 牛舎の区画 環境を測るまとまり。センサーを置くのは、子牛のZone最大3＋分娩前の母牛のZone 1まで。"><div class="tn"><b>Zone</b><i>牛舎の区画</i></div><p>環境を測るまとまり。センサーを置くのは、子牛のZone最大3＋分娩前の母牛のZone 1まで。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-zonecard" data-q="ZoneのQRカード 区画に貼るカード 中央が印刷してラミネート。Deepだけ（Broadは使わない）。"><div class="tn"><b>ZoneのQRカード</b><i>区画に貼るカード</i></div><p>中央が印刷してラミネート。Deepだけ（Broadは使わない）。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-zonevideo" data-q="Zone動画 牛舎のZone動画 Broadのはじめの4項目で、1 Zoneに1本（スマホ横）。Zone全体・牛・床・換気・飼槽・水槽が写っていればよい。"><div class="tn"><b>Zone動画</b><i>牛舎のZone動画</i></div><p>Broadのはじめの4項目で、1 Zoneに1本（スマホ横）。Zone全体・牛・床・換気・飼槽・水槽が写っていればよい。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-switchbot" data-q="SwitchBot 温度・湿度・CO₂のセンサー メッシュのかごに入れて柱に留める。3〜7日置く。"><div class="tn"><b>SwitchBot</b><i>温度・湿度・CO₂のセンサー</i></div><p>メッシュのかごに入れて柱に留める。3〜7日置く。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-envkit" data-q="環境キット SwitchBotと道具の箱 SwitchBot最大4台・レーザー距離計・結束バンド・消毒シート・次の農場への送り状。6キットが農場から農場へ回る。"><div class="tn"><b>環境キット</b><i>SwitchBotと道具の箱</i></div><p>SwitchBot最大4台・レーザー距離計・結束バンド・消毒シート・次の農場への送り状。6キットが農場から農場へ回る。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-colokit" data-q="初乳キット 初乳を少し凍らせる袋 手で初乳を与える農場だけに置く。農家が入れて冷凍。"><div class="tn"><b>初乳キット</b><i>初乳を少し凍らせる袋</i></div><p>手で初乳を与える農場だけに置く。農家が入れて冷凍。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-wtskit" data-q="WTSキット 水槽用のスワブと50 mL遠沈管 QR付き・帯なし。Broadのはじめの4項目には送らない（手元の資材で採る）。"><div class="tn"><b>WTSキット</b><i>水槽用のスワブと50 mL遠沈管</i></div><p>QR付き・帯なし。Broadのはじめの4項目には送らない（手元の資材で採る）。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-multikit" data-q="複数回採便キット 同じ子牛から4回採るための遠沈管 2028年度・Deepの5農場だけ。農家が採る。"><div class="tn"><b>複数回採便キット</b><i>同じ子牛から4回採るための遠沈管</i></div><p>2028年度・Deepの5農場だけ。農家が採る。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a></div></li>
+<li id="g-feedkit" data-q="飼料キット 袋・目安量のカード・箱・申込書 農場に置く。たまったら事業の送り状で全酪連へ。"><div class="tn"><b>飼料キット</b><i>袋・目安量のカード・箱・申込書</i></div><p>農場に置く。たまったら事業の送り状で全酪連へ。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a></div></li>
+<li id="g-scale" data-q="吊りはかり 給与量を測るはかり 給与量を測っていない農場だけに貸す。バケツ1杯・ロール1個の重さを一度測る。"><div class="tn"><b>吊りはかり</b><i>給与量を測るはかり</i></div><p>給与量を測っていない農場だけに貸す。バケツ1杯・ロール1個の重さを一度測る。</p><div class="pg"><a href="farmer.html">農家</a></div></li>
+<li id="g-feedlot" data-q="FeedLot・Ration 同じロットの飼料・与える飼料の組み合わせ 同じFeedLotは送り直さない。"><div class="tn"><b>FeedLot・Ration</b><i>同じロットの飼料・与える飼料の組み合わせ</i></div><p>同じFeedLotは送り直さない。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-shortid" data-q="short ID 手書きの短い番号 Broadのはじめの水槽スワブだけ。アプリが出す番号（例 F23-Z2-01）を油性ペンでチューブに書く。"><div class="tn"><b>short ID</b><i>手書きの短い番号</i></div><p>Broadのはじめの水槽スワブだけ。アプリが出す番号（例 F23-Z2-01）を油性ペンでチューブに書く。</p><div class="pg"><a href="broad-vet.html">Broad</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-masterkit" data-q="Annual Master Kit 1年分のキットのまとまり 年度初めに大阪からCoordinatorへ。農場別・季節別＋予備。"><div class="tn"><b>Annual Master Kit</b><i>1年分のキットのまとまり</i></div><p>年度初めに大阪からCoordinatorへ。農場別・季節別＋予備。</p><div class="pg"><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-reserve" data-q="Common reserve 予備のキット こわれたときなどに使う。足りないときは中央拠点に頼む。"><div class="tn"><b>Common reserve</b><i>予備のキット</i></div><p>こわれたときなどに使う。足りないときは中央拠点に頼む。</p><div class="pg"><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-pack" data-q="三重包装 3重に包む送り方 配られた包装資材と説明に従う。温度管理と追跡のある冷凍便だけ。"><div class="tn"><b>三重包装</b><i>3重に包む送り方</i></div><p>配られた包装資材と説明に従う。温度管理と追跡のある冷凍便だけ。</p><div class="pg"><a href="coordinator.html">Coordinator</a></div></li>
+<li id="g-maglead" data-q="magLEAD 核酸を抽出する機器 宮崎（NPS・WTS）と大阪（糞便）にある。"><div class="tn"><b>magLEAD</b><i>核酸を抽出する機器</i></div><p>宮崎（NPS・WTS）と大阪（糞便）にある。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-qs5" data-q="QuantStudio 5 qPCRの機器 宮崎大学にある。"><div class="tn"><b>QuantStudio 5</b><i>qPCRの機器</i></div><p>宮崎大学にある。</p><div class="pg"><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-npsabc" data-q="NPS-A・B・C／WTS-A・B 分けた液の名前 A＝抽出用、B＝宿主応答・保存、C＝Biobank。B・Cは季節の終わりに大阪へ。"><div class="tn"><b>NPS-A・B・C／WTS-A・B</b><i>分けた液の名前</i></div><p>A＝抽出用、B＝宿主応答・保存、C＝Biobank。B・Cは季節の終わりに大阪へ。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li></ul></section>
+<section class="blk grp" aria-labelledby="h-5"><h2 id="h-5">人・場所・アプリ<span class="cnt">31</span></h2><ul class="terms"><li id="g-coord" data-q="Coordinator 地域のまとめ役 Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。最大12人（1人4〜5農場）。Broadにはいない。"><div class="tn"><b>Coordinator</b><i>地域のまとめ役</i></div><p>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。最大12人（1人4〜5農場）。Broadにはいない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-reqvet" data-q="依頼獣医師 農場を担当するBroadの獣医師 農場を登録し、はじめの4項目を集め、センターの獣医師と話し合ってAdd-on・Actionを決める。"><div class="tn"><b>依頼獣医師</b><i>農場を担当するBroadの獣医師</i></div><p>農場を登録し、はじめの4項目を集め、センターの獣医師と話し合ってAdd-on・Actionを決める。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-centervet" data-q="センター獣医師 Profileを見る獣医師 Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。"><div class="tn"><b>センター獣医師</b><i>Profileを見る獣医師</i></div><p>Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。</p><div class="pg"><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-central" data-q="中央拠点 大阪公立大学 全体のとりまとめ。血清・初乳・便の送り先。"><div class="tn"><b>中央拠点</b><i>大阪公立大学</i></div><p>全体のとりまとめ。血清・初乳・便の送り先。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-miyazaki" data-q="宮崎大学 qPCRの拠点 NPS・WTSの送り先（事業の送り状で送る）。"><div class="tn"><b>宮崎大学</b><i>qPCRの拠点</i></div><p>NPS・WTSの送り先（事業の送り状で送る）。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-nosai" data-q="NOSAI・全酪連 血液の検査センター・飼料の分析センター 血液は大阪から送る（現場の作業なし）。飼料は農場から事業の送り状で直送。"><div class="tn"><b>NOSAI・全酪連</b><i>血液の検査センター・飼料の分析センター</i></div><p>血液は大阪から送る（現場の作業なし）。飼料は農場から事業の送り状で直送。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-meiji" data-q="明治大学 データの確認（QC）と解析・経済評価 270日齢までの成績との関係、成績の変化を円にする経済評価（費用対効果）。"><div class="tn"><b>明治大学</b><i>データの確認（QC）と解析・経済評価</i></div><p>270日齢までの成績との関係、成績の変化を円にする経済評価（費用対効果）。</p><div class="pg"><a href="overview.html">全体図</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-committee" data-q="推進・評価委員会 年1回の会議（2029年度は2回） 進み具合と目標の達成を確かめる。"><div class="tn"><b>推進・評価委員会</b><i>年1回の会議（2029年度は2回）</i></div><p>進み具合と目標の達成を確かめる。</p><div class="pg"><a href="overview.html">全体図</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-app" data-q="アプリ（Farm Profile Platform） 採材の記録と結果が集まるスマホのアプリ W-02などは画面の番号。"><div class="tn"><b>アプリ（Farm Profile Platform）</b><i>採材の記録と結果が集まるスマホのアプリ</i></div><p>W-02などは画面の番号。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-profile" data-q="Farm Profile 農場ごとの結果のまとめ 季節の結果をまとめて、獣医師・農家に返す。"><div class="tn"><b>Farm Profile</b><i>農場ごとの結果のまとめ</i></div><p>季節の結果をまとめて、獣医師・農家に返す。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-initial" data-q="Initial Farm Profile 最初のまとめ Broadで、はじめの4項目から作る最初のFarm Profile。わかること・わからないこと・次に足すとよい情報。"><div class="tn"><b>Initial Farm Profile</b><i>最初のまとめ</i></div><p>Broadで、はじめの4項目から作る最初のFarm Profile。わかること・わからないこと・次に足すとよい情報。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-first4" data-q="はじめの4項目 Broadで最初に集める簡単な情報 農場の基本情報・Zoneと動画・胸囲（推奨：0〜30日齢5頭・31〜135日齢8頭、最低なし）・水槽スワブ（各Zone 1本、最大4本）。手元の資材でできる。"><div class="tn"><b>はじめの4項目</b><i>Broadで最初に集める簡単な情報</i></div><p>農場の基本情報・Zoneと動画・胸囲（推奨：0〜30日齢5頭・31〜135日齢8頭、最低なし）・水槽スワブ（各Zone 1本、最大4本）。手元の資材でできる。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-farmfacts" data-q="Farm Facts 農場の基本情報 アプリの質問。最初は最低限だけ。前に答えたことは聞き直さない。"><div class="tn"><b>Farm Facts</b><i>農場の基本情報</i></div><p>アプリの質問。最初は最低限だけ。前に答えたことは聞き直さない。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-addon" data-q="Add-on 追加の検査 A1〜A6。必要なときだけ、2人（依頼獣医師＋センター獣医師）で決めてくわしく測る。アプリは自動で決めない。"><div class="tn"><b>Add-on</b><i>追加の検査</i></div><p>A1〜A6。必要なときだけ、2人（依頼獣医師＋センター獣医師）で決めてくわしく測る。アプリは自動で決めない。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-report" data-q="Add-on Report 追加の検査のまとめ センターの獣医師が、はじめの4項目の結果とあわせて読んで作る。"><div class="tn"><b>Add-on Report</b><i>追加の検査のまとめ</i></div><p>センターの獣医師が、はじめの4項目の結果とあわせて読んで作る。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-action" data-q="Action 農場でできる改善 2人で決めて、アプリに記録する。"><div class="tn"><b>Action</b><i>農場でできる改善</i></div><p>2人で決めて、アプリに記録する。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a></div></li>
+<li id="g-reprofile" data-q="Re-profile 改善のあとの測り直し 決めておいた指標だけを、決めた時期に測り直す。Add-on一式はやり直さない。"><div class="tn"><b>Re-profile</b><i>改善のあとの測り直し</i></div><p>決めておいた指標だけを、決めた時期に測り直す。Add-on一式はやり直さない。</p><div class="pg"><a href="overview.html">全体図</a><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-recapture" data-q="Re-capture 撮り直し・測り直し Actionの判断が良くなるときだけ頼む。"><div class="tn"><b>Re-capture</b><i>撮り直し・測り直し</i></div><p>Actionの判断が良くなるときだけ頼む。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-review" data-q="Center Review センター獣医師の確認 Readiness（そろい具合）を見る。PARTIAL（一部）でも、わかることがあれば次へ進む。"><div class="tn"><b>Center Review</b><i>センター獣医師の確認</i></div><p>Readiness（そろい具合）を見る。PARTIAL（一部）でも、わかることがあれば次へ進む。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-readiness" data-q="Readiness・Coverage そろい具合・どこまで写っているか Profileに「わかること・わからないこと」として書く。"><div class="tn"><b>Readiness・Coverage</b><i>そろい具合・どこまで写っているか</i></div><p>Profileに「わかること・わからないこと」として書く。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-decision" data-q="ACCEPTED／DEFERRED／NOT_SELECTED 受ける／あとで／選ばない Add-onの提案への決定。アプリに記録する。"><div class="tn"><b>ACCEPTED／DEFERRED／NOT_SELECTED</b><i>受ける／あとで／選ばない</i></div><p>Add-onの提案への決定。アプリに記録する。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-indicator" data-q="Primary response indicator Re-profileで見る指標 Actionを決めるときに、先に決めて登録する。"><div class="tn"><b>Primary response indicator</b><i>Re-profileで見る指標</i></div><p>Actionを決めるときに、先に決めて登録する。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
+<li id="g-flag" data-q="flag 印 問題のある検体も捨てずに送り、アプリが印を付ける。"><div class="tn"><b>flag</b><i>印</i></div><p>問題のある検体も捨てずに送り、アプリが印を付ける。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-nxx" data-q="N-xx 数の基準書の番号 「00_基準書_数・規模」の番号。数がちがうときはこちらが正しい。"><div class="tn"><b>N-xx</b><i>数の基準書の番号</i></div><p>「00_基準書_数・規模」の番号。数がちがうときはこちらが正しい。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-wxx" data-q="W-xx アプリの画面の番号 W-02＝農場画面、W-13＝照合と分注、W-14＝冷凍、W-15＝発送 など。"><div class="tn"><b>W-xx</b><i>アプリの画面の番号</i></div><p>W-02＝農場画面、W-13＝照合と分注、W-14＝冷凍、W-15＝発送 など。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a></div></li>
+<li id="g-time" data-q="2時間・4時間・30日 目標と期限 採血から血清を分けるまで2時間以内が目標（2〜4時間は黄、4時間超は橙）。採血から30日以内に大阪に着くように。超えても捨てない。"><div class="tn"><b>2時間・4時間・30日</b><i>目標と期限</i></div><p>採血から血清を分けるまで2時間以内が目標（2〜4時間は黄、4時間超は橙）。採血から30日以内に大阪に着くように。超えても捨てない。</p><div class="pg"><a href="deep-vet.html">Deep</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-temp" data-q="−20℃／−80℃ 短い置き場／長い保存 −20℃＝現場・Coordinator・大阪の短い置き場。−80℃＝Biobank・研究用（測定待ちには使わない）。"><div class="tn"><b>−20℃／−80℃</b><i>短い置き場／長い保存</i></div><p>−20℃＝現場・Coordinator・大阪の短い置き場。−80℃＝Biobank・研究用（測定待ちには使わない）。</p><div class="pg"><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-biobank" data-q="Biobank −80℃の保存庫 大阪にある。保存用の検体を長く保管する。"><div class="tn"><b>Biobank</b><i>−80℃の保存庫</i></div><p>大阪にある。保存用の検体を長く保管する。</p><div class="pg"><a href="overview.html">全体図</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-qc" data-q="QC 結果の確認 品質管理。宮崎は教員がランごとに、明治はデータ全体を確認。"><div class="tn"><b>QC</b><i>結果の確認</i></div><p>品質管理。宮崎は教員がランごとに、明治はデータ全体を確認。</p><div class="pg"><a href="overview.html">全体図</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-dec1" data-q="12月1日 予約枠を開放する日 病気のときのqPCRの予約枠（Deep・Broad）で使わなかった分を、共通の枠に回す。アプリが行う。"><div class="tn"><b>12月1日</b><i>予約枠を開放する日</i></div><p>病気のときのqPCRの予約枠（Deep・Broad）で使わなかった分を、共通の枠に回す。アプリが行う。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
+<li id="g-270" data-q="270日齢までの成績 最終の成果指標 子牛の270日齢までの成績（疾病・治療・死亡・発育）。導入前と比べた改善率で見る。個体識別・共済の記録とシステムの記録から。"><div class="tn"><b>270日齢までの成績</b><i>最終の成果指標</i></div><p>子牛の270日齢までの成績（疾病・治療・死亡・発育）。導入前と比べた改善率で見る。個体識別・共済の記録とシステムの記録から。</p><div class="pg"><a href="overview.html">全体図</a><a href="osaka.html">大阪</a></div></li></ul></section>
+
+<footer>ことば表（v2試作、2026-10-14）。数がちがうときは「00_基準書_数・規模」が正しい。予算・金額は入れていません。</footer>
+</main>
+<script src="pictos.js"></script>
+<script>
+(function(){
+  var q=document.getElementById('q'),none=document.getElementById('none');
+  var lis=[].slice.call(document.querySelectorAll('.terms li')),grps=[].slice.call(document.querySelectorAll('.grp'));
+  function norm(s){return (s||'').toLowerCase().replace(/[\s　]/g,'');}
+  q.addEventListener('input',function(){
+    var v=norm(q.value),hit=0;
+    lis.forEach(function(li){var ok=!v||norm(li.getAttribute('data-q')).indexOf(v)>=0;li.classList.toggle('hide',!ok);if(ok)hit++;});
+    grps.forEach(function(g){g.classList.toggle('hide',!g.querySelector('li:not(.hide)'));});
+    none.style.display=hit?'none':'block';
+  });
+})();
+</script>
+</body>
+</html>
