@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ことば表</title>
 <meta name="description" content="アプリやマニュアルで使う英語・略語と、協力者向けの日本語の言い方（v2試作）">
@@ -280,10 +279,18 @@ ul.plain li{margin:2px 0}
 .hide{display:none!important}
 @media (max-width:760px){.terms{grid-template-columns:1fr}}
 </style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
 </head>
 <body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
 <main>
-<div style="background:#fbf3d2;color:#5a4500;border:1px solid #8a6d00;border-radius:10px;padding:6px 12px;margin:0 0 10px;font-size:.85rem">BRDC Frontiers メンバー確認用（2026年10月23日（金）まで公開）。応募準備中の内容です。外部への転送・転載はご遠慮ください。</div>
 <nav class="tnav" aria-label="ページ一覧"><a href="index.html">← 目次</a><a href="overview.html">全体図</a><a href="deep-vet.html">Deepの獣医師</a><a href="broad-vet.html">Broadの獣医師</a><a href="farmer.html">農家さん</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎大学</a><a href="glossary.html" aria-current="page">ことば表</a></nav>
 
 <section class="hero" aria-labelledby="h-top">
@@ -309,7 +316,7 @@ ul.plain li{margin:2px 0}
 <li id="g-cycle" data-q="Profile Cycle 1まわり Broadで、Profile → Add-on → Action → Re-profile を1まわりと数える。"><div class="tn"><b>Profile Cycle</b><i>1まわり</i></div><p>Broadで、Profile → Add-on → Action → Re-profile を1まわりと数える。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
 <li id="g-inactive" data-q="Inactive年 くわしく測らない年 Deepで、くわしく測る季節がない年度。病気のときの採材と記録は続ける。"><div class="tn"><b>Inactive年</b><i>くわしく測らない年</i></div><p>Deepで、くわしく測る季節がない年度。病気のときの採材と記録は続ける。</p><div class="pg"><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li></ul></section>
 <section class="blk grp" aria-labelledby="h-1"><h2 id="h-1">成績・記録・送り方<span class="cnt">8</span></h2><ul class="terms"><li id="g-ship" data-q="事業の送り状 送料の支払いがいらない送り状 大阪公立大学のヤマト法人契約の送り状。宮崎・大阪・全酪連へ送るときも、現場で送料は払わない。"><div class="tn"><b>事業の送り状</b><i>送料の支払いがいらない送り状</i></div><p>大阪公立大学のヤマト法人契約の送り状。宮崎・大阪・全酪連へ送るときも、現場で送料は払わない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
-<li id="g-kotai" data-q="個体識別の記録 牛個体識別の届出の記録 出生・死亡・転出（出荷・移動）の日付など。家畜改良センターから、農家さんの同意書を添えて大阪が年度ごとに取り寄せる。"><div class="tn"><b>個体識別の記録</b><i>牛個体識別の届出の記録</i></div><p>出生・死亡・転出（出荷・移動）の日付など。家畜改良センターから、農家さんの同意書を添えて大阪が年度ごとに取り寄せる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
+<li id="g-kotai" data-q="個体識別の記録 牛個体識別の届出の記録 出生・死亡・転出（出荷・移動）の日付など。登録のときに農家さんの同意をいただき（獣医師が口頭で確かめて一覧に記入）、大阪が家畜改良センターから全農場の分を一括で取り寄せる。死亡率は、導入前の3年間・まだ導入していない農場と比べる。"><div class="tn"><b>個体識別の記録</b><i>牛個体識別の届出の記録</i></div><p>出生・死亡・転出（出荷・移動）の日付など。登録のときに農家さんの同意をいただき（獣医師が口頭で確かめて一覧に記入）、大阪が家畜改良センターから全農場の分を一括で取り寄せる。死亡率は、導入前の3年間・まだ導入していない農場と比べる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
 <li id="g-kyosai" data-q="共済の記録 家畜共済（NOSAI）の記録 子牛の診療・死廃事故の件数と日付、共済金・診療費。事業の同意書の写しを添えて共済組合から取り寄せる。"><div class="tn"><b>共済の記録</b><i>家畜共済（NOSAI）の記録</i></div><p>子牛の診療・死廃事故の件数と日付、共済金・診療費。事業の同意書の写しを添えて共済組合から取り寄せる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
 <li id="g-consent" data-q="同意書2枚 記録の利用の同意 家畜改良センターの様式（別添）と事業の同意書。Deepにはお願い、Broadは任意。原本はCoordinatorの箱で大阪へ。同意がなくても採材はできる。"><div class="tn"><b>同意書2枚</b><i>記録の利用の同意</i></div><p>家畜改良センターの様式（別添）と事業の同意書。Deepにはお願い、Broadは任意。原本はCoordinatorの箱で大阪へ。同意がなくても採材はできる。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
 <li id="g-code" data-q="管理者等コード番号 届出に使う10桁の番号 家畜改良センターの同意書に書く。氏名・住所と一緒に、届出の登録と同じでないと出し直しになる。"><div class="tn"><b>管理者等コード番号</b><i>届出に使う10桁の番号</i></div><p>家畜改良センターの同意書に書く。氏名・住所と一緒に、届出の登録と同じでないと出し直しになる。</p><div class="pg"><a href="farmer.html">農家</a><a href="osaka.html">大阪</a></div></li>
@@ -373,7 +380,7 @@ ul.plain li{margin:2px 0}
 <li id="g-maglead" data-q="magLEAD 核酸を抽出する機器 宮崎（NPS・WTS）と大阪（糞便）にある。"><div class="tn"><b>magLEAD</b><i>核酸を抽出する機器</i></div><p>宮崎（NPS・WTS）と大阪（糞便）にある。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li>
 <li id="g-qs5" data-q="QuantStudio 5 qPCRの機器 宮崎大学にある。"><div class="tn"><b>QuantStudio 5</b><i>qPCRの機器</i></div><p>宮崎大学にある。</p><div class="pg"><a href="miyazaki.html">宮崎</a></div></li>
 <li id="g-npsabc" data-q="NPS-A・B・C／WTS-A・B 分けた液の名前 A＝抽出用、B＝宿主応答・保存、C＝Biobank。B・Cは季節の終わりに大阪へ。"><div class="tn"><b>NPS-A・B・C／WTS-A・B</b><i>分けた液の名前</i></div><p>A＝抽出用、B＝宿主応答・保存、C＝Biobank。B・Cは季節の終わりに大阪へ。</p><div class="pg"><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎</a></div></li></ul></section>
-<section class="blk grp" aria-labelledby="h-5"><h2 id="h-5">人・場所・アプリ<span class="cnt">31</span></h2><ul class="terms"><li id="g-coord" data-q="Coordinator 地域のまとめ役 Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。最大12人（1人4〜5農場）。Broadにはいない。"><div class="tn"><b>Coordinator</b><i>地域のまとめ役</i></div><p>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。最大12人（1人4〜5農場）。Broadにはいない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
+<section class="blk grp" aria-labelledby="h-5"><h2 id="h-5">人・場所・アプリ<span class="cnt">31</span></h2><ul class="terms"><li id="g-coord" data-q="Coordinator 地域のまとめ役 Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。BRDC Frontiersの会員が担う（1人4〜5農場）。Broadにはいない。"><div class="tn"><b>Coordinator</b><i>地域のまとめ役</i></div><p>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。BRDC Frontiersの会員が担う（1人4〜5農場）。Broadにはいない。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="farmer.html">農家</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a></div></li>
 <li id="g-reqvet" data-q="依頼獣医師 農場を担当するBroadの獣医師 農場を登録し、はじめの4項目を集め、センターの獣医師と話し合ってAdd-on・Actionを決める。"><div class="tn"><b>依頼獣医師</b><i>農場を担当するBroadの獣医師</i></div><p>農場を登録し、はじめの4項目を集め、センターの獣医師と話し合ってAdd-on・Actionを決める。</p><div class="pg"><a href="broad-vet.html">Broad</a></div></li>
 <li id="g-centervet" data-q="センター獣医師 Profileを見る獣医師 Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。"><div class="tn"><b>センター獣医師</b><i>Profileを見る獣医師</i></div><p>Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。</p><div class="pg"><a href="broad-vet.html">Broad</a><a href="osaka.html">大阪</a></div></li>
 <li id="g-central" data-q="中央拠点 大阪公立大学 全体のとりまとめ。血清・初乳・便の送り先。"><div class="tn"><b>中央拠点</b><i>大阪公立大学</i></div><p>全体のとりまとめ。血清・初乳・便の送り先。</p><div class="pg"><a href="overview.html">全体図</a><a href="deep-vet.html">Deep</a><a href="broad-vet.html">Broad</a><a href="coordinator.html">Coordinator</a><a href="miyazaki.html">宮崎</a></div></li>

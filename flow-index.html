@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRA2027 計画フロー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<link rel="stylesheet" href="flow-common.css">
+<style>
+.wrap{max-width:1080px}
+.entry{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+a.ec{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g,var(--ink));border-radius:12px;padding:12px 14px}
+a.ec:hover{border-color:var(--g,var(--ink))}
+a.ec:focus-visible{outline:2px solid var(--deep);outline-offset:2px}
+a.ec.first{grid-column:1/-1;--g:var(--ink)}
+a.ec.first+a.ec.first,a.ec.first:last-child{grid-column:1/-1}
+a.ec.deep{--g:var(--deep)} a.ec.broad{--g:var(--broad)} a.ec.central{--g:var(--central)}
+.ec .no{font-family:var(--font-num);font-size:.75rem;color:var(--muted)}
+.ec h2{margin:2px 0 4px}
+.ec p{font-size:.88rem;color:var(--muted)}
+.ec .who{margin-top:8px}
+
+/* 概要図（下書き） */
+.aim{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+.aim .card{border-top:5px solid var(--g,var(--ink))}
+.aim .card.who{--g:var(--broad)} .aim .card.load{--g:var(--deep)} .aim .card.years{--g:var(--rd)} .aim .card.shift{--g:var(--central)}
+.aim .card h3{font-family:var(--font-display);font-weight:900;font-size:1.05rem;margin:0 0 4px}
+.aim .card p{font-size:.92rem}
+.aim .card .big{font-size:1.1rem;margin-bottom:4px}
+.ov .bx{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+.ov .bx.deep{stroke:var(--deep);stroke-width:2.5} .ov .bx.app{stroke:var(--ink);stroke-width:2.5} .ov .bx.central{stroke:var(--central);stroke-width:2.5} .ov .bx.broad{stroke:var(--broad);stroke-width:2.5}
+.ov .hub{fill:var(--broad-bg);stroke:var(--broad);stroke-width:2.5}
+.ov .no{font-family:var(--font-num);font-size:12px;fill:var(--muted)}
+.ov .ttl{font-family:var(--font-display);font-weight:900;font-size:17px;fill:var(--ink)}
+.ov .hubt{font-family:var(--font-display);font-weight:900;font-size:20px;fill:var(--ink)}
+.ov .lab{font-size:13px;fill:var(--ink)}
+.ov .mut{font-size:12.5px;fill:var(--muted)}
+.ov .who{font-size:12px;font-weight:700}
+.ov .who.deep{fill:var(--deep)} .ov .who.central{fill:var(--central)} .ov .who.broad{fill:var(--broad)} .ov .who.app{fill:var(--ink)}
+.ov .ed{fill:none;stroke:var(--muted);stroke-width:2}
+.ov .ed.back{stroke:var(--central);stroke-width:2.8}
+.ov .et{font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--surface2);stroke-width:4px;stroke-linejoin:round}
+.ov .shift{fill:none;stroke:var(--central);stroke-width:5}
+.ov .sold{font-family:var(--font-display);font-weight:900;font-size:15px;fill:var(--muted)}
+.ov .snew{font-family:var(--font-display);font-weight:900;font-size:17px;fill:var(--central)}
+.ov .sub2{font-size:12px;fill:var(--muted)}
+.ov .arc{fill:none;stroke-width:2.2} .ov .arc.deep{stroke:var(--deep)} .ov .arc.broad{stroke:var(--broad)}
+.ov .nd{fill:var(--surface);stroke-width:1.8} .ov .nd.deep{stroke:var(--deep)} .ov .nd.broad{stroke:var(--broad)}
+.ov .nl{font-family:var(--font-display);font-weight:900;font-size:17px} .ov .nl.deep{fill:var(--deep)} .ov .nl.broad{fill:var(--broad)}
+.ov .nt{font-size:13px;font-weight:700;fill:var(--ink)} .ov .nt2{font-size:11.5px;fill:var(--muted)}
+.ov .cyc{font-family:var(--font-display);font-weight:900;font-size:24px} .ov .cyc.deep{fill:var(--deep)} .ov .cyc.broad{fill:var(--broad)}
+.ov .cys{font-size:12px;fill:var(--muted)}
+.pil{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:12px;background:var(--surface)}
+.pil h3{font-family:var(--font-display);font-weight:900;font-size:1.08rem;margin:0 0 6px;line-height:1.45}
+.pil p{font-size:.93rem}
+.pno{display:inline-block;background:var(--ink);color:var(--surface);border-radius:999px;font-size:.78rem;padding:1px 10px;margin-right:8px;vertical-align:2px}
+.voice{margin:10px 0 0;padding:10px 14px;border-left:4px solid var(--central);background:var(--central-bg);border-radius:6px;font-size:.92rem;line-height:1.7}
+.voice span{display:block;margin-top:4px;font-size:.8rem;color:var(--muted)}
+@media (max-width:1100px){.aim{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.aim{grid-template-columns:minmax(0,1fr)}}
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
+</head>
+<body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
+<div class="wrap">
+<header>
+  <h1>子牛の健康評価をそろえる事業（2027〜2029年度）計画フロー</h1>
+  <p class="sub">申請した事業名：子牛健康標準評価の全国展開・実装事業（2027〜2029年度、JRA畜産振興事業）。2026-10-29、完成版の申請書に合わせて更新しました。</p>
+  <p class="sub">自分の立場のページを開いてください。はじめての人は「0 全体図」から。</p>
+</header>
+
+<section class="panel pillars" aria-labelledby="h-pillar">
+  <h2 id="h-pillar">この事業の目的</h2>
+  <p class="sub">Frontiersの皆さんに、いちばんお伝えしたいことです。</p>
+
+  <div class="pil">
+    <h3>予防獣医療（予防と改善の群管理）を、対価の得られる仕事にする → 産業動物獣医師を増やす</h3>
+    <p>個体診療（病気の牛の診断と治療）は、これからも産業動物獣医師の大切な仕事です。本事業は、それに加えて、農場の弱いところを数字で見て、農家さんと一緒に病気を減らす<b>予防獣医療</b>（群管理＝ハードヘルス）も、<b>対価の得られる仕事</b>にすることをめざします。そのための根拠（何を提供し、どれだけ効き、いくらかかるか）を、全国規模で作ります。</p>
+    <div class="pstrip"><div class="pstep central"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-shield"/></svg><div class="pt">根拠をそろえる</div><div class="ps">標準評価法と改善支援手順、改善前後の成績、アプリの記録から分かる時間と費用</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-yen"/></svg><div class="pt">対価の得られる仕事に</div><div class="ps">個体診療に加えて、予防獣医療も。飼養衛生管理基準の健康管理指導や、共済の損害防止でも使える</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-student"/></svg><div class="pt">学生が惹かれる</div><div class="ps">農家さんと一緒に病気を減らす予防獣医療が、当たり前の仕事として見える</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep other"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-vets"/></svg><div class="pt">産業動物獣医師が増える</div><div class="ps">産業動物臨床を志す学生が増え、獣医師の確保につながる</div></div></div>
+    <blockquote class="voice">大学教員として日々学生と接する中で、学生が産業動物臨床にいちばん魅力を感じるのは、農家と一緒に生産性を上げる群管理だと感じています。農家と一緒に病気を減らし、牛のウェルフェアを高める群管理が全国で当たり前の仕事になれば、その姿が学生に伝わり、産業動物臨床を志す学生が増えるはずです。<span>— 事業代表者</span></blockquote>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="h-aim">
+  <h2 id="h-aim">この事業のねらい（概要図 v0.9）</h2>
+  <figure class="figwrap" style="margin-top:10px">
+  <svg class="fig ov" viewBox="0 0 1280 1550" style="min-width:900px" role="img" aria-label="いちばん上は、なぜ今か。次に、前事業（農場プロファイル）の成果と、そこで分かった3つのこと（子牛期全体の問題、評価から改善・再評価までの手順の標準、3Mを減らすこと）から本事業へ。入口はいつもの診療・往診。重点調査農場ではSDCAの輪で標準を作り、実証協力農場ではPDCAの輪で、基本評価から必要な詳細検査を選び、問題点を明らかにし、改善して再評価する。2つの輪はつながり、2029年度に子牛健康プロファイルとして完成する。6領域の帯、土台（申込みから再評価までを3Mなく回す。蓄積式とアプリ）、到達点（2029年度の完成、2034年度に270日齢までの死亡率25％減・費用対効果2倍以上・再評価で改善を確かめた150農場）、めざす姿（個体診療に予防獣医療を加える。牛のウェルフェア）。">
+    <defs>
+      <marker id="oa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+      <marker id="og" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+    </defs>
+
+    <!-- なぜ今か -->
+    <rect class="bx" x="30" y="20" width="1220" height="92" rx="12"/>
+    <text class="ttl" x="50" y="52">なぜ今か</text>
+    <text class="mut" x="50" y="74">（国の統計から）</text>
+    <text class="who deep" x="190" y="50">獣医師は減る</text>
+    <text class="lab" x="190" y="72">産業動物の獣医師は 4,312人。新しく選ぶ新卒は 11％</text>
+    <text class="who deep" x="560" y="50">農場は大きくなる</text>
+    <text class="lab" x="560" y="72">獣医師1人が診る頭数は増え続ける</text>
+    <text class="who deep" x="860" y="50">子牛の死廃は増える</text>
+    <text class="lab" x="860" y="72">113,093頭・共済金 98億円（9年で2.4倍）</text>
+    <text class="snew" x="640" y="100" text-anchor="middle" style="font-size:14px">病気になってから呼ばれて治療する仕事だけでは、追いつかない。だから、個体診療に加えて、予防獣医療を</text>
+
+        <!-- 前事業から本事業へ -->
+    <rect class="bx" x="30" y="126" width="1220" height="118" rx="12"/>
+    <text class="ttl" x="50" y="154">前事業から本事業へ</text>
+    <text class="who central" x="50" y="178">前事業の成果（農場プロファイル）</text>
+    <text class="lab" x="50" y="198">農場・牛群のBRDCリスクを、客観的に評価できた</text>
+    <text class="mut" x="50" y="217" style="font-size:11.5px">改善 → 再評価で効果も確かめた（1農場の例：</text>
+    <text class="mut" x="50" y="233" style="font-size:11.5px">M. bovis 陽性率 53.8％→0％、胸囲充足率 91.3→97.8％）</text>
+    <g style="color:var(--muted)"><path class="ed" d="M384,190 H414" marker-end="url(#oa)"/></g>
+    <text class="who deep" x="426" y="154">分かった3つのこと</text>
+    <text class="who broad" x="960" y="154">本事業で</text>
+    <text class="lab" x="426" y="180">① BRDCは呼吸器だけでなく、子牛期全体（母牛の胎内から離乳後まで）の問題</text>
+    <text class="lab" x="426" y="206">② 評価 → 改善 → 再評価の手順まで標準にしないと、予防につながらない</text>
+    <text class="lab" x="426" y="232">③ 人手の減る現場では、3Mを減らさないと標準は続かない（横断式→蓄積式）</text>
+    <g style="color:var(--broad)">
+      <path class="ed" style="stroke:var(--broad)" d="M918,176 H950" marker-end="url(#oa)"/>
+      <path class="ed" style="stroke:var(--broad)" d="M918,202 H950" marker-end="url(#oa)"/>
+      <path class="ed" style="stroke:var(--broad)" d="M918,228 H950" marker-end="url(#oa)"/>
+    </g>
+    <text class="lab" x="960" y="180" style="font-weight:700">評価を6領域に広げる</text>
+    <text class="lab" x="960" y="206" style="font-weight:700">標準評価法（SDCA）＋改善支援手順（PDCA）</text>
+    <text class="lab" x="960" y="232" style="font-weight:700">蓄積式の採材 ＋ アプリ</text>
+
+    <g transform="translate(0,128)">
+    <!-- 入口 -->
+    <rect class="bx deep" x="400" y="132" width="480" height="98" rx="12"/>
+    <text class="ttl" x="640" y="162" text-anchor="middle">入口は、いつもの診療・往診</text>
+    <text class="who deep" x="640" y="186" text-anchor="middle">BRDC Frontiersの皆さん・協力獣医師</text>
+    <text class="mut" x="640" y="210" text-anchor="middle">いつもの仕事の流れに、ちょっとだけプラス。やることはアプリが教えてくれる</text>
+    <g style="color:var(--muted)">
+      <path class="ed" d="M480,230 C480,262 340,252 304,278" marker-end="url(#oa)"/>
+      <text class="et" x="400" y="262" text-anchor="end">重点調査農場（Deep）：往診のついでに採る</text>
+      <path class="ed" d="M800,230 C800,262 940,252 976,278" marker-end="url(#oa)"/>
+      <text class="et" x="880" y="262">実証協力農場（Broad）：往診のついでに集める</text>
+    </g>
+
+    <!-- 2つの輪 -->
+    <path class="arc deep" style="color:var(--deep)" d="M374.2,332.5 A158,158 0 0 1 439.5,397.8" marker-end="url(#oa)"/>
+    <path class="arc deep" style="color:var(--deep)" d="M439.5,546.2 A158,158 0 0 1 374.2,611.5" marker-end="url(#oa)"/>
+    <path class="arc deep" style="color:var(--deep)" d="M225.8,611.5 A158,158 0 0 1 160.5,546.2" marker-end="url(#oa)"/>
+    <path class="arc deep" style="color:var(--deep)" d="M160.5,397.8 A158,158 0 0 1 225.8,332.5" marker-end="url(#oa)"/>
+    <rect class="nd deep" x="208" y="281" width="184" height="66" rx="9"/>
+    <text class="nl deep" x="217" y="305">S</text>
+    <text class="nt" x="238" y="302">標準をそろえる</text>
+    <text class="nt2" x="238" y="320">測る項目・やり方・頭数を</text>
+    <text class="nt2" x="238" y="336">6領域で、どの農場も同じに</text>
+    <rect class="nd deep" x="366" y="439" width="184" height="66" rx="9"/>
+    <text class="nl deep" x="375" y="463">D</text>
+    <text class="nt" x="396" y="460">往診のついでに測る</text>
+    <text class="nt2" x="396" y="478">決めた季節に、母牛から</text>
+    <text class="nt2" x="396" y="494">子牛・環境まで少しずつ</text>
+    <rect class="nd deep" x="208" y="597" width="184" height="66" rx="9"/>
+    <text class="nl deep" x="217" y="621">C</text>
+    <text class="nt" x="238" y="618">同じ結果か、確かめる</text>
+    <text class="nt2" x="238" y="636">だれが採っても同じか</text>
+    <text class="nt2" x="238" y="652">（再現性・実施率）を見る</text>
+    <rect class="nd deep" x="50" y="439" width="184" height="66" rx="9"/>
+    <text class="nl deep" x="59" y="463">A</text>
+    <text class="nt" x="80" y="460">標準を育てる</text>
+    <text class="nt2" x="80" y="478">現場の気づきで、</text>
+    <text class="nt2" x="80" y="494">標準そのものを見直す</text>
+    <text class="cyc deep" x="300" y="452" text-anchor="middle">SDCA</text>
+    <text class="cys" x="300" y="476" text-anchor="middle">標準を作り、守る輪</text>
+    <text class="cys" x="300" y="494" text-anchor="middle">50農場</text>
+    <text class="cys" x="300" y="512" text-anchor="middle">各農場、3年で2季節</text>
+    <path class="arc broad" style="color:var(--broad)" d="M1054.2,332.5 A158,158 0 0 1 1119.5,397.8" marker-end="url(#oa)"/>
+    <path class="arc broad" style="color:var(--broad)" d="M1119.5,546.2 A158,158 0 0 1 1054.2,611.5" marker-end="url(#oa)"/>
+    <path class="arc broad" style="color:var(--broad)" d="M905.8,611.5 A158,158 0 0 1 840.5,546.2" marker-end="url(#oa)"/>
+    <path class="arc broad" style="color:var(--broad)" d="M840.5,397.8 A158,158 0 0 1 905.8,332.5" marker-end="url(#oa)"/>
+    <rect class="nd broad" x="888" y="281" width="184" height="66" rx="9"/>
+    <text class="nl broad" x="897" y="305">P</text>
+    <text class="nt" x="918" y="302">詳細検査を選ぶ</text>
+    <text class="nt2" x="918" y="320">最小限の基本評価から</text>
+    <text class="nt2" x="918" y="336">2人の獣医師が協議</text>
+    <rect class="nd broad" x="1046" y="439" width="184" height="66" rx="9"/>
+    <text class="nl broad" x="1055" y="463">D</text>
+    <text class="nt" x="1076" y="460">必要な項目だけ測る</text>
+    <text class="nt2" x="1076" y="478">選んだ項目だけを</text>
+    <text class="nt2" x="1076" y="494">詳細検査で評価する</text>
+    <rect class="nd broad" x="888" y="597" width="184" height="66" rx="9"/>
+    <text class="nl broad" x="897" y="621">C</text>
+    <text class="nt" x="918" y="618">問題点を明らかに</text>
+    <text class="nt2" x="918" y="636">基本評価と詳細検査の</text>
+    <text class="nt2" x="918" y="652">結果を合わせて見る</text>
+    <rect class="nd broad" x="730" y="439" width="184" height="66" rx="9"/>
+    <text class="nl broad" x="739" y="463">A</text>
+    <text class="nt" x="760" y="460">改善し、再評価</text>
+    <text class="nt2" x="760" y="478">改善の内容と費用を記録</text>
+    <text class="nt2" x="760" y="494">測り直して効果を確かめる</text>
+    <text class="cyc broad" x="980" y="452" text-anchor="middle">PDCA</text>
+    <text class="cys" x="980" y="476" text-anchor="middle">標準で改善する輪</text>
+    <text class="cys" x="980" y="494" text-anchor="middle">年50農場（目標）</text>
+    <text class="cys" x="980" y="512" text-anchor="middle">全国から</text>
+
+    <!-- 輪と輪 -->
+    <g style="color:var(--central)">
+      <path class="ed back" d="M402,326 H878" marker-end="url(#oa)"/>
+      <text class="et" x="640" y="316" text-anchor="middle">標準評価法（ものさし）を渡す</text>
+      <path class="ed back" d="M878,618 H402" marker-end="url(#oa)"/>
+      <text class="et" x="640" y="638" text-anchor="middle">使いにくさ・改善の効果を返して、標準を見直す</text>
+    </g>
+
+    <!-- 真ん中：届くもの -->
+    <rect x="556" y="392" width="168" height="166" rx="14" style="fill:var(--central-bg);stroke:var(--central);stroke-width:2.5"/>
+    <text class="hubt" x="640" y="418" text-anchor="middle" style="font-size:17px">届くもの</text>
+    <text class="who broad" x="640" y="442" text-anchor="middle">農家さんへ</text>
+    <text class="lab" x="640" y="459" text-anchor="middle">子牛健康プロファイル</text>
+    <text class="who deep" x="640" y="484" text-anchor="middle">獣医師へ</text>
+    <text class="lab" x="640" y="501" text-anchor="middle" style="font-size:12px">標準評価法・改善支援手順</text>
+    <text class="who app" x="640" y="526" text-anchor="middle">みんなで</text>
+    <text class="lab" x="640" y="543" text-anchor="middle">アプリで記録・集計</text>
+
+    <!-- 輪の下の一言 -->
+    <text class="mut" x="300" y="684" text-anchor="middle" style="font-size:11.5px">新しい指標（事業項目5）も、この標準をものさしにして試し、役立つものだけ標準へ</text>
+    <text class="mut" x="300" y="700" text-anchor="middle" style="font-size:11.5px">2028年：採血にEDTA管を1本足して試す予定。それ以外に新しいお願いはありません</text>
+    <text class="mut" x="300" y="716" text-anchor="middle" style="font-size:11.5px">音声・動画からの自動評価（AI）も、アプリに集まる動画・音声で開発する</text>
+    <text class="mut" x="980" y="684" text-anchor="middle" style="font-size:11.5px">基本評価は、資材を前もって送らなくてもできる。くわしい検査は必要な農場だけ</text>
+    <text class="mut" x="980" y="700" text-anchor="middle" style="font-size:11.5px">病気の牛の検体は、いつでも登録・採材できる</text>
+
+    <!-- 2つの輪のつながり・読み方 -->
+    <text class="lab" x="640" y="742" text-anchor="middle" style="font-weight:700">2つの輪はつながっている。2029年度に、両方を一体の「子牛健康プロファイル」として完成させる</text>
+    <text class="sub2" x="640" y="762" text-anchor="middle">SDCA：S 標準化 → D 実施 → C 確認 → A 改善　／　PDCA：P 計画 → D 実施 → C 確認 → A 改善　　回るたびに、少しずつよくしていく輪です</text>
+    </g>
+    <g transform="translate(0,162)">
+    <!-- 6領域 -->
+    <rect class="bx" x="30" y="740" width="1220" height="74" rx="12"/>
+    <text class="ttl" x="50" y="768" style="font-size:15px">6領域で見る</text>
+    <text class="mut" x="50" y="790">子牛期の健康を6つの面から</text>
+    <text class="mut" x="248" y="762" style="font-size:11.5px;font-weight:700">前事業（農場プロファイル）で確立</text>
+    <text class="mut" x="610" y="762" style="font-size:11.5px;font-weight:700;fill:var(--deep)">本事業で追加（母牛の胎内から離乳後までを評価）</text>
+    <g>
+      <rect x="248" y="772" width="150" height="30" rx="8" style="fill:var(--surface2);stroke:var(--muted);stroke-width:1.5"/>
+      <text class="lab" x="323" y="792" text-anchor="middle" style="font-size:12.5px">④呼吸器</text>
+      <rect x="406" y="772" width="150" height="30" rx="8" style="fill:var(--surface2);stroke:var(--muted);stroke-width:1.5"/>
+      <text class="lab" x="481" y="792" text-anchor="middle" style="font-size:12.5px">⑥飼養環境</text>
+      <rect x="610" y="772" width="150" height="30" rx="8" style="fill:var(--deep-bg);stroke:var(--deep);stroke-width:1.5"/>
+      <text class="lab" x="685" y="792" text-anchor="middle" style="font-size:12.5px">①母牛の栄養・代謝</text>
+      <rect x="768" y="772" width="150" height="30" rx="8" style="fill:var(--deep-bg);stroke:var(--deep);stroke-width:1.5"/>
+      <text class="lab" x="843" y="792" text-anchor="middle" style="font-size:12.5px">②初乳・初期免疫</text>
+      <rect x="926" y="772" width="150" height="30" rx="8" style="fill:var(--deep-bg);stroke:var(--deep);stroke-width:1.5"/>
+      <text class="lab" x="1001" y="792" text-anchor="middle" style="font-size:12.5px">③子牛の栄養・発育</text>
+      <rect x="1084" y="772" width="150" height="30" rx="8" style="fill:var(--deep-bg);stroke:var(--deep);stroke-width:1.5"/>
+      <text class="lab" x="1159" y="792" text-anchor="middle" style="font-size:12.5px">⑤下痢・消化器</text>
+    </g>
+    </g>
+    <g transform="translate(0,174)">
+    <!-- 土台：DX・3M -->
+    <rect class="bx app" x="30" y="822" width="1220" height="200" rx="12"/>
+    <text class="ttl" x="50" y="850">土台：入口の申込みから評価・改善・再評価までを、現場と解析拠点の3M（ムリ・ムダ・ムラ）なく回し続ける</text>
+    <text class="mut" x="50" y="872">診療・農場フロー蓄積式（蓄積式。公開HPのSOPでは「K式」）：1回の往診で全部を採ろうとせず、通常診療の中で検体を少しずつ集めるやり方</text>
+    <text class="who deep" x="50" y="906">ムリ</text>
+    <text class="lab" x="94" y="906">採材のためだけに行かなくてよい。待たせない・押さえさせない</text>
+    <text class="mut" x="94" y="928">条件に合う牛がいたときに採る。足りなくても待たなくてよい</text>
+    <text class="who deep" x="500" y="906">ムダ</text>
+    <text class="lab" x="544" y="906">数える・一覧・検体と記録の紐付けは、アプリに</text>
+    <text class="mut" x="544" y="928">容器のQRを読む → 牛を撮る → 声で入力</text>
+    <text class="who deep" x="900" y="906">ムラ</text>
+    <text class="lab" x="944" y="906">同じ容器・同じ手順でそろえる</text>
+    <text class="mut" x="944" y="928">だれが採っても、同じものさしで比べたい</text>
+    <text class="who app" x="50" y="960">アプリ1つ</text>
+    <text class="lab" x="130" y="960">申込みから結果の確認まで。改善の費用まで1か所で記録し、費用対効果は追加の調査なしに計算する</text>
+    <text class="who app" x="50" y="982">解析拠点</text>
+    <text class="lab" x="130" y="982">受付・照合・集計・結果の作成と返却を、人手に頼らない。運用方法は HP・YouTube で配信する</text>
+    <text class="mut" x="50" y="1008">皆さんの作業時間は、アプリの操作記録（容器のQRを読んでから保存するまで）から見ます。聞き取りやアンケートはしません</text>
+    </g>
+    <g transform="translate(0,218)">
+    <!-- 到達点 -->
+    <rect class="bx central" x="30" y="998" width="1220" height="132" rx="12"/>
+    <text class="ttl" x="50" y="1028">到達点</text>
+    <text class="lab" x="150" y="1026">2029年度：6領域の標準評価法 ＋ 農場改善支援手順 ＋ アプリが完成。改善のあと測り直すところまで行った農場 累計75農場</text>
+    <text class="mut" x="150" y="1046" style="font-size:11.5px">途中の目安：アプリに登録して、1農場以上で評価を行った獣医師 100人（前事業の協力獣医師の約2倍）</text>
+    <text class="lab" x="150" y="1074" style="font-weight:700">2034年度：改善・再評価まで行った農場で、生後7日目以降270日齢までの子牛の死亡率を、導入前より25％減らす</text>
+    <text class="lab" x="150" y="1096" style="font-weight:700">費用対効果（損失の減少額 ÷ 実施費用）2倍以上　／　再評価で改善を確かめた農場 150農場（300農場に広がり、その半数）</text>
+    <text class="mut" x="150" y="1118" style="font-size:11.5px">死亡率は、大阪が一括で取り寄せる牛個体識別情報から計算します（聞き取りはしません）。費用は、アプリに入れる改善の費用と検査費から計算します</text>
+    </g>
+    <g transform="translate(0,256)">
+    <!-- めざす姿 -->
+    <line x1="30" y1="1114" x2="1250" y2="1114" stroke="var(--line)" stroke-width="1"/>
+    <text class="ttl" x="50" y="1146">めざす姿：病気を減らすことも、対価の得られる仕事になる（個体診療＋予防獣医療）</text>
+    <text class="mut" x="50" y="1168">2つの輪を回し続けることで、いつもの診療の中に「病気になる前に手を打つ仕事」を増やし、それも対価を得られる仕事（予防獣医療＝群管理）として成り立つ根拠を、皆さんと作りたいと考えています</text>
+    <text class="lab" x="50" y="1190">病気の子牛が減れば、牛のウェルフェアも高まる。損耗低減・アニマルウェルフェア・獣医師確保という国の施策も後押しする</text>
+    <text class="lab" x="50" y="1212">農家と一緒に病気を減らし、牛のウェルフェアを高める予防獣医療が当たり前の仕事になれば、その姿が学生に伝わり、産業動物臨床を志す学生が増える</text>
+    <text class="sold" x="50" y="1256">いま：個体診療（治療）が中心</text>
+    <text class="sub2" x="50" y="1278">病気を減らす予防の仕事は、対価になりにくい</text>
+    <g style="color:var(--central)">
+      <path class="shift" d="M480,1251 H690" marker-end="url(#og)"/>
+    </g>
+    <text class="snew" x="730" y="1256">これから：個体診療＋予防獣医療</text>
+    <text class="sub2" x="730" y="1278">どちらも対価の得られる仕事に（健康管理指導を、客観的な数字で）</text>
+    </g>
+  </svg>
+  <figcaption class="sub" style="padding:8px 12px">上から順に見てください。いちばん上は「なぜ今か」。入口はいつもの診療で、重点調査農場（左の輪）で標準（ものさし）を作り、実証協力農場（右の輪）でその標準を使って改善していきます。真ん中が、農家さん・獣医師に届くものです。その上の帯は、前事業で分かった3つのことと本事業の関係です。6領域で見ること、土台の3Mを減らす工夫、2029年度と2034年度の到達点、いちばん下の「めざす姿：病気を減らすことも、対価の得られる仕事になる」、と続きます。</figcaption>
+  </figure>
+
+  <div class="aim">
+    <div class="card who"><h3>だれのための事業か</h3><p class="big">全国の農家さんのために。</p><p>重点調査農場（50農場）で作った標準（ものさし）を、実証協力農場（年50農場（目標））で使いながら確かめ、どの農場でも、いつもの診療の中で使える形にしていきたいと考えています。農家さんには、農場ごとの結果のまとめ「子牛健康プロファイル」をお返しします。自分の農場の弱いところが数字で見えれば、病気になる前に手を打ちやすくなるはずです。</p></div>
+    <div class="card load"><h3>皆さんの負担は、できるだけ小さく</h3><p class="big">お願いしたいのは「往診のついでに採る」こと。</p><p>ベストな方法よりも、現場で続けられるベターな方法を標準にしたいと考えています。新しい検査を探すのではなく、いま現場でできる技術を組み合わせて、だれがやっても同じ結果になる形にそろえる、という考え方です。採材のためだけの訪問（ムリ）、数えたり記録と結んだりする手間（ムダ）、人による手順の差（ムラ）を、アプリと蓄積式（通常診療の中で検体を少しずつ集めるやり方）でできるだけ減らします。</p></div>
+    <div class="card years"><h3>3年の流れ</h3><p class="big">2027 立ち上げ → 2028 確かめる → 2029 完成。</p><p>2027年度：基準書・手順書とアプリで運用を始める（重点調査 30 farm-season、実証協力は全国から募集）。2028年度：いろいろな農場で同じ結果になるかを確かめ、採血にEDTA管1本を足して新しい指標も試す。2029年度：項目を「基本・くわしく・選べる」に整理し、標準評価法・農場改善支援手順・アプリを完成させ、成果報告会を開く。<br>公開：毎年、HP に基準書・手順書（2027 第1版 → 2029 完成版）、YouTube に標準作業の動画（5本・5本・6本、計16本）。2028年度にオンライン説明会。アプリは登録するだけで無償で使えます。</p></div>
+    <div class="card shift"><h3>めざすこと</h3><p class="big">病気を減らすことも、仕事になる。</p><p>個体診療（病気の牛の治療）は、これからも大切な仕事です。それに加えて、農場の弱いところを数字で見て、農家さんと一緒に生産性を上げる予防獣医療（群管理＝ハードヘルス）も仕事にしたい。それが対価を得られる仕事として成り立つには、「何を提供するか」「どれだけ効くか」「いくらかかるか」の根拠が要ります。本事業はその3つ（標準評価法と改善支援手順、改善前後の成績、アプリの記録から分かる時間と費用）を全国規模で作る事業です。病気の子牛が減れば、牛のウェルフェアも高まります。学生が産業動物臨床にいちばん魅力を感じるのは、農家と一緒に生産性を上げる群管理（予防獣医療）だと考えています。この仕事が全国で当たり前になれば、その姿が学生に伝わり、産業動物臨床を志す学生が増えるはずです。事業が終わったあとも、大阪公立大学を中心に、NOSAI・家畜保健衛生所などと連携して続けます。</p></div>
+  </div>
+</section>
+
+<section class="panel pic-first" aria-labelledby="h-chain">
+  <h2 id="h-chain">この事業が、その先につながるもの（絵で見る）</h2>
+  <p class="sub">上の図の「めざす姿」を、順番に並べたものです。1〜2は本事業が作るもの、3〜5はその先に期待していることです。</p>
+  <div class="pstrip"><div class="pstep central"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-shield"/></svg><div class="pt">客観的な指標で、予防獣医療が仕事になる</div><div class="ps">標準評価法＋改善支援手順＋アプリ。「何を提供し、どれだけ効き、いくらかかるか」の根拠がそろい、対価が得られる体制の基盤に</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-handshake"/></svg><div class="pt">農家さんと一緒に農場を良くする</div><div class="ps">子牛健康プロファイルを見ながら改善し、測り直す。270日齢までの死亡が減り、牛のウェルフェアも高まる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-smile"/></svg><div class="pt">産業動物臨床の魅力が増す</div><div class="ps">個体診療に加えて、病気を減らす予防獣医療も仕事になる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep rd"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-student"/></svg><div class="pt">学生が惹かれる</div><div class="ps">農家と一緒に病気を減らす群管理が当たり前の仕事になれば、その姿が学生に伝わる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep other"><span class="pn">5</span><svg class="pic" aria-hidden="true"><use href="#p-vets"/></svg><div class="pt">産業動物臨床に進む獣医師が増える</div><div class="ps">産業動物獣医師の確保へ。次の世代に、この仕事を渡す</div></div></div>
+</section>
+
+<section class="panel" aria-labelledby="h-kotai">
+  <h2 id="h-kotai">成績の評価のしかた：牛個体識別情報を一括で取り寄せます</h2>
+  <div class="pil">
+        <p>子牛の死亡・出荷などの成績は、聞き取りやアンケートではなく、家畜改良センターの<b>牛個体識別情報</b>（出生・異動・死亡の届出の記録）で見ます。大阪が参加農場の分を<b>まとめて取り寄せる</b>ので、先生方が成績を記録して送る作業はありません。</p>
+    <div class="pstrip"><div class="pstep broad"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-farmer"/></svg><div class="pt">登録のときに同意</div><div class="ps">獣医師が説明し、口頭で同意を確かめて一覧（Excel）に記入。署名・郵送はいらない（代行入力も可）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-clipboard"/></svg><div class="pt">大阪が一括で取り寄せ</div><div class="ps">家畜改良センターに、全農場の分を同じ期間でまとめて請求。家畜共済の記録も使う</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-chart"/></svg><div class="pt">死亡率を計算</div><div class="ps">生後7日目〜270日齢の死亡を飼養頭数で割る。導入前の3年間・まだ導入していない農場と比べる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep rd"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-yen"/></svg><div class="pt">円にして、返す</div><div class="ps">減った死亡を子牛の価格で円に。アプリの記録（時間・検査費・改善の費用）と比べて費用対効果を出す</div></div></div>
+    <p class="sub">追加の調査なしに、改善の効果をアプリで評価できます。報告や発表は、農場が分からない形にまとめて使います。</p>
+  </div>
+</section>
+
+<div class="entry">
+  <a class="ec first" href="flow0-overview.html"><div class="no">フロー 0</div><h2>全体図</h2><p>Deep 50農場・100 farm-season／Broad 年50農場（目標）。検体と結果の流れ、3年間の流れ、6つの領域、役割、共通の決まり。</p><div class="who"><span class="tag t-central">参加者全員</span></div></a>
+  <a class="ec deep" href="flow1-deep-vet.html"><div class="no">フロー 1</div><h2>Deepの獣医師</h2><p>参加の準備、診療の日の流れ、帰ってから送るまで、場面カード4-A〜4-H。</p><div class="who"><span class="tag t-deep">Deep獣医師</span></div></a>
+  <a class="ec broad" href="flow2-broad-vet.html"><div class="no">フロー 2</div><h2>Broadの獣医師・センター獣医師</h2><p>登録 → B1 Base → Center Review → Add-on A1〜A6 → Action → Re-profile。</p><div class="who"><span class="tag t-broad">Broad獣医師</span></div></a>
+  <a class="ec" href="flow3-farmer.html"><div class="no">フロー 3</div><h2>農家のみなさんへ</h2><p>お願い、しなくてよいこと、農場に置く印刷カード（初乳・複数回採便・飼料・SwitchBot）。</p><div class="who"><span class="tag t-other">農家（獣医師が説明に使う）</span></div></a>
+  <a class="ec deep" href="flow4-coordinator.html"><div class="no">フロー 4</div><h2>Coordinator</h2><p>キットの受け取り、冷凍保管、月1回の大阪便・宮崎便、アプリの画面イメージ。</p><div class="who"><span class="tag t-deep">Coordinator（地域のまとめ役）</span></div></a>
+  <a class="ec central" href="flow5-osaka.html"><div class="no">フロー 5</div><h2>中央拠点（大阪公立大学）</h2><p>担当（教員・補助員・学生）、受け取ってから先の流れ、扱う数、大阪の決まり。</p><div class="who"><span class="tag t-central">大阪の担当者</span></div></a>
+  <a class="ec central" href="flow6-miyazaki.html"><div class="no">フロー 6</div><h2>宮崎大学</h2><p>NPS・WTSのqPCR、プレートの構成、扱う数、宮崎の決まり。病原体検査は宮崎・大阪の2拠点で同じ方法（糞便は大阪）。</p><div class="who"><span class="tag t-central">宮崎の担当者</span></div></a>
+  <a class="ec broad" href="consult-economy.html"><div class="no">相談</div><h2>子牛の成績を「円」にする方法と同意書</h2><p>改善の効果を円にして料金の根拠にするしくみ。個体識別・共済の記録を使う案と、同意書（案）。確認したいことQ1〜Q6・C1〜C5。</p><div class="who"><span class="tag t-broad">Frontiersの皆さん（ご意見を）</span></div></a>
+  <a class="ec first" href="flow-glossary.html" style="--g:var(--muted)"><div class="no">共通</div><h2>ことば表</h2><p>英語のことば（farm-season、Add-on、NPS…）の日本語の言い方と一言の意味。各ページの点線のことばからも飛べます。</p><div class="who"><span class="tag t-other">参加者全員</span></div></a>
+</div>
+
+<p class="foot">変更履歴は CHANGELOG.md にあります。各ページの版（v0.1など）と日付は、ページ上部の説明文に書いています。</p>
+</div>
+<script src="flow-pictos.js"></script>
+</body>
+</html>

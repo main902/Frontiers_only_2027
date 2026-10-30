@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRA2027 フロー3 農家 v0.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<link rel="stylesheet" href="flow-common.css">
+<style>
+body{font-size:16px}
+.wrap{max-width:1080px}
+.lead{font-size:1.1rem}
+.flow3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px;position:relative}
+.fstep{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g,var(--deep));border-radius:10px;padding:10px 12px;position:relative}
+.fstep .n{font-family:var(--font-num);font-size:.8rem;color:var(--muted)}
+.fstep h3{font-family:var(--font-display);font-weight:900;font-size:1.05rem;margin:2px 0 6px}
+.fstep ul{margin:0;padding-left:1.1em;font-size:.92rem}
+.fstep.app{--g:var(--app)}
+.fstep:not(:last-child)::after{content:"→";position:absolute;right:-12px;top:44%;color:var(--muted);font-size:1.1rem;background:var(--bg);line-height:1}
+.asks{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:10px}
+.ask{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+.ask .when{font-size:.8rem;color:var(--muted)}
+.ask h3{font-family:var(--font-display);font-weight:900;font-size:1.05rem;margin:2px 0 4px}
+.ask p{font-size:.92rem}
+.ask .who{margin-top:6px}
+.t-all{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+.pcard{background:var(--surface);border:2px solid var(--ink);border-radius:12px;padding:14px 16px;break-inside:avoid}
+.pcard .tt{font-family:var(--font-display);font-weight:900;font-size:1.15rem}
+.pcard .big{font-weight:700;font-size:1rem;margin:6px 0;padding:6px 10px;background:var(--surface2);border-radius:8px}
+.pcard ol{margin:6px 0 0;padding-left:1.3em;font-size:.95rem}
+.pcard li{margin:3px 0}
+.pcard .sub{margin-top:6px}
+.dont{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px;margin-top:8px;list-style:none;padding:0}
+.dont li{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--central);border-radius:8px;padding:8px 10px;font-size:.92rem}
+.place td{font-size:.92rem}
+@media (max-width:760px){.flow3{grid-template-columns:minmax(0,1fr)}.fstep:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-14px}.cards{grid-template-columns:minmax(0,1fr)}}
+@media print{.pcard{border-color:#000}}
+.glgrid{grid-template-columns:repeat(auto-fill,minmax(400px,1fr))}
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
+</head>
+<body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
+
+<div class="wrap">
+<header>
+  <nav class="pnav" aria-label="ページ一覧"><a class="home" href="flow-index.html">目次</a><a href="flow0-overview.html">0 全体図</a><a href="flow1-deep-vet.html">1 Deep獣医師</a><a href="flow2-broad-vet.html">2 Broad獣医師</a><a href="flow3-farmer.html" aria-current="page">3 農家</a><a href="flow4-coordinator.html">4 Coordinator</a><a href="flow5-osaka.html">5 中央拠点（大阪）</a><a href="flow6-miyazaki.html">6 宮崎大学</a><a href="consult-economy.html">相談：成績を円に</a><a class="gloss" href="flow-glossary.html">ことば表</a></nav>
+  <h1>フロー3　農家のみなさんへ</h1>
+  <p class="sub">参加する農家のみなさんに、お願いしたいことを1枚にまとめました。獣医師が説明するときに一緒に見てください。下のカードは印刷して農場に置けます。</p>
+</header>
+<section class="panel pic-first" aria-labelledby="h-pic">
+  <h2 id="h-pic">絵で見る流れ（まずここだけ）</h2>
+  <p class="sub">参加してから、結果が返ってくるまで。くわしくは、この下のカードにあります。</p>
+  <div class="pstrip"><div class="pstep broad"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-farmer"/></svg><div class="pt">獣医師から説明を聞く</div><div class="ps">いくつか質問に答える（分娩の時期など）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-cow"/></svg><div class="pt">診療の日：牛を押さえる</div><div class="ps">いつもの診療のついでに、少し採材する</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-bottle"/></svg><div class="pt">頼まれたときだけ</div><div class="ps">初乳を少し凍らせる／便を採る／飼料を袋に入れる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-clipboard"/></svg><div class="pt">次の診療で伝える</div><div class="ps">牛個体識別情報の利用に同意する（登録のとき）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep app"><span class="pn">5</span><svg class="pic" aria-hidden="true"><use href="#p-profile"/></svg><div class="pt">結果が返ってくる</div><div class="ps">自分の農場の弱いところが数字で見える</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">6</span><svg class="pic" aria-hidden="true"><use href="#p-handshake"/></svg><div class="pt">獣医師と一緒に良くする</div><div class="ps">直したところを、また測ってもらう</div></div></div>
+</section>
+
+<section class="panel">
+  <p class="lead">この事業では、<b>獣医師が診療で来たついでに</b>、牛の血液・便・鼻咽頭スワブなどを少しずつ採ります。採材のために日を決めて来ることはありません。集めた結果は、農場ごとの「<a class="term" href="#g-profile">Farm Profile</a>」（農場ごとの結果のまとめ）にまとめて、獣医師からお返しします。</p>
+</section>
+<section class="panel" aria-labelledby="h-gl">
+<h2 id="h-gl">ことばの説明</h2>
+<p class="sub">獣医師が使うことばの説明です。全部のことばは <a href="flow-glossary.html" style="color:inherit">共通のことば表</a> にあります。</p>
+<button class="fbtn" id="gltoggle" type="button" aria-expanded="true" aria-controls="glgrid">ことば表を閉じる</button>
+<div class="glgrid" id="glgrid">
+<div class="glgroup"><h3>事業の考え方のことば</h3><ul class="gl">
+<li id="g-kchp"><b>子牛健康プロファイル</b><i>（本事業で作るもの）</i><span>農場ごとの子牛の健康の評価のまとめ。2029年度に、2つの輪（SDCA・PDCA）を一体にして完成させる。前事業の名前は「農場プロファイル」。アプリの画面では Farm Profile。</span></li>
+</ul></div>
+<div class="glgroup"><h3>事業・季節のことば</h3><ul class="gl">
+<li id="g-deep"><b>Deep</b><i>重点調査農場</i><span>くわしく測る50農場。3年間登録して、牛個体識別情報（大阪が家畜改良センターから一括で取り寄せる）で270日齢までの死亡を追う（聞き取りはしない）。</span></li>
+<li id="g-broad"><b>Broad</b><i>実証協力農場</i><span>ふだんの診療でできる簡単なことだけを集める農場。年50農場（目標）（100まで受け入れ）。</span></li>
+</ul></div>
+<div class="glgroup"><h3>検体・測るもの</h3><ul class="gl">
+<li id="g-hg"><b>胸囲・HGR</b><i>胸の周り（cm）とその充足率</i><span>肩甲骨のすぐ後ろで測る。HGR（胸囲÷同じ日齢の標準胸囲）は現場の画面には出ない。</span></li>
+</ul></div>
+<div class="glgroup"><h3>容器・道具・入れ物</h3><ul class="gl">
+<li id="g-zone"><b>Zone</b><i>牛舎の区画</i><span>環境を測るまとまり。センサーを置くのは、子牛のZone最大3＋分娩前の母牛のZone 1まで。</span></li>
+<li id="g-zonecard"><b>ZoneのQRカード</b><i>区画に貼るカード</i><span>中央が印刷してラミネート。Deepだけ（Broadは使わない）。</span></li>
+<li id="g-switchbot"><b>SwitchBot</b><i>温度・湿度・CO₂のセンサー</i><span>メッシュのかごに入れて柱に留める。3〜7日置く。</span></li>
+<li id="g-colokit"><b>初乳キット</b><i>初乳を少し凍らせる袋</i><span>手で初乳を与える農場だけに置く。農家が入れて冷凍。</span></li>
+<li id="g-multikit"><b>複数回採便キット</b><i>同じ子牛から4回採るための遠沈管</i><span>2028年度・Deepの5農場だけ。農家が採る。</span></li>
+<li id="g-feedkit"><b>飼料キット</b><i>袋・目安量のカード・箱・申込書</i><span>農場に置く。たまったら事業の送り状で全酪連へ。</span></li>
+<li id="g-scale"><b>吊りはかり</b><i>給与量を測るはかり</i><span>給与量を測っていない農場だけに貸す。バケツ1杯・ロール1個の重さを一度測る。</span></li>
+</ul></div>
+<div class="glgroup"><h3>人・場所・アプリ</h3><ul class="gl">
+<li id="g-coord"><b>Coordinator</b><i>地域のまとめ役</i><span>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。BRDC Frontiersの会員が担う（1人4〜5農場）。Broadにはいない。</span></li>
+<li id="g-profile"><b>Farm Profile</b><i>農場ごとの結果のまとめ</i><span>季節の結果をまとめて、獣医師・農家に返す。</span></li>
+<li id="g-addon"><b>Add-on</b><i>追加の検査</i><span>A1〜A6。必要なときだけ、2人（依頼獣医師＋センター獣医師）で決めてくわしく測る。アプリは自動で決めない。</span></li>
+<li id="g-action"><b>Action</b><i>農場でできる改善</i><span>2人で決めて、改善の内容と費用の概算をアプリに記録する。</span></li>
+</ul></div>
+</div></section>
+
+<section class="panel" aria-labelledby="h-flow">
+  <h2 id="h-flow">参加してからの流れ</h2>
+  <div class="flow3">
+    <div class="fstep"><div class="n">1</div><h3>参加したとき</h3><ul><li>聞き取りに答える（あとでもよい）</li><li>牛個体識別情報の利用に同意する</li><li>キット（容器）を置く場所を決める</li><li>牛舎の区画（<a class="term" href="#g-zone">Zone</a>）を一緒に決める</li></ul></div>
+    <div class="fstep"><div class="n">2</div><h3>診療の日</h3><ul><li>牛を押さえる（保定）</li><li>生年月日・分娩予定日・治療などを口で答える</li><li>獣医師がスマホで牛を数秒撮る</li></ul></div>
+    <div class="fstep"><div class="n">3</div><h3>頼まれたときだけ</h3><ul><li>初乳を少し凍らせる</li><li>飼料を袋に採る</li><li>箱や測定器を代わりに送る</li></ul></div>
+    <div class="fstep app"><div class="n">4</div><h3>結果が返ってくる</h3><ul><li>獣医師から「Farm Profile」を受け取る</li><li>獣医師と、農場でできる改善（<a class="term" href="#g-action">Action</a>）を話し合う</li></ul></div>
+  </div>
+  <div class="two" style="margin-top:14px">
+    <div class="card deep"><span class="tag t-deep"><a class="term" href="#g-deep">Deep</a>の農場（重点調査農場）</span><p style="margin-top:6px">3年のうち2年、<b>1年に1つの季節（約3か月）</b>に採材が集まります。1つの段階で5頭くらい（多くて8頭）。そろわなくても、追加で来たり待ったりはしません。病気の子牛の検体は、1年中採ることがあります。</p></div>
+    <div class="card broad"><span class="tag t-broad"><a class="term" href="#g-broad">Broad</a>の農場（実証協力農場）</span><p style="margin-top:6px">はじめは、胸囲・水槽スワブ・牛舎の動画など、簡単なことだけです。くわしく調べる価値があるときだけ、獣医師と相談して追加の検査（<a class="term" href="#g-addon">Add-on</a>）をします。</p></div>
+  </div>
+  <h3 style="margin-top:14px">Deepの農場の3年間（例）</h3>
+<figure class="figwrap"><svg class="fig big" viewBox="0 0 1000 230" role="img" aria-label="年度は4月から3月。春は4〜5月、夏6〜8月、秋9〜11月、冬12〜2月。この農場の例では、2027年度の夏と2029年度の春に獣医師の採材が集まる。病気の子牛の検体は3年間いつでも。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><text class="note" x="184.0" y="26" text-anchor="middle" >4月</text><text class="note" x="252.0" y="26" text-anchor="middle" >5月</text><text class="note" x="320.0" y="26" text-anchor="middle" >6月</text><text class="note" x="388.0" y="26" text-anchor="middle" >7月</text><text class="note" x="456.0" y="26" text-anchor="middle" >8月</text><text class="note" x="524.0" y="26" text-anchor="middle" >9月</text><text class="note" x="592.0" y="26" text-anchor="middle" >10月</text><text class="note" x="660.0" y="26" text-anchor="middle" >11月</text><text class="note" x="728.0" y="26" text-anchor="middle" >12月</text><text class="note" x="796.0" y="26" text-anchor="middle" >1月</text><text class="note" x="864.0" y="26" text-anchor="middle" >2月</text><text class="note" x="932.0" y="26" text-anchor="middle" >3月</text><rect class="s-spring" x="152" y="34" width="132" height="30" rx="6"/><text class="stname" x="218.0" y="55" text-anchor="middle" >春</text><rect class="s-summer" x="288" y="34" width="200" height="30" rx="6"/><text class="stname" x="388.0" y="55" text-anchor="middle" >夏</text><rect class="s-autumn" x="492" y="34" width="200" height="30" rx="6"/><text class="stname" x="592.0" y="55" text-anchor="middle" >秋</text><rect class="s-winter" x="696" y="34" width="200" height="30" rx="6"/><text class="stname" x="796.0" y="55" text-anchor="middle" >冬</text><rect class="s-none" x="900" y="34" width="64" height="30" rx="6"/><text class="stname" x="932.0" y="55" text-anchor="middle" >3月</text><text class="name" x="20" y="102" text-anchor="start" >2027年度</text><rect class="yr-row" x="150" y="80" width="816" height="32" rx="4"/><rect class="yr-on" x="288" y="82" width="200" height="28" rx="4"/><text class="stname" x="388.0" y="102" text-anchor="middle" >採材が集まる季節</text><text class="name" x="20" y="142" text-anchor="start" >2028年度</text><rect class="yr-row" x="150" y="120" width="816" height="32" rx="4"/><text class="name" x="20" y="182" text-anchor="start" >2029年度</text><rect class="yr-row" x="150" y="160" width="816" height="32" rx="4"/><rect class="yr-on" x="152" y="162" width="132" height="28" rx="4"/><text class="stname" x="218.0" y="182" text-anchor="middle" >採材が集まる季節</text><text class="note" x="558" y="142" text-anchor="middle" >（例）この年は、病気の子牛の検体だけ</text><rect class="st-ev" x="150" y="200" width="816" height="22" rx="4"/><text class="stnote" x="558" y="215" text-anchor="middle" >病気の子牛（呼吸器の初診・下痢）の検体は、3年間いつでも</text><text class="name" x="20" y="215" text-anchor="start" >いつでも</text></svg><figcaption class="sub">どの季節になるかは、獣医師と大阪が相談して決めます。</figcaption></figure>
+</section>
+<section class="panel" aria-labelledby="h-ask">
+  <h2 id="h-ask">お願いしたいこと</h2>
+  <p class="sub">色のついた印は、そのお願いがどの農場向けかを示します。</p>
+  <div class="asks">
+    <div class="ask"><div class="when">参加したとき（あとでもよい）</div><h3>聞き取りに答える</h3><p>① 給与内容（群ごと）② 子牛の飼い方 ③ 牛の入れ替えなど ④ 呼吸器のこと（ワクチン・よく使う薬）。Deepの農場は ⑤ 過去1年の月ごとの分娩頭数（キャトルセンターは導入頭数。くわしく測る季節を決めるのに使います）。アプリが難しければ、獣医師が聞いて代わりに入力します。2回目からは「前回と同じ」ボタン1つです。</p><div class="who"><span class="tag t-all">すべての農場</span></div></div>
+    <div class="ask"><div class="when">参加したとき</div><h3><a class="term" href="#g-zonecard">ZoneのQRカード</a>を貼らせていただく</h3><p>牛舎の区画ごとに、ラミネートのカードを貼ります。場所は相談して決めます。はがれたら獣医師に知らせてください。</p><div class="who"><span class="tag t-deep">Deepの農場</span></div></div>
+    <div class="ask"><div class="when">診療の日</div><h3>保定と質問への答え</h3><p>条件に合う牛を挙げてもらうことがあります。追い回して捕まえる必要はありません。分からないことは「分からない」で大丈夫です。</p><div class="who"><span class="tag t-all">すべての農場</span></div></div>
+    <div class="ask"><div class="when">手で初乳を与えたとき</div><h3>初乳を少しだけ凍らせる</h3><p>与えるのが先です。手が空いたら少しだけ。下の「初乳カード」を見てください。</p><div class="who"><span class="tag t-deep">手で初乳を与える農場</span></div></div>
+    <div class="ask"><div class="when">頼まれた子牛が便をしたとき</div><h3>便を4回まで採る</h3><p>2日のうちに4回まで。下の「複数回採便カード」を見てください。</p><div class="who"><span class="tag t-rd">2028年度だけ・Deepの5農場</span></div></div>
+    <div class="ask"><div class="when">給餌のついで（頼まれたときだけ）</div><h3>飼料を袋に採る</h3><p>下の「飼料カード」を見てください。</p><div class="who"><span class="tag t-all">頼まれた農場</span></div></div>
+    <div class="ask"><div class="when">測定器を置いているあいだ（3〜7日）</div><h3><a class="term" href="#g-switchbot">SwitchBot</a>（空気の測定器）を動かさない</h3><p>下の「動かさないでください」カードを見てください。</p><div class="who"><span class="tag t-deep">Deepの採材の季節</span> <span class="tag t-broad">Broad A6の農場</span></div></div>
+    <div class="ask"><div class="when">登録のとき</div><h3>牛個体識別情報の利用に同意する</h3><p>子牛の生まれた日・死亡・出荷などは、牛の個体識別の届出の記録で見ます。大学が家畜改良センターから、参加農場の分をまとめて取り寄せます。病気・治療・死亡・出荷を記録して伝えていただく必要はありません。そのために、記録を使うことへの同意をいただきます（獣医師が説明し、口頭で確かめます。署名や郵送はいりません）。</p><div class="who"><span class="tag t-all">すべての農場</span></div></div>
+    <div class="ask"><div class="when">頼まれたとき（できればで大丈夫）</div><h3>箱や測定器を代わりに送る</h3><p>飼料の箱、測定器のセットを、同梱の送り状で送ります。送料のお支払いはいりません。</p><div class="who"><span class="tag t-all">頼まれた農場</span></div></div>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-no">
+  <h2 id="h-no">しなくてよいこと</h2>
+  <ul class="dont">
+    <li>採材のために獣医師を待つこと</li>
+    <li>牛をふだんと違うように動かすこと</li>
+    <li>頭数をそろえること（そろわなくても大丈夫）</li>
+    <li>分からないことを思い出して埋めること</li>
+    <li>血液・便などの検体を送ること（獣医師・<a class="term" href="#g-coord">まとめ役</a>が送ります。飼料の箱・測定器は、頼まれたときだけ）</li>
+    <li>送料を払うこと</li>
+  </ul>
+</section>
+<section class="panel" aria-labelledby="h-card">
+  <h2 id="h-card">農場に置くカード</h2>
+  <p class="sub">印刷して、使う場所の近くに置いてください。</p>
+  <div class="cards">
+    <div class="pcard">
+      <div class="tt">初乳カード</div>
+      <div class="big">手で初乳を与えたときだけ。与えるのを先に、手が空いたら少しだけ。</div>
+      <figure class="figwrap"><svg class="fig big mini" viewBox="0 0 600 150" role="img" aria-label="初乳を少し袋に入れ、耳標と日付を書いて、農場の冷凍庫へ。次の診療で獣医師が受け取る。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="bag" d="M30,40 q0,-10 10,-10 h70 q10,0 10,10 v90 h-90 Z"/><text class="lab" x="75" y="62" text-anchor="middle" >初乳</text><path class="tube" d="M50,74 h14 v31 a7.0,5 0 0 1 -14,0 Z"/><path class="f-serum" d="M51,85 h12 v20 a6.0,4 0 0 1 -12,0 Z"/><rect class="cap" x="48.5" y="67" width="17" height="8" rx="1.5"/><text class="lab" x="57.0" y="124" text-anchor="middle"></text><path class="tube" d="M72,74 h14 v31 a7.0,5 0 0 1 -14,0 Z"/><path class="f-serum" d="M73,85 h12 v20 a6.0,4 0 0 1 -12,0 Z"/><rect class="cap" x="70.5" y="67" width="17" height="8" rx="1.5"/><text class="lab" x="79.0" y="124" text-anchor="middle"></text><text class="note" x="75" y="142" text-anchor="middle" >少しだけ</text><line class="arr" x1="130" y1="80" x2="170" y2="80" marker-end="url(#fa)"/><rect class="card" x="180" y="40" width="130" height="80" rx="6"/><text class="hand" x="245" y="72" text-anchor="middle" >耳標 6015</text><text class="hand" x="245" y="100" text-anchor="middle" >5/6</text><text class="note" x="245" y="140" text-anchor="middle" >袋に書く</text><line class="arr" x1="320" y1="80" x2="360" y2="80" marker-end="url(#fa)"/><rect class="freezer" x="370" y="24" width="90" height="110" rx="6"/><line class="mesh" x1="370" y1="60" x2="460" y2="60"/><text class="lab" x="415" y="48" text-anchor="middle" >冷凍庫</text><text class="name" x="415" y="100" text-anchor="middle" >❄</text><line class="arr" x1="470" y1="80" x2="510" y2="80" marker-end="url(#fa)"/><text class="lab" x="555" y="76" text-anchor="middle" >次の診療で</text><text class="lab" x="555" y="96" text-anchor="middle" >獣医師が</text><text class="lab" x="555" y="116" text-anchor="middle" >受け取る</text></svg></figure>
+      <ol>
+        <li>初乳キットの袋に、与えた初乳を少しだけ入れる。</li>
+        <li>袋に<b>子牛の耳標と日付</b>を書く。</li>
+        <li>農場の冷凍庫へ。次の診療で獣医師が受け取ります。</li>
+        <li>溶けてしまったときは、捨てずに凍らせて、獣医師に「溶けた」と伝える。</li>
+      </ol>
+      <p class="sub">母牛から飲ませる（自然哺乳の）農場には、初乳キットは置きません。</p>
+    </div>
+    <div class="pcard">
+      <div class="tt">複数回採便カード <span class="tag t-rd">2028年度・5農場</span></div>
+      <div class="big">この子牛が便をしたのを見たら、2日のうちに4回まで。待たなくてよい。</div>
+      <figure class="figwrap"><svg class="fig big mini" viewBox="0 0 600 150" role="img" aria-label="子牛が便をしたら、床についていない上の部分を容器の線まで入れ、日付と時刻を書いて、冷凍庫へ。2日のうちに4回まで。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="tube" d="M40,30 h30 v64 L55.0,116 Z"/><path class="f-fec" d="M41.5,77.30000000000001 h27 v18.200000000000003 L55.0,114 Z"/><rect class="cap" x="37" y="18" width="36" height="14" rx="2"/><line class="ridge" x1="44.0" y1="20" x2="44.0" y2="30"/><line class="ridge" x1="53.3" y1="20" x2="53.3" y2="30"/><line class="ridge" x1="62.7" y1="20" x2="62.7" y2="30"/><rect x="48.0" y="36" width="14" height="14" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="49.0" y="37.0" width="1.6" height="1.6" fill="#111"/><rect x="51.8" y="37.0" width="1.6" height="1.6" fill="#111"/><rect x="54.6" y="37.0" width="1.6" height="1.6" fill="#111"/><rect x="49.0" y="39.8" width="1.6" height="1.6" fill="#111"/><rect x="54.6" y="39.8" width="1.6" height="1.6" fill="#111"/><rect x="49.0" y="42.6" width="1.6" height="1.6" fill="#111"/><rect x="51.8" y="42.6" width="1.6" height="1.6" fill="#111"/><rect x="54.6" y="42.6" width="1.6" height="1.6" fill="#111"/><rect x="60.2" y="37.0" width="1.6" height="1.6" fill="#111"/><rect x="60.2" y="42.6" width="1.6" height="1.6" fill="#111"/><rect x="49.0" y="48.2" width="1.6" height="1.6" fill="#111"/><rect x="54.6" y="48.2" width="1.6" height="1.6" fill="#111"/><rect x="60.2" y="48.2" width="1.6" height="1.6" fill="#111"/><rect x="57.4" y="45.4" width="1.6" height="1.6" fill="#111"/><rect x="51.8" y="45.4" width="1.6" height="1.6" fill="#111"/><rect x="57.4" y="39.8" width="1.6" height="1.6" fill="#111"/><line class="hint" x1="36" y1="74" x2="74" y2="74"/><text class="note" x="55" y="140" text-anchor="middle" >線まで</text><text class="note" x="110" y="60" text-anchor="start" >床についていない</text><text class="note" x="110" y="78" text-anchor="start" >上の部分を</text><line class="arr" x1="230" y1="80" x2="266" y2="80" marker-end="url(#fa)"/><rect class="card" x="276" y="40" width="120" height="80" rx="6"/><text class="hand" x="336" y="72" text-anchor="middle" >5/12</text><text class="hand" x="336" y="100" text-anchor="middle" >07:30</text><text class="note" x="336" y="140" text-anchor="middle" >日付と時刻</text><line class="arr" x1="406" y1="80" x2="440" y2="80" marker-end="url(#fa)"/><rect class="freezer" x="450" y="24" width="80" height="110" rx="6"/><line class="mesh" x1="450" y1="60" x2="530" y2="60"/><text class="lab" x="490" y="48" text-anchor="middle" >冷凍庫</text><text class="name" x="490" y="100" text-anchor="middle" >❄</text><text class="name" x="562" y="70" text-anchor="middle" >4回</text><text class="lab" x="562" y="92" text-anchor="middle" >まで</text><text class="note" x="562" y="112" text-anchor="middle" >2日のうち</text></svg></figure>
+      <ol>
+        <li>床についていない上の部分を、容器の線まで入れる。</li>
+        <li>容器に<b>日付と時刻</b>を書く。</li>
+        <li>農場の冷凍庫へ。次の診療で獣医師が袋ごと受け取ります。</li>
+        <li>4回そろわなくても大丈夫です。</li>
+      </ol>
+    </div>
+    <div class="pcard">
+      <div class="tt">飼料カード</div>
+      <div class="big">頼まれたときだけ。その日に与える飼料を、数か所から少しずつ。</div>
+      <figure class="figwrap"><svg class="fig big mini" viewBox="0 0 600 150" role="img" aria-label="飼槽の数か所から袋に目安量まで入れる。湿った飼料は薄く平らにして冷凍庫、乾いた飼料は口を閉じて常温。送るときは火曜から木曜に出す。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="trough" d="M20,70 h150 v40 h-150 Z"/><circle class="f-dot2" cx="40" cy="90" r="5"/><circle class="f-dot2" cx="70" cy="90" r="5"/><circle class="f-dot2" cx="100" cy="90" r="5"/><circle class="f-dot2" cx="130" cy="90" r="5"/><circle class="f-dot2" cx="160" cy="90" r="5"/><text class="note" x="95" y="60" text-anchor="middle" >飼槽の数か所から</text><text class="note" x="95" y="134" text-anchor="middle" >少しずつ</text><line class="arr" x1="180" y1="90" x2="216" y2="90" marker-end="url(#fa)"/><path class="bag" d="M226,50 h70 v80 h-70 Z"/><path class="bag" d="M226,50 l8,-14 h54 l8,14"/><text class="lab" x="261" y="94" text-anchor="middle" >目安量</text><text class="note" x="261" y="144" text-anchor="middle" >袋</text><line class="arr" x1="306" y1="90" x2="340" y2="90" marker-end="url(#fa)"/><rect class="freezer" x="350" y="30" width="70" height="90" rx="6"/><text class="note" x="385" y="54" text-anchor="middle" >湿った</text><text class="note" x="385" y="74" text-anchor="middle" >飼料は</text><text class="name" x="385" y="100" text-anchor="middle" >❄</text><text class="note" x="385" y="140" text-anchor="middle" >薄く平らに</text><rect class="card" x="436" y="30" width="70" height="90" rx="6"/><text class="note" x="471" y="54" text-anchor="middle" >乾いた</text><text class="note" x="471" y="74" text-anchor="middle" >飼料は</text><text class="lab" x="471" y="100" text-anchor="middle" >常温</text><text class="note" x="471" y="140" text-anchor="middle" >口を閉じて</text><text class="note" x="555" y="60" text-anchor="middle" >送るなら</text><text class="name" x="555" y="84" text-anchor="middle" >火〜木</text><text class="note" x="555" y="106" text-anchor="middle" >に出す</text></svg></figure>
+      <ol>
+        <li>目安量のカードを見て、袋に入れる。</li>
+        <li>湿った飼料は薄く平らにして冷凍庫へ。乾いた飼料は口を閉じて常温で。</li>
+        <li>代わりに送るときは、事業の送り状（届け先は記入済み）に送り主だけ書いて貼り、<b>火曜日から木曜日</b>に出す。</li>
+      </ol>
+    </div>
+    <div class="pcard">
+      <div class="tt">動かさないでください</div>
+      <div class="big">空気を測っています。動かさないでください。</div>
+      <figure class="figwrap"><svg class="fig big mini" viewBox="0 0 600 150" role="img" aria-label="柱にかごに入れた測定器を留めている。3〜7日、動かさない。高圧洗浄・消毒のときはビニールをかぶせる。落ちていたら、そのまま獣医師に知らせる。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><rect class="post" x="60" y="10" width="18" height="130"/><rect class="cage" x="78" y="40" width="46" height="56" rx="4"/><rect class="sensor" x="89" y="54" width="24" height="28" rx="4"/><rect class="tie" x="56" y="44" width="72" height="5" rx="2"/><rect class="tie" x="56" y="88" width="72" height="5" rx="2"/><text class="name" x="170" y="56" text-anchor="start" >動かさない</text><text class="lab" x="170" y="80" text-anchor="start" >3〜7日</text><text class="note" x="170" y="104" text-anchor="start" >空気を測っています</text><rect class="nochip" x="340" y="30" width="240" height="42" rx="8"/><text class="lab" x="460" y="57" text-anchor="middle" >洗浄・消毒 → ビニールをかぶせる</text><rect class="nochip" x="340" y="84" width="240" height="42" rx="8"/><text class="lab" x="460" y="111" text-anchor="middle" >落ちていた → そのまま獣医師に知らせる</text></svg></figure>
+      <ol>
+        <li>柱に、小さな測定器（SwitchBot）をかごに入れて留めています。置くのは<b>3〜7日</b>です。</li>
+        <li>高圧洗浄・消毒のときは、ビニールをかぶせてください。</li>
+        <li>落ちていた・動いていたときは、そのまま獣医師に知らせてください。</li>
+        <li>頼まれたら、外した測定器を同梱の送り状で次の農場へ送ってください。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-place">
+  <h2 id="h-place">農場に置かせていただくもの</h2>
+<figure class="figwrap"><svg class="fig big" viewBox="0 0 1000 400" role="img" aria-label="農場に置くもの：キットの箱は獣医師と決めた場所、初乳キットは哺乳の準備をする場所の近く、飼料キットは飼料庫の近く、冷凍した初乳や便は農場の冷凍庫、測定器は牛舎の柱に3〜7日、ZoneのQRカードは区画に貼ったまま。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(20,30)"><rect class="st-off2" x="0" y="0" width="300" height="300" rx="12"/><g transform="translate(20,20)"><path class="box-deep" d="M10,80 h120 v80 h-120 Z"/><path class="box-lid" d="M10,80 l20,-16 h120 l-20,16 Z"/><text class="lab" x="70" y="125" text-anchor="middle" >キット</text><rect class="freezer" x="160" y="30" width="100" height="150" rx="6"/><line class="mesh" x1="160" y1="80" x2="260" y2="80"/><text class="lab" x="210" y="60" text-anchor="middle" >冷凍庫</text><path class="bag" d="M176,106 q0,-10 10,-10 h16 q10,0 10,10 v30 h-36 Z"/><path class="tube" d="M184,106 h7 v15 a3.5,5 0 0 1 -7,0 Z"/><path class="f-serum" d="M185,113 h5 v8 a2.5,4 0 0 1 -5,0 Z"/><rect class="cap" x="182.5" y="99" width="10" height="8" rx="1.5"/><text class="lab" x="187.5" y="140" text-anchor="middle"></text><path class="tube" d="M196,106 h7 v15 a3.5,5 0 0 1 -7,0 Z"/><path class="f-serum" d="M197,113 h5 v8 a2.5,4 0 0 1 -5,0 Z"/><rect class="cap" x="194.5" y="99" width="10" height="8" rx="1.5"/><text class="lab" x="199.5" y="140" text-anchor="middle"></text><path class="tube" d="M228,100 h16 v24 L236.0,146 Z"/><path class="f-fec" d="M229.5,125.3 h13 v0.1999999999999993 L236.0,144 Z"/><rect class="cap" x="225" y="88" width="22" height="14" rx="2"/><line class="ridge" x1="232.0" y1="90" x2="232.0" y2="100"/><line class="ridge" x1="236.7" y1="90" x2="236.7" y2="100"/><line class="ridge" x1="241.3" y1="90" x2="241.3" y2="100"/><rect class="f-green" x="225" y="119.32" width="22" height="13" rx="2"/><rect x="229.0" y="106" width="14" height="14" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="230.0" y="107.0" width="1.6" height="1.6" fill="#111"/><rect x="232.8" y="107.0" width="1.6" height="1.6" fill="#111"/><rect x="235.6" y="107.0" width="1.6" height="1.6" fill="#111"/><rect x="230.0" y="109.8" width="1.6" height="1.6" fill="#111"/><rect x="235.6" y="109.8" width="1.6" height="1.6" fill="#111"/><rect x="230.0" y="112.6" width="1.6" height="1.6" fill="#111"/><rect x="232.8" y="112.6" width="1.6" height="1.6" fill="#111"/><rect x="235.6" y="112.6" width="1.6" height="1.6" fill="#111"/><rect x="241.2" y="107.0" width="1.6" height="1.6" fill="#111"/><rect x="241.2" y="112.6" width="1.6" height="1.6" fill="#111"/><rect x="230.0" y="118.2" width="1.6" height="1.6" fill="#111"/><rect x="235.6" y="118.2" width="1.6" height="1.6" fill="#111"/><rect x="241.2" y="118.2" width="1.6" height="1.6" fill="#111"/><rect x="238.4" y="115.4" width="1.6" height="1.6" fill="#111"/><rect x="232.8" y="115.4" width="1.6" height="1.6" fill="#111"/><rect x="238.4" y="109.8" width="1.6" height="1.6" fill="#111"/><text class="note" x="210" y="170" text-anchor="middle" >初乳・便</text></g><text class="stname" x="150" y="236" text-anchor="middle" >キットの箱・冷凍した検体</text><text class="lab" x="150" y="262" text-anchor="middle" >獣医師と決めた場所</text><text class="lab" x="150" y="284" text-anchor="middle" >農場の冷凍庫</text></g><g transform="translate(350,30)"><rect class="st-off2" x="0" y="0" width="300" height="300" rx="12"/><g transform="translate(20,20)"><path class="bag" d="M20,50 q0,-10 10,-10 h70 q10,0 10,10 v100 h-90 Z"/><text class="lab" x="65" y="70" text-anchor="middle" >初乳</text><path class="tube" d="M44,84 h12 v31 a6.0,5 0 0 1 -12,0 Z"/><path class="f-serum" d="M45,97 h10 v18 a5.0,4 0 0 1 -10,0 Z"/><rect class="cap" x="42.5" y="77" width="15" height="8" rx="1.5"/><text class="lab" x="50.0" y="134" text-anchor="middle">A1</text><path class="tube" d="M64,84 h12 v31 a6.0,5 0 0 1 -12,0 Z"/><path class="f-serum" d="M65,97 h10 v18 a5.0,4 0 0 1 -10,0 Z"/><rect class="cap" x="62.5" y="77" width="15" height="8" rx="1.5"/><text class="lab" x="70.0" y="134" text-anchor="middle">C1</text><path class="bag" d="M160,60 h90 v110 h-90 Z"/><path class="bag" d="M160,60 l10,-18 h70 l10,18"/><text class="lab" x="205" y="110" text-anchor="middle" >飼料</text><text class="note" x="205" y="134" text-anchor="middle" >目安量まで</text></g><text class="stname" x="150" y="236" text-anchor="middle" >初乳キット・飼料キット</text><text class="lab" x="150" y="262" text-anchor="middle" >哺乳の準備をする場所の近く</text><text class="lab" x="150" y="284" text-anchor="middle" >飼料庫の近く</text></g><g transform="translate(680,30)"><rect class="st-off2" x="0" y="0" width="300" height="300" rx="12"/><g transform="translate(20,20)"><rect class="post" x="60" y="10" width="20" height="170"/><rect class="cage" x="80" y="60" width="50" height="60" rx="4"/><rect class="sensor" x="92" y="75" width="26" height="30" rx="4"/><rect class="tie" x="56" y="64" width="78" height="5" rx="2"/><rect class="tie" x="56" y="112" width="78" height="5" rx="2"/><text class="lab" x="105" y="150" text-anchor="middle" >測定器</text><text class="note" x="105" y="170" text-anchor="middle" >3〜7日</text><rect class="card" x="170" y="40" width="90" height="60" rx="5"/><rect x="178" y="50" width="36" height="36" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="179.0" y="51.0" width="6.0" height="6.0" fill="#111"/><rect x="186.2" y="51.0" width="6.0" height="6.0" fill="#111"/><rect x="193.4" y="51.0" width="6.0" height="6.0" fill="#111"/><rect x="179.0" y="58.2" width="6.0" height="6.0" fill="#111"/><rect x="193.4" y="58.2" width="6.0" height="6.0" fill="#111"/><rect x="179.0" y="65.4" width="6.0" height="6.0" fill="#111"/><rect x="186.2" y="65.4" width="6.0" height="6.0" fill="#111"/><rect x="193.4" y="65.4" width="6.0" height="6.0" fill="#111"/><rect x="207.8" y="51.0" width="6.0" height="6.0" fill="#111"/><rect x="207.8" y="65.4" width="6.0" height="6.0" fill="#111"/><rect x="179.0" y="79.8" width="6.0" height="6.0" fill="#111"/><rect x="193.4" y="79.8" width="6.0" height="6.0" fill="#111"/><rect x="207.8" y="79.8" width="6.0" height="6.0" fill="#111"/><rect x="200.6" y="72.6" width="6.0" height="6.0" fill="#111"/><rect x="186.2" y="72.6" width="6.0" height="6.0" fill="#111"/><rect x="200.6" y="58.2" width="6.0" height="6.0" fill="#111"/><text class="note" x="238" y="66" text-anchor="middle" >Zone</text><text class="note" x="238" y="84" text-anchor="middle" >カード</text><text class="note" x="215" y="130" text-anchor="middle" >区画に貼ったまま</text></g><text class="stname" x="150" y="236" text-anchor="middle" >測定器・区画のカード</text><text class="lab" x="150" y="262" text-anchor="middle" >測定器は牛舎の柱に3〜7日</text><text class="lab" x="150" y="284" text-anchor="middle" >カードは区画に貼ったまま</text></g><text class="note" x="20" y="370" text-anchor="start" >置く場所は、獣医師と相談して決めます。測定器は獣医師が置いて、次の診療で回収します。</text></svg></figure>
+  <div class="tbl" style="margin-top:6px">
+  <table class="place">
+    <thead><tr><th>もの</th><th>置き場所</th></tr></thead>
+    <tbody>
+      <tr><td>採血・採便・鼻咽頭スワブのキット、試験管立て</td><td>獣医師と相談して決めた場所</td></tr>
+      <tr><td><a class="term" href="#g-colokit">初乳キット</a>（手で初乳を与える農場）</td><td>哺乳の準備をする場所の近く</td></tr>
+      <tr><td><a class="term" href="#g-multikit">複数回採便キット</a>（2028年度・5農場）</td><td>頼まれたときだけ</td></tr>
+      <tr><td><a class="term" href="#g-feedkit">飼料キット</a>（袋、目安量のカード、箱、申込書）</td><td>飼料庫の近くなど</td></tr>
+      <tr><td>冷凍した検体（初乳・便など）</td><td>農場の冷凍庫。次の診療で獣医師が持ち帰ります</td></tr>
+      <tr><td>測定器のセット（3〜7日）</td><td>獣医師が牛舎に置きます。終わったら次の農場へ</td></tr>
+      <tr><td><a class="term" href="#g-scale">吊りはかり</a>（貸し出し）</td><td>給与量を測っていない農場だけ。バケツ1杯・ロール1個の重さを一度だけ測ってください</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<details class="src"><summary>出典（内部の文書名）</summary><p class="foot">出典：農家用ガイド 統合版 v1.2、00_基準書_数・規模 v0.4（N-03・N-04・N-10・N-20・N-21・N-24・N-26）、Broad B1 Base Profile SOP v3.2。</p></details>
+</div>
+
+
+<script src="flow-map.js"></script>
+<script src="flow-pictos.js"></script>
+</body>
+</html>

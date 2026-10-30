@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRA2027 フロー2 Broadの獣医師 v0.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<link rel="stylesheet" href="flow-common.css">
+<style>
+.map .ed{color:var(--muted)}
+.map .lane{fill:var(--surface)}
+.map .lane.alt{fill:var(--surface2)}
+.map .lh{font-family:var(--font-display);font-weight:900;font-size:16px;fill:var(--ink)}
+.map .lhs{font-family:var(--font-body);font-size:12px;fill:var(--muted)}
+.map .nd div i{font-style:normal;font-family:var(--font-num);font-size:12px;color:var(--muted);margin-right:4px}
+svg.map.tall{min-width:760px}
+.addon td{font-size:.84rem}
+.addon td:first-child{white-space:nowrap;font-weight:700}
+.nums td{font-size:.88rem}
+.nums td.v{font-family:var(--font-num);white-space:nowrap}
+.trouble{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 18px;margin-top:6px}
+.trouble div{border-bottom:1px dotted var(--line);padding:5px 0;font-size:.88rem}
+.trouble b{display:block;font-size:.86rem}
+.nobase{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.nobase span{border:1px dashed var(--line);border-radius:999px;padding:2px 10px;font-size:.82rem;color:var(--muted)}
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
+</head>
+<body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
+
+<div class="wrap">
+<header>
+  <nav class="pnav" aria-label="ページ一覧"><a class="home" href="flow-index.html">目次</a><a href="flow0-overview.html">0 全体図</a><a href="flow1-deep-vet.html">1 Deep獣医師</a><a href="flow2-broad-vet.html" aria-current="page">2 Broad獣医師</a><a href="flow3-farmer.html">3 農家</a><a href="flow4-coordinator.html">4 Coordinator</a><a href="flow5-osaka.html">5 中央拠点（大阪）</a><a href="flow6-miyazaki.html">6 宮崎大学</a><a href="consult-economy.html">相談：成績を円に</a><a class="gloss" href="flow-glossary.html">ことば表</a></nav>
+  <h1>フロー2　Broadの獣医師・センター獣医師（実証協力農場）</h1>
+  <p class="sub"><a class="term" href="#g-broad">Broad</a>（実証協力農場）を担当する<a class="term" href="#g-reqvet">依頼獣医師</a>と、Profile（農場ごとの結果のまとめ）を見る<a class="term" href="#g-centervet">センター獣医師</a>が、登録からAdd-on（追加の検査）・Action（改善）・Re-profile（測り直し）までを1枚で見る図です。</p>
+</header>
+<section class="panel pic-first" aria-labelledby="h-pic">
+  <h2 id="h-pic">絵で見る流れ（まずここだけ）</h2>
+  <p class="sub">登録から、改善して測り直すまで。くわしい手順と数は、この下にあります。</p>
+  <div class="pstrip"><div class="pstep broad"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-phone"/></svg><div class="pt">農場を登録するだけ</div><div class="ps">アプリで。手元の資材でできる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-video"/></svg><div class="pt">簡単な4項目を集める</div><div class="ps">農場の基本情報・Zone動画・胸囲・水槽スワブ</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep app"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-profile"/></svg><div class="pt">最初のプロファイルが返る</div><div class="ps">情報が少し足りなくても、まず返す</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-handshake"/></svg><div class="pt">何を詳しく調べるか検討</div><div class="ps">農場ごとに、担当の獣医師とセンターの獣医師が結果を見て</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">5</span><svg class="pic" aria-hidden="true"><use href="#p-box"/></svg><div class="pt">追加の検査キットが届く</div><div class="ps">必要な農場だけ（血液・便・鼻咽頭スワブ・環境など）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">6</span><svg class="pic" aria-hidden="true"><use href="#p-barn"/></svg><div class="pt">飼い方・環境を見直す</div><div class="ps">農家さんと一緒に</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">7</span><svg class="pic" aria-hidden="true"><use href="#p-loop"/></svg><div class="pt">関係する項目だけ測り直す</div><div class="ps">30〜60日後に。効果を確かめる</div></div></div>
+</section>
+
+<section class="panel">
+  <p class="lead">Broadでは、<b>完ぺきなデータがそろうのを待たずに、まず<a class="term" href="#g-profile">Profile</a>（農場ごとの結果のまとめ）を作ります。</b>くわしく知る価値があるところだけ、<a class="term" href="#g-addon">Add-on</a>（追加の検査）で深く測ります。</p>
+  <div class="two" style="margin-top:12px">
+    <div class="card broad">
+      <span class="tag t-broad">依頼獣医師</span>
+      <div class="big">農場を担当する獣医師</div>
+      <ul>
+        <li>農場を登録し、ふだんの診療の中で<a class="term" href="#g-b1">B1 Base</a>（最初に集める簡単な情報）を集めます。</li>
+        <li>センター獣医師と話し合って、Add-onと<a class="term" href="#g-action">Action</a>（農場でできる改善）を決めます。</li>
+        <li>Add-onの採材、Actionの実行、<a class="term" href="#g-reprofile">Re-profile</a>（改善のあとの測り直し）を行います。</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:5px solid var(--central)">
+      <span class="tag t-central">センター獣医師</span>
+      <div class="big">Profileを見る獣医師</div>
+      <ul>
+        <li>大阪公立大学の教員、協力大学の教員、協力獣医師、研修を受けた獣医師で分担します。</li>
+        <li><a class="term" href="#g-review">Center Review</a>（確認）をして、<a class="term" href="#g-initial">Initial Farm Profile</a>（最初のまとめ）と<a class="term" href="#g-report">Add-on Report</a>（追加の検査のまとめ）を作ります。</li>
+        <li>目安は1農場あたり、Review・Report 1時間＋話し合い0.5時間です。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-gl">
+<h2 id="h-gl">ことば表（このページで使うことば）</h2>
+<p class="sub">アプリやマニュアルは英語のことばをそのまま使います。ここでは、それぞれに<b>日本語の言い方</b>を決めました。本文では「英語（日本語）」の順で、最初に出たところに添えています。全部のことばは <a href="flow-glossary.html" style="color:inherit">共通のことば表</a> にあります。</p>
+<button class="fbtn" id="gltoggle" type="button" aria-expanded="true" aria-controls="glgrid">ことば表を閉じる</button>
+<div class="glgrid" id="glgrid">
+<div class="glgroup"><h3>事業の考え方のことば</h3><ul class="gl">
+<li id="g-kchp"><b>子牛健康プロファイル</b><i>（本事業で作るもの）</i><span>農場ごとの子牛の健康の評価のまとめ。2029年度に、2つの輪（SDCA・PDCA）を一体にして完成させる。前事業の名前は「農場プロファイル」。アプリの画面では Farm Profile。</span></li>
+<li id="g-kihon"><b>基本評価</b><i>（Broadでは B1 Base）</i><span>最初に行う最小限の評価。農場の基本情報・Zone動画・胸囲・水槽スワブの4項目。資材を前もって送らなくてもできる。</span></li>
+<li id="g-shousai"><b>詳細検査</b><i>（Broadでは Add-on）</i><span>基本評価の結果と病気の出方から、担当の獣医師と事業側の獣医師が協議して、必要な項目だけ行う検査。</span></li>
+<li id="g-hiyou"><b>費用対効果</b><i>（そのままの言い方）</i><span>損失の減少額 ÷ 実施費用。改善の費用はアプリに入れた概算と検査費から計算する。2034年度に2倍以上をめざす。</span></li>
+</ul></div>
+<div class="glgroup"><h3>事業・季節のことば</h3><ul class="gl">
+<li id="g-broad"><b>Broad</b><i>実証協力農場</i><span>ふだんの診療でできる簡単なことだけを集める農場。年50農場（目標）（100まで受け入れ）。</span></li>
+<li id="g-event"><b>Event</b><i>病気のときの採材</i><span>呼吸器の初診のNPSと、下痢の便。季節に関係なく1年中。Broadでは Clinical Event とも言う。</span></li>
+<li id="g-window"><b>Window</b><i>採る期間</i><span>Add-onで採材する期間（農場ごとに2人で決める）。過ぎたら待たない・追加で行かない。</span></li>
+<li id="g-cycle"><b>Profile Cycle</b><i>1まわり</i><span>Broadで、Profile → Add-on → Action → Re-profile を1まわりと数える。</span></li>
+</ul></div>
+<div class="glgroup"><h3>牛の段階（Stage）</h3><ul class="gl">
+<li id="g-stage"><b>Stage</b><i>牛の段階</i><span>母牛はM1・M2、子牛はP0・P2・P4（P1は採らない、P3は2028年度のR&Dだけ）。アプリが自動で決める。</span></li>
+<li id="g-p2"><b>P2</b><i>哺乳後期の子牛</i><span>30日齢から、離乳を始める前まで。</span></li>
+<li id="g-p4"><b>P4</b><i>離乳後の子牛</i><span>離乳が終わって15〜60日。採血と健常便。</span></li>
+<li id="g-primarystage"><b>Primary Stage</b><i>主に見る段階</i><span>Broad A3で、P2かP4のどちらを測るか、2人で先に決める。</span></li>
+</ul></div>
+<div class="glgroup"><h3>検体・測るもの</h3><ul class="gl">
+<li id="g-nps"><b>NPS</b><i>鼻の奥の拭い液</i><span>鼻咽頭スワブ。鼻から咽頭まで綿棒を入れて拭う。呼吸器の病原体を調べる。</span></li>
+<li id="g-wts"><b>WTS</b><i>水槽の拭い液</i><span>共有の水槽の内側を拭う。Deepは1 Zoneに1本・1季節に最大4本、Broad B1は1農場1本。</span></li>
+<li id="g-tus"><b>TUS</b><i>肺のエコー</i><span>胸部の超音波検査。ふだんから行っている先生だけ。</span></li>
+<li id="g-crs"><b>CRS</b><i>呼吸器の症状の点数</i><span>咳・耳・鼻汁・眼脂・体温を点数にしたもの。アプリが合計する。</span></li>
+<li id="g-bcs"><b>BCS</b><i>母牛の肉付きの点数</i><span>棘突起・肋骨・腰角・尾根部・肛門周辺の5か所を、必ず触って決める。</span></li>
+<li id="g-rs"><b>RS</b><i>第一胃の張り（手で）</i><span>ルーメンスコア。牛の右側から背越しに左膁部へ手を伸ばして決める。</span></li>
+<li id="g-rfs"><b>RFS</b><i>第一胃の張り（目で）</i><span>ルーメンフィルスコア。左後方から左膁部を見て1〜5。</span></li>
+<li id="g-hg"><b>胸囲・HGR</b><i>胸の周り（cm）とその充足率</i><span>肩甲骨のすぐ後ろで測る。HGR（胸囲÷同じ日齢の標準胸囲）は現場の画面には出ない。</span></li>
+<li id="g-basic"><b>Basic-12</b><i>血液生化学の12項目</i><span>NOSAIで測る。M1・M2・P2・P4の血清。</span></li>
+<li id="g-vit"><b>ビタミンA/E</b><i>ビタミンAとE</i><span>M1とP4の血清で測る。Broadは2人で決めたときだけ。</span></li>
+<li id="g-brix"><b>Brix・TP</b><i>初乳の濃さと血清の総たんぱく</i><span>P0の子牛の血清と初乳で、大阪が測る。</span></li>
+<li id="g-qpcr"><b>qPCR</b><i>病原体の遺伝子を増やして数える検査</i><span>宮崎で行う。NPS・WTS・下痢の便。</span></li>
+</ul></div>
+<div class="glgroup"><h3>容器・道具・入れ物</h3><ul class="gl">
+<li id="g-qr"><b>QR</b><i>容器やカードのQRコード</i><span>すべての作業はQRを読むところから始まる。Broad B1のWTSだけ手書きのID。</span></li>
+<li id="g-zone"><b>Zone</b><i>牛舎の区画</i><span>環境を測るまとまり。センサーを置くのは、子牛のZone最大3＋分娩前の母牛のZone 1まで。</span></li>
+<li id="g-zonevideo"><b>Zone動画</b><i>牛舎のZone動画</i><span>Broad B1では1 Zoneに1本（スマホ横）。Zone全体・牛・床・換気・飼槽・水槽が写っていればよい。</span></li>
+<li id="g-switchbot"><b>SwitchBot</b><i>温度・湿度・CO₂のセンサー</i><span>メッシュのかごに入れて柱に留める。3〜7日置く。</span></li>
+<li id="g-envkit"><b>環境キット</b><i>SwitchBotと道具の箱</i><span>SwitchBot最大4台・レーザー距離計・結束バンド・消毒シート・次の農場への送り状。6キットが農場から農場へ回る。</span></li>
+<li id="g-wtskit"><b>WTSキット</b><i>水槽用のスワブと50 mL遠沈管</i><span>QR付き・帯なし。Broad B1には送らない（手持ちの資材で採る）。</span></li>
+<li id="g-feedlot"><b>FeedLot・Ration</b><i>同じロットの飼料・与える飼料の組み合わせ</i><span>同じFeedLotは送り直さない。</span></li>
+<li id="g-shortid"><b>short ID</b><i>手書きの短い番号</i><span>Broad B1のWTSだけ。アプリが出す番号（例 F23-Z2-01）を油性ペンでチューブに書く。</span></li>
+</ul></div>
+<div class="glgroup"><h3>人・場所・アプリ</h3><ul class="gl">
+<li id="g-coord"><b>Coordinator</b><i>地域のまとめ役</i><span>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。BRDC Frontiersの会員が担う（1人4〜5農場）。Broadにはいない。</span></li>
+<li id="g-reqvet"><b>依頼獣医師</b><i>農場を担当するBroadの獣医師</i><span>農場を登録し、B1 Baseを集め、センター獣医師と話し合ってAdd-on・Actionを決める。</span></li>
+<li id="g-centervet"><b>センター獣医師</b><i>Profileを見る獣医師</i><span>Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。</span></li>
+<li id="g-central"><b>中央拠点</b><i>大阪公立大学</i><span>全体のとりまとめ。血清・初乳・便の送り先。</span></li>
+<li id="g-miyazaki"><b>宮崎大学</b><i>qPCRの拠点</i><span>NPS・WTSの送り先（事業の送り状で送る）。</span></li>
+<li id="g-nosai"><b>NOSAI・全酪連</b><i>血液の検査センター・飼料の分析センター</i><span>血液は大阪から送る（現場の作業なし）。飼料は農場から直送。</span></li>
+<li id="g-app"><b>アプリ（Farm Profile Platform）</b><i>採材の記録と結果が集まるスマホのアプリ</i><span>W-02などは画面の番号。</span></li>
+<li id="g-profile"><b>Farm Profile</b><i>農場ごとの結果のまとめ</i><span>季節の結果をまとめて、獣医師・農家に返す。</span></li>
+<li id="g-initial"><b>Initial Farm Profile</b><i>最初のまとめ</i><span>Broadで、B1 Baseから作る最初のFarm Profile。わかること・わからないこと・次に足すとよい情報。</span></li>
+<li id="g-b1"><b>B1 Base</b><i>最初に集める簡単な情報</i><span>Farm Facts・Zone・Zone動画・HGR（推奨：0〜30日齢5頭・31〜135日齢8頭）・WTS（各Zone 1本、最大4本）。約30日が目安。</span></li>
+<li id="g-farmfacts"><b>Farm Facts</b><i>農場の基本情報</i><span>アプリの質問。最初は最低限だけ。前に答えたことは聞き直さない。</span></li>
+<li id="g-addon"><b>Add-on</b><i>追加の検査</i><span>A1〜A6。必要なときだけ、2人（依頼獣医師＋センター獣医師）で決めてくわしく測る。アプリは自動で決めない。</span></li>
+<li id="g-report"><b>Add-on Report</b><i>追加の検査のまとめ</i><span>センター獣医師が、B1の結果とあわせて読んで作る。</span></li>
+<li id="g-action"><b>Action</b><i>農場でできる改善</i><span>2人で決めて、改善の内容と費用の概算をアプリに記録する。</span></li>
+<li id="g-reprofile"><b>Re-profile</b><i>改善のあとの測り直し</i><span>決めておいた指標だけを、決めた時期に測り直す。Add-on一式はやり直さない。</span></li>
+<li id="g-recapture"><b>Re-capture</b><i>撮り直し・測り直し</i><span>Actionの判断が良くなるときだけ頼む。</span></li>
+<li id="g-review"><b>Center Review</b><i>センター獣医師の確認</i><span>Readiness（そろい具合）を見る。PARTIAL（一部）でも、わかることがあれば次へ進む。</span></li>
+<li id="g-readiness"><b>Readiness・Coverage</b><i>そろい具合・どこまで写っているか</i><span>Profileに「わかること・わからないこと」として書く。</span></li>
+<li id="g-decision"><b>ACCEPTED／DEFERRED／NOT_SELECTED</b><i>受ける／あとで／選ばない</i><span>Add-onの提案への決定。アプリに記録する。</span></li>
+<li id="g-indicator"><b>Primary response indicator</b><i>Re-profileで見る指標</i><span>Actionを決めるときに、先に決めて登録する。</span></li>
+<li id="g-flag"><b>flag</b><i>印</i><span>問題のある検体も捨てずに送り、アプリが印を付ける。</span></li>
+</ul></div>
+</div></section>
+
+<section class="panel" aria-labelledby="h-flow">
+  <h2 id="h-flow">登録からRe-profileまで</h2>
+  <p class="sub">左が依頼獣医師、まん中がセンター獣医師、右がアプリと中央（検査）です。番号の順に進みます。図は横にスクロールできます。</p>
+  <div class="mapwrap" style="margin-top:8px">
+  <svg class="map tall" viewBox="0 0 1160 1100" role="img" aria-label="Broadの登録からRe-profileまでの流れ図">
+    <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+    <!-- lanes -->
+    <rect class="lane" x="10" y="10" width="370" height="1080" rx="10"/>
+    <rect class="lane alt" x="390" y="10" width="370" height="1080" rx="10"/>
+    <rect class="lane" x="770" y="10" width="380" height="1080" rx="10"/>
+    <text class="lh" x="195" y="34" text-anchor="middle">依頼獣医師</text>
+    <text class="lh" x="575" y="34" text-anchor="middle">センター獣医師</text>
+    <text class="lh" x="960" y="34" text-anchor="middle">アプリ・中央・検査</text>
+    <!-- edges -->
+    <g class="ed"><path d="M200,130 V148" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M200,235 V253" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M350,195 C380,195 790,230 808,290" marker-end="url(#ah)"/><text x="560" y="222" text-anchor="middle">WTS（事業の送り状）</text></g>
+    <g class="ed"><path d="M350,300 C390,300 400,390 428,395" marker-end="url(#ah)"/><text x="402" y="332" text-anchor="middle">送信</text></g>
+    <g class="ed"><path d="M580,440 V458" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M730,500 H808" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M580,545 V563" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M200,650 V668" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M350,710 H808" marker-end="url(#ah)"/><text x="580" y="700" text-anchor="middle">検体・キットの依頼</text></g>
+    <g class="ed"><path d="M960,750 C960,790 760,790 732,810" marker-end="url(#ah)"/><text x="880" y="796" text-anchor="middle">結果</text></g>
+    <g class="ed"><path d="M580,860 V878" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M200,965 V983" marker-end="url(#ah)"/></g>
+    <g class="ed"><path d="M350,1025 H808" marker-end="url(#ah)"/><text x="580" y="1015" text-anchor="middle">記録</text></g>
+    <g class="ed dash"><path d="M50,1060 H30 Q22,1060 22,1052 V618 Q22,610 30,610 H48" marker-end="url(#ah)"/><text x="30" y="840" transform="rotate(-90 30 840)" text-anchor="middle">次の1まわり（Profile Cycle）</text></g>
+    <g class="ed dash"><path d="M50,600 H40 Q34,600 34,592 V200 Q34,192 42,192 H48" marker-end="url(#ah)"/><text x="44" y="420" transform="rotate(-90 44 420)" text-anchor="middle">Re-capture（撮り直しなど）</text></g>
+    <!-- nodes: lane1 -->
+    <g class="nd broad"><rect x="50" y="50" width="300" height="80" rx="10"/><foreignObject x="50" y="50" width="300" height="80"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>1</i>農場を登録</b><span>登録した日からBroadに入る。牛個体識別情報の利用同意も（代行入力可）</span></div></foreignObject></g>
+    <g class="nd broad"><rect x="50" y="150" width="300" height="85" rx="10"/><foreignObject x="50" y="150" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>2</i>B1 Baseを集める</b><span>基本評価の4項目：Farm Facts・Zone動画・HGR（胸囲、推奨 5頭＋8頭）・WTS（各Zone 1本・最大4本）。約30日が目安</span></div></foreignObject></g>
+    <g class="nd broad"><rect x="50" y="255" width="300" height="85" rx="10"/><foreignObject x="50" y="255" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>3</i>Uploadして確定</b><span>動画のZoneと、WTSと水槽の対応を本人が確認。足りなくても送ってよい</span></div></foreignObject></g>
+    <g class="nd broad"><rect x="50" y="670" width="300" height="85" rx="10"/><foreignObject x="50" y="670" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>7</i>農場の同意 → Add-onの採材</b><span>ふだんの診療のついで。30〜60日のWindow（採る期間）。待たない・追加で行かない</span></div></foreignObject></g>
+    <g class="nd broad"><rect x="50" y="985" width="300" height="85" rx="10"/><foreignObject x="50" y="985" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>10</i>Actionを行う → Re-profile</b><span>決めておいた指標だけを、決めた時期に測り直す</span></div></foreignObject></g>
+    <!-- lane2 -->
+    <g class="nd central"><rect x="430" y="355" width="300" height="85" rx="10"/><foreignObject x="430" y="355" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>4</i>Center Review</b><span>Readiness（そろい具合）を見る。PARTIAL（一部）でも、わかることがあれば次へ進む</span></div></foreignObject></g>
+    <g class="nd central"><rect x="430" y="460" width="300" height="85" rx="10"/><foreignObject x="430" y="460" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>5</i>Initial Farm Profileを作る</b><span>わかること・わからないこと・Coverage（写っている範囲）・次に足すとよい情報</span></div></foreignObject></g>
+    <g class="nd central"><rect x="430" y="775" width="300" height="85" rx="10"/><foreignObject x="430" y="775" width="300" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>8</i>Add-on Reportを作る</b><span>B1の結果とあわせて読む。数値だけで決めつけない</span></div></foreignObject></g>
+    <!-- spanning -->
+    <g class="nd broad"><rect x="50" y="565" width="680" height="85" rx="10" style="fill:var(--surface);stroke-dasharray:0"/><foreignObject x="50" y="565" width="680" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>6</i>2人で協議 → Add-on（詳細検査）を提案するか決める</b><span>依頼獣医師（担当）とセンター獣医師（事業側）が、基本評価（B1）の結果と病気の出方から協議して決める。アプリは自動で決めない。採る前に決めること：ビタミンA/Eを測るか（A1・A3）、Primary Stage（A3）、NPSを5頭から8頭にするか（A4）</span></div></foreignObject></g>
+    <g class="nd broad"><rect x="50" y="880" width="680" height="85" rx="10" style="fill:var(--surface)"/><foreignObject x="50" y="880" width="680" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b><i>9</i>2人でActionを決める</b><span>農場でできることにする。改善の内容と費用の概算をアプリに入れる。Re-profileで見る指標（Primary response indicator）と時期を先に決めて登録する</span></div></foreignObject></g>
+    <!-- lane3 -->
+    <g class="nd app"><rect x="810" y="50" width="320" height="80" rx="10"/><foreignObject x="810" y="50" width="320" height="80"><div xmlns="http://www.w3.org/1999/xhtml"><b>アプリ</b><span>Farmとアカウントを作るだけ。キット・QRカードは送らない</span></div></foreignObject></g>
+    <g class="nd central"><rect x="810" y="255" width="320" height="85" rx="10"/><foreignObject x="810" y="255" width="320" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b>宮崎大学</b><span>WTSのqPCR（U1〜U3）。NPS・WTSと一緒に送る</span></div></foreignObject></g>
+    <g class="nd app"><rect x="810" y="460" width="320" height="85" rx="10"/><foreignObject x="810" y="460" width="320" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b>アプリで返す</b><span>Profileを依頼獣医師に表示。提案と決定（ACCEPTED／DEFERRED／NOT_SELECTED）を記録</span></div></foreignObject></g>
+    <g class="nd central"><rect x="810" y="655" width="320" height="95" rx="10"/><foreignObject x="810" y="655" width="320" height="95"><div xmlns="http://www.w3.org/1999/xhtml"><b>キットと検査</b><span>キット・センサーはAdd-onが決まってから送る</span><span>血液・初乳・便 → 大阪／NPS・WTS → 宮崎／飼料 → 全酪連</span></div></foreignObject></g>
+    <g class="nd app"><rect x="810" y="985" width="320" height="85" rx="10"/><foreignObject x="810" y="985" width="320" height="85"><div xmlns="http://www.w3.org/1999/xhtml"><b>アプリに記録</b><span>Action（内容・日付・実施状況）とRe-profileの結果</span></div></foreignObject></g>
+  </svg>
+  </div>
+  <p class="sub" style="margin-top:8px">病気の牛（呼吸器の初診・下痢）は、B1やAdd-onを待たずにいつでも採材・登録できます（Clinical <a class="term" href="#g-event">Event</a>：病気のときの採材）。</p>
+</section>
+<section class="panel" aria-labelledby="h-b1">
+  <h2 id="h-b1">B1 Base（最初に集める簡単な情報）で集めるもの</h2>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 300" role="img" aria-label="Broad B1 Baseで集める5つ：Farm Facts（アプリの質問）、Zone（アプリで選ぶ）、HGR（推奨：0〜30日齢5頭・31〜135日齢8頭）、WTS（各Zone 1本・最大4本、手書きのID）、Zone動画（1 Zoneに1本）。約30日でUploadし、センター獣医師がInitial Farm Profileを作る。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(20,30)"><rect class="st-broad" x="0" y="0" width="150" height="190" rx="10"/><g transform="translate(25,16)"><rect class="card" x="20" y="10" width="60" height="80" rx="6"/><line class="mesh" x1="30" y1="30" x2="70" y2="30"/><line class="mesh" x1="30" y1="46" x2="70" y2="46"/><line class="mesh" x1="30" y1="62" x2="60" y2="62"/></g><text class="stname" x="75" y="126" text-anchor="middle" >Farm Facts</text><text class="lab" x="75" y="146" text-anchor="middle" >農場の基本情報</text><text class="note" x="75" y="166" text-anchor="middle" >アプリの質問</text><text class="note" x="75" y="181" text-anchor="middle" >最初は最低限だけ</text></g><text class="name" x="178" y="130" text-anchor="middle" >+</text><g transform="translate(185,30)"><rect class="st-broad" x="0" y="0" width="150" height="190" rx="10"/><g transform="translate(25,16)"><rect class="card" x="14" y="20" width="36" height="60" rx="3"/><rect class="card" x="54" y="20" width="36" height="60" rx="3"/><text class="lab" x="32" y="56" text-anchor="middle" >Z1</text><text class="lab" x="72" y="56" text-anchor="middle" >Z2</text></g><text class="stname" x="75" y="126" text-anchor="middle" >Zone</text><text class="lab" x="75" y="146" text-anchor="middle" >牛舎の区画</text><text class="note" x="75" y="166" text-anchor="middle" >アプリで選ぶ</text><text class="note" x="75" y="181" text-anchor="middle" >QRカードは使わない</text></g><text class="name" x="343" y="130" text-anchor="middle" >+</text><g transform="translate(350,30)"><rect class="st-broad" x="0" y="0" width="150" height="190" rx="10"/><g transform="translate(25,16)"><path class="calf" d="M10,50 q0,-30 40,-30 h30 q20,0 20,20 v30 h-90 Z"/><path class="tape" d="M58,20 q-16,25 0,50" fill="none"/></g><text class="stname" x="75" y="126" text-anchor="middle" >HGR（胸囲）</text><text class="lab" x="75" y="146" text-anchor="middle" >診療で扱う子牛で</text><text class="note" x="75" y="166" text-anchor="middle" >推奨5頭＋8頭・最低なし</text><text class="note" x="75" y="181" text-anchor="middle" >そのためだけに行かない</text></g><text class="name" x="508" y="130" text-anchor="middle" >+</text><g transform="translate(515,30)"><rect class="st-broad" x="0" y="0" width="150" height="190" rx="10"/><g transform="translate(25,16)"><path class="tube" d="M30,14 h26 v48 L43.0,84 Z"/><rect class="cap" x="27" y="2" width="32" height="14" rx="2"/><line class="ridge" x1="34.0" y1="4" x2="34.0" y2="14"/><line class="ridge" x1="42.0" y1="4" x2="42.0" y2="14"/><line class="ridge" x1="50.0" y1="4" x2="50.0" y2="14"/><text class="hand" x="43" y="62" text-anchor="middle">F23-Z2-01</text></g><text class="stname" x="75" y="126" text-anchor="middle" >WTS</text><text class="lab" x="75" y="146" text-anchor="middle" >各Zone 1本（最大4）</text><text class="note" x="75" y="166" text-anchor="middle" >手書きのshort ID</text><text class="note" x="75" y="181" text-anchor="middle" >WTS → 動画の順</text></g><text class="name" x="673" y="130" text-anchor="middle" >+</text><g transform="translate(680,30)"><rect class="st-broad" x="0" y="0" width="150" height="190" rx="10"/><g transform="translate(25,16)"><rect class="card" x="8" y="20" width="84" height="56" rx="6"/><circle class="f-warn" cx="24" cy="34" r="5"/><text class="lab" x="50" y="56" text-anchor="middle" >REC</text></g><text class="stname" x="75" y="126" text-anchor="middle" >Zone動画</text><text class="lab" x="75" y="146" text-anchor="middle" >1 Zoneに1本</text><text class="note" x="75" y="166" text-anchor="middle" >スマホ横。1本で全体・牛</text><text class="note" x="75" y="181" text-anchor="middle" >床・換気・飼槽・水槽</text></g><line class="arr" x1="845" y1="125" x2="880" y2="125" marker-end="url(#fa)"/><g transform="translate(885,30)"><rect class="st-central" x="0" y="0" width="100" height="190" rx="10"/><text class="stname" x="50" y="60" text-anchor="middle" >Upload</text><text class="name" x="50" y="80" text-anchor="middle" >↓</text><text class="stname" x="50" y="104" text-anchor="middle" >Center</text><text class="stname" x="50" y="122" text-anchor="middle" >Review</text><text class="name" x="50" y="142" text-anchor="middle" >↓</text><text class="stname" x="50" y="166" text-anchor="middle" >Initial</text><text class="stname" x="50" y="184" text-anchor="middle" >Profile</text></g><text class="note" x="20" y="250" text-anchor="start" >目安は約30日。全部そろわなくてもUploadしてよい（足りないことはProfileに「わからないこと」として書く）。</text><text class="note" x="20" y="270" text-anchor="start" >B1 Baseではしないもの：健常NPS・採血・初乳・健常便・TUS・NH₃・風速・環境センサー・飼料の分析（必要ならAdd-onで）</text></svg><figcaption class="sub">5つを集めてUploadすると、センター獣医師が確認（Center Review）して、最初のまとめ（Initial Farm Profile）を作ります。</figcaption></figure>
+  <div class="tbl" style="margin-top:6px">
+  <table class="nums">
+    <thead><tr><th>もの</th><th>やり方</th><th>ポイント</th></tr></thead>
+    <tbody>
+      <tr><td><a class="term" href="#g-farmfacts">Farm Facts</a>（農場の基本情報）</td><td>アプリの質問。最初は最低限だけ</td><td>全部そろわなくてもProfileを止めない。前に答えたことは聞き直さない</td></tr>
+      <tr><td><a class="term" href="#g-zone">Zone</a>（牛舎の区画）</td><td>アプリで選ぶ（QRカードは使わない）</td><td>1本の動画でおおよそ写せる範囲で分ける。細かく分けすぎない</td></tr>
+      <tr><td><a class="term" href="#g-zonevideo">Zone動画</a></td><td>1 Zoneに1本。撮り方は自由</td><td>Zone全体、牛、床・敷料、換気・開口部、飼槽、水槽が写っていればよい</td></tr>
+      <tr><td><a class="term" href="#g-hg">HGR</a>（胸囲の充足率）</td><td>診療で扱う子牛で測る</td><td>推奨：0〜30日齢 5頭、31〜135日齢 8頭（最低なし）。HGRのためだけに行かない・保定しない</td></tr>
+      <tr><td><a class="term" href="#g-wts">WTS</a>（水槽スワブ）</td><td>共有の水槽がある各Zoneで1本（最大4本）</td><td>アプリが出す短いID（<a class="term" href="#g-shortid">short ID</a>）（例 F23-Z2-01）を油性ペンでチューブに書く。WTS → Zone動画の順に撮ると、水槽との対応が残る。手持ちのスワブ・チューブでもよい（生理食塩水は4 mL）</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="sub" style="margin-top:10px">B1 Baseではしないもの（必要ならAdd-onで）：</p>
+  <div class="nobase"><span>健常<a class="term" href="#g-nps">NPS</a>（鼻の奥の拭い液）</span><span>採血</span><span>初乳</span><span>健常便</span><span><a class="term" href="#g-tus">TUS</a>（肺のエコー）</span><span>NH₃・風速</span><span>環境センサー</span><span>飼料の分析</span></div>
+  <h3 style="margin-top:14px">胸囲の測り方（HGRのもと）</h3>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 330" role="img" aria-label="胸囲の測り方：首が下を向いていない立位で、肩甲骨の後ろの縁から指2本うしろにテープを一周させ、やや強く締めてから緩め、中間の目盛を1 cm単位で読む。1回だけ。立たなければ伏せで測る。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(40,40)"><path class="calf" d="M120,70 q-20,-40 40,-50 h220 q60,-5 70,40 q20,30 -10,70 l-10,20 h-300 q-30,0 -20,-30 Z"/><path class="calf" d="M440,55 q40,-30 70,0 q30,20 10,50 l-20,10 q-40,20 -70,-10 Z"/><path class="calf" d="M470,42 l-6,-26 l18,18 Z"/><path class="calf" d="M500,40 l12,-22 l4,24 Z"/><path class="leg" d="M150,150 v70"/><path class="leg" d="M190,150 v70"/><path class="leg" d="M370,150 v70"/><path class="leg" d="M410,150 v70"/><line class="ground" x1="80" y1="222" x2="560" y2="222"/><path class="hint" d="M418,30 q-30,30 -8,70" fill="none"/><text class="note" x="410" y="20" text-anchor="end" >肩甲骨の後ろの縁</text><rect class="finger" x="392" y="60" width="10" height="26" rx="4"/><rect class="finger" x="380" y="60" width="10" height="26" rx="4"/><text class="lab" x="386" y="104" text-anchor="middle" >指2本</text><path class="tape" d="M360,22 q-50,70 0,140" fill="none"/><path class="tape" d="M360,22 q50,70 0,140" fill="none"/><text class="lab" x="300" y="200" text-anchor="middle" >テープを一周</text></g><g transform="translate(640,36)"><circle class="stepc" cx="14" cy="12" r="13"/><text class="stepn" x="14" y="17" text-anchor="middle" >①</text><text class="lab" x="36" y="17" text-anchor="start" >首が下を向いていない立位で</text><circle class="stepc" cx="14" cy="58" r="13"/><text class="stepn" x="14" y="63" text-anchor="middle" >②</text><text class="lab" x="36" y="63" text-anchor="start" >肩甲骨の後ろの縁から指2本うしろ</text><circle class="stepc" cx="14" cy="104" r="13"/><text class="stepn" x="14" y="109" text-anchor="middle" >③</text><text class="lab" x="36" y="109" text-anchor="start" >やや強く締めてから、緩める</text><circle class="stepc" cx="14" cy="150" r="13"/><text class="stepn" x="14" y="155" text-anchor="middle" >④</text><text class="lab" x="36" y="155" text-anchor="start" >中間の目盛を 1 cm 単位で読む（1回だけ）</text><text class="note" x="0" y="206" text-anchor="start" >立たなければ伏せで測り「伏臥」と言う</text><text class="note" x="0" y="224" text-anchor="start" >体重は測らない。HGR（充足率）はアプリが計算</text><text class="note" x="0" y="242" text-anchor="start" >現場の画面には良し悪しは出ない</text></g><text class="note" x="40" y="300" text-anchor="start" >2〜7日齢の子牛は 60〜85 cm を外れると黄色の知らせが出る（保存はできる）</text></svg><figcaption class="sub">診療で扱う子牛で、推奨は0〜30日齢 5頭・31〜135日齢 8頭（最低なし）。HGR（胸囲÷標準胸囲）はアプリが計算し、現場の画面には出ません。</figcaption></figure>
+</section>
+<section class="panel" aria-labelledby="h-addon">
+  <h2 id="h-addon">Add-on（追加の検査）A1〜A6</h2>
+  <p class="sub">どれも、通常診療のついでに採ります。足りない分を次に持ち越しません。Re-profileでは、Add-on一式をやり直さず、決めておいた指標だけを測ります。</p>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 360" role="img" aria-label="Add-on A1〜A6で採るものと送り先：A1 母牛の採血とBCS・RS・RFS、飼料。A2 子牛の採血と初乳。A3 胸囲と採血、飼料。A4 健常NPS、発症牛のNPS、WTS。A5 下痢の便。A6 環境キットとWTS。血液・初乳・便は大阪へ、NPS・WTSは宮崎へ、飼料は全酪連へ。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><rect class="st-central" x="470" y="20" width="160" height="36" rx="8"/><text class="stname" x="550.0" y="44" text-anchor="middle" >大阪公立大学</text><rect class="st-central" x="640" y="20" width="170" height="36" rx="8"/><text class="stname" x="725.0" y="44" text-anchor="middle" >宮崎大学</text><rect class="st-other" x="820" y="20" width="160" height="36" rx="8"/><text class="stname" x="900.0" y="44" text-anchor="middle" >全酪連</text><text class="note" x="470" y="72" text-anchor="start" >血液・初乳・便</text><text class="note" x="640" y="72" text-anchor="start" >NPS・WTS</text><text class="note" x="820" y="72" text-anchor="start" >飼料（農場から直送）</text><rect class="st-broad" x="20" y="90" width="180" height="34" rx="6"/><text class="stname" x="30" y="112" text-anchor="start" >A1 母牛の栄養・代謝</text><text class="note" x="208" y="112" text-anchor="start" >分娩予定の8〜60日前の母牛 5頭（最大8）</text><rect class="cell-c" x="470" y="93" width="160" height="28" rx="5"/><text class="cell" x="550.0" y="112" text-anchor="middle" >採血・BCS・RS・RFS</text><rect class="cell-o" x="820" y="93" width="160" height="28" rx="5"/><text class="cell" x="900.0" y="112" text-anchor="middle" >飼料</text><rect class="st-broad" x="20" y="132" width="180" height="34" rx="6"/><text class="stname" x="30" y="154" text-anchor="start" >A2 初乳・初期免疫</text><text class="note" x="208" y="154" text-anchor="start" >2〜7日齢の子牛 5頭（最大8）</text><rect class="cell-c" x="470" y="135" width="160" height="28" rx="5"/><text class="cell" x="550.0" y="154" text-anchor="middle" >採血（Brix・TP）・初乳</text><rect class="st-broad" x="20" y="174" width="180" height="34" rx="6"/><text class="stname" x="30" y="196" text-anchor="start" >A3 子牛の栄養・発育</text><text class="note" x="208" y="196" text-anchor="start" >P2かP4（2人で決める）5頭（最大8）</text><rect class="cell-c" x="470" y="177" width="160" height="28" rx="5"/><text class="cell" x="550.0" y="196" text-anchor="middle" >胸囲・採血</text><rect class="cell-o" x="820" y="177" width="160" height="28" rx="5"/><text class="cell" x="900.0" y="196" text-anchor="middle" >飼料</text><rect class="st-broad" x="20" y="216" width="180" height="34" rx="6"/><text class="stname" x="30" y="238" text-anchor="start" >A4 BRDC・呼吸器</text><text class="note" x="208" y="238" text-anchor="start" >健常NPS 5頭（最大8）＋発症牛</text><rect class="cell-c" x="640" y="219" width="170" height="28" rx="5"/><text class="cell" x="725.0" y="238" text-anchor="middle" >健常NPS・発症牛のNPS・WTS</text><rect class="st-broad" x="20" y="258" width="180" height="34" rx="6"/><text class="stname" x="30" y="280" text-anchor="start" >A5 下痢・消化器</text><text class="note" x="208" y="280" text-anchor="start" >下痢の子牛（探しに行かない）</text><rect class="cell-c" x="470" y="261" width="160" height="28" rx="5"/><text class="cell" x="550.0" y="280" text-anchor="middle" >下痢の便</text><rect class="cell-c" x="640" y="261" width="170" height="28" rx="5"/><text class="cell" x="725.0" y="280" text-anchor="middle" >（大阪で抽出 → 宮崎でqPCR）</text><rect class="st-broad" x="20" y="300" width="180" height="34" rx="6"/><text class="stname" x="30" y="322" text-anchor="start" >A6 飼養環境</text><text class="note" x="208" y="322" text-anchor="start" >子牛のZone最大3＋母牛のZone 1</text><rect class="cell-c" x="640" y="303" width="170" height="28" rx="5"/><text class="cell" x="725.0" y="322" text-anchor="middle" >WTS</text><rect class="cell-o" x="820" y="303" width="160" height="28" rx="5"/><text class="cell" x="900.0" y="322" text-anchor="middle" >環境キット 3〜7日</text><text class="note" x="20" y="352" text-anchor="start" >どれも通常診療のついで。Add-onが決まってから、大阪がキット・センサーを送る。Broadの検体は獣医師が直接送る（Coordinatorはいない）。</text></svg><figcaption class="sub">採るものと送り先。容器・運び方（血液ボックスと保冷袋、遠心と分注）はフロー1（Deepの獣医師）と同じです。</figcaption></figure>
+  <div class="tbl" style="margin-top:6px">
+  <table class="addon">
+    <thead><tr><th>Add-on</th><th>提案のきっかけ（例）</th><th>対象と頭数</th><th>採るもの → 測る場所</th><th>Re-profile</th></tr></thead>
+    <tbody>
+      <tr><td>A1 母牛の栄養・代謝</td><td>初乳・発育の問題、母牛の<a class="term" href="#g-bcs">BCS</a>（肉付き）や分娩前の飼料への心配</td><td>分娩予定の8〜60日前の母牛。目標5頭・最大8頭、30日</td><td>採血（Basic-12、決めたときだけビタミンA/E）→ 大阪 → NOSAI。BCS・<a class="term" href="#g-rs">RS</a>・<a class="term" href="#g-rfs">RFS</a>（第一胃の張り）。飼料 → 全酪連</td><td>次の妊娠末期の母牛</td></tr>
+      <tr><td>A2 初乳・初期免疫</td><td>若い子牛の病気・死亡、初乳の与え方への疑問</td><td>2〜7日齢の子牛。目標5頭・最大8頭、60日</td><td>採血（Brix・TP）、手で与える初乳があれば初乳 → 大阪</td><td>Actionのあとに生まれた子牛</td></tr>
+      <tr><td>A3 子牛の栄養・発育</td><td>B1のHGRが低い・ばらつく、離乳前後の停滞</td><td><a class="term" href="#g-p2">P2</a>か<a class="term" href="#g-p4">P4</a>のどちらか（<a class="term" href="#g-primarystage">Primary Stage</a>、2人で決める）。目標5頭・最大8頭、30日</td><td>胸囲、採血（Basic-12、P4で決めたときだけビタミンA/E）→ 大阪 → NOSAI。飼料 → 全酪連</td><td>21〜35日後か、次のStageの胸囲</td></tr>
+      <tr><td>A4 BRDC・呼吸器</td><td>WTSの病原体のsignal、BRDCの多発・再発、治療が効きにくい</td><td>健常NPS 目標5頭・最大8頭（30〜90日齢を優先）。発症牛の観察 60日</td><td>健常NPS、発症牛の<a class="term" href="#g-crs">CRS</a>（症状の点数）・TUS・NPS、必要ならWTS → 宮崎（事業の送り状）</td><td>Actionの種類による（30〜60日の発症、新しい子牛のNPSなど）</td></tr>
+      <tr><td>A5 下痢・消化器</td><td>若い子牛の下痢の多発・重症・再治療</td><td>下痢の子牛（探しに行かない）。観察 60日</td><td>下痢便 → 大阪（DM・前処理・抽出）→ 宮崎（qPCR）</td><td>30〜60日の新しい下痢、または次の子牛</td></tr>
+      <tr><td>A6 飼養環境</td><td>換気・暑さ・湿った敷料の心配、特定のZoneに病気が集中</td><td>子牛のZone最大3＋分娩前の母牛のZone 1。1回</td><td>環境センサー（<a class="term" href="#g-switchbot">SwitchBot</a>）3〜7日（72時間以上）、必要ならNH₃・風速、WTS</td><td>同じZone・同じ高さで、Actionの数日〜2週間後</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="sub" style="margin-top:8px">WTSや発症牛のNPSが1頭陽性だった、CO₂が高かった、というだけでは提案しません。いろいろな情報をあわせて、Actionが良くなるときに提案します。</p>
+</section>
+<section class="panel" aria-labelledby="h-send">
+  <h2 id="h-send">検体の送り方（Add-onのとき）</h2>
+  <div class="two" style="margin-top:8px">
+    <div class="card" style="border-top:5px solid var(--central)">
+      <h3>大阪公立大学へ</h3>
+      <ul>
+        <li>血清・初乳・糞便。</li>
+        <li>−20℃以下で凍らせて、<b>採材から30日以内に着く</b>ように、<b>月1回まで</b>の冷凍便で送ります。</li>
+        <li>獣医師が直接送ります（Broadには<a class="term" href="#g-coord">Coordinator</a>〈地域のまとめ役〉はいません）。</li>
+        <li>NOSAIへは大阪がまとめて送ります。</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:5px solid var(--central)">
+      <h3>宮崎大学へ</h3>
+      <ul>
+        <li>NPS・WTS。</li>
+        <li>−20℃以下で凍らせて、その農場の分がそろったら1便で送ります（事業の送り状で。送料の支払いはいりません）。</li>
+        <li>1本だけの急ぎの便はつくりません。8頭に届かなくても待ち続けません。</li>
+      <li>発症牛のNPSは、次の便に入れます。便の予定がなければ、採材から60日以内に1便。</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:8px">病気の牛（Clinical Event）の検体も、同じ送り方です。飼料は農場から全酪連へ直送します。環境キットは回収した人が同期・消毒して、次の農場へ直送します。</p>
+</section>
+<section class="panel" aria-labelledby="h-num">
+  <h2 id="h-num">Broadの数（上限・目安）</h2>
+  <div class="tbl" style="margin-top:6px">
+  <table class="nums">
+    <thead><tr><th>何</th><th>数</th><th>メモ</th></tr></thead>
+    <tbody>
+      <tr><td>Broadの農場</td><td class="v">年50農場</td><td>年100農場まで受け入れる計画。登録の上限はない</td></tr>
+      <tr><td>B1のHGR</td><td class="v">0〜30日齢 5頭・31〜135日齢 8頭</td><td>推奨。最低なし</td></tr>
+      <tr><td>B1のWTS</td><td class="v">各Zone 1本（最大4本）</td><td>共有の水槽があるZone</td></tr>
+      <tr><td>Add-onの回数（計画用）</td><td class="v">A1 15・A2 15・A3 20・A4 30／60／60・A5 20・A6 20</td><td>1年あたり（A4だけ2027／2028／2029年度）。仮の数で、決まった件数ではない。予算を使い切るために増やさない</td></tr>
+      <tr><td>Add-onの採血（A1〜A3）</td><td class="v">Basic-12 200、ビタミンA/E 40</td><td>1年あたり、A1〜A3で共通</td></tr>
+      <tr><td>A4の健常NPS</td><td class="v">150／300／300</td><td>2027／2028／2029年度</td></tr>
+      <tr><td>発症牛のqPCR</td><td class="v">呼吸器 50、下痢 100／150／150</td><td>Broadの予約枠。12月1日に使わなかった分を共通枠へ。1農場1年度 呼吸器5件・下痢10件まで（仮）。採材と登録に上限はない</td></tr>
+      
+    </tbody>
+  </table>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-rule">
+  <h2 id="h-rule">Broadの決まり</h2>
+  <ul class="rules">
+    <li data-n="1">まずProfileを作る。足りない情報があってもProfileを止めない。</li>
+    <li data-n="2">アプリはAdd-onもActionも自動で決めない。決めるのは依頼獣医師とセンター獣医師。</li>
+    <li data-n="3">HGRやAdd-onのためだけに、行かない・待たない・保定しない。</li>
+    <li data-n="4">撮り直し・測り直しは、Actionの判断が良くなるときだけ頼む。</li>
+    <li data-n="5">問題のあるWTSや動画も捨てずに、印（<a class="term" href="#g-flag">flag</a>）を付けて使う。</li>
+    <li data-n="6">現場の画面に結果の良し悪しは出さない。結果はProfileとReportで返す。</li>
+  </ul>
+</section>
+<section class="panel" aria-labelledby="h-tr">
+  <h2 id="h-tr">困ったとき</h2>
+  <div class="trouble">
+    <div><b>推奨のスワブ・チューブを持っていない</b>未使用・乾いた・添加剤なしの手持ちのものでよい。生理食塩水は4 mL。</div>
+    <div><b>共有の水槽がない</b>WTSは「なし（N/A）」。代わりに健常NPSをBaseに足すことはしない。</div>
+    <div><b>HGRが8頭に届かない</b>そのまま送ってよい。わかる範囲でProfileを作る。</div>
+    <div><b>Zone動画がうまく撮れなかった</b>Profileは作る。必要なときだけ、センター獣医師が撮り直しを頼む。</div>
+    <div><b>WTSのIDが読みにくい</b>捨てずに送る。中央でQCして印を付ける。</div>
+    <div><b>呼吸器・下痢の牛がいた</b>B1やAdd-onを待たずに採材・登録してよい。</div>
+  </div>
+</section>
+<details class="src"><summary>出典（内部の文書名）</summary><p class="foot">出典：Broad B1 Base Profile SOP v3.2、Broad A1〜A3・A5・A6 Add-on SOP v2.2、A4 v3.1、00_基準書_数・規模 v0.4（N-50〜N-56、N-30・N-31・N-60）。</p></details>
+</div>
+
+
+<script src="flow-map.js"></script>
+<script src="flow-pictos.js"></script>
+</body>
+</html>

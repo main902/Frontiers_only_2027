@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>農家のみなさんへ</title>
 <meta name="description" content="参加する農家さん向け：お願い、診療の日、頼まれたときだけのカード（印刷可）、結果、しなくてよいこと、記録のこと、置くもの（v2試作）">
@@ -281,10 +280,18 @@ ol.mini{margin:4px 0 0;padding-left:1.3em;font-size:.86rem}
 .chain.vert ol{grid-template-columns:1fr}
 @media (max-width:760px){.flow6.f3{grid-template-columns:1fr}.resrow{grid-template-columns:1fr}}
 </style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
 </head>
 <body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
 <main>
-<div style="background:#fbf3d2;color:#5a4500;border:1px solid #8a6d00;border-radius:10px;padding:6px 12px;margin:0 0 10px;font-size:.85rem">BRDC Frontiers メンバー確認用（2026年10月23日（金）まで公開）。応募準備中の内容です。外部への転送・転載はご遠慮ください。</div>
 <nav class="tnav" aria-label="ページ一覧"><a href="index.html">← 目次</a><a href="overview.html">全体図</a><a href="deep-vet.html">Deepの獣医師</a><a href="broad-vet.html">Broadの獣医師</a><a href="farmer.html" aria-current="page">農家さん</a><a href="coordinator.html">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎大学</a><a href="glossary.html">ことば表</a></nav>
 
 <!-- 1. 見出し -->
@@ -382,7 +389,7 @@ ol.mini{margin:4px 0 0;padding-left:1.3em;font-size:.86rem}
   <span class="k">記録のこと</span>
   <h2 id="h-rec">子牛の成績は、聞き取りではなく記録から（くわしく測る農場）</h2>
   <div class="two">
-    <div class="card"><h3>使わせていただく記録</h3><ul class="plain"><li><b>牛の個体識別の届出の記録</b>（出生・死亡・転出の日付）</li><li><b>家畜共済（NOSAI）の記録</b>（子牛の診療・死廃事故）。共済に入っていなければ使いません</li></ul><p class="muted small">取り寄せるのは事業の側（大学）です。農家さんの手続きは、同意書2枚への署名だけです。</p></div>
+    <div class="card"><h3>使わせていただく記録</h3><ul class="plain"><li><b>牛の個体識別の届出の記録</b>（出生・死亡・転出の日付）</li><li><b>家畜共済（NOSAI）の記録</b>（子牛の診療・死廃事故）。共済に入っていなければ使いません</li></ul><p class="muted small">取り寄せるのは事業の側（大学）で、参加農場の分をまとめて請求します。農家さんは、獣医師の説明を聞いて同意するだけです（個体識別は署名・郵送はいりません。共済の記録の同意の方法は、共済組合と相談して決めます）。</p></div>
     <div class="card"><h3>大切にすること</h3><ul class="plain"><li>使うのは参加している農場の子牛の分だけ</li><li>農場名・お名前は出さず、まとめた数字として示す</li><li>この事業以外には使わない</li><li>いつでも取りやめられる。取りやめても採材などは続けられる</li><li>同意しなくても参加できます（その場合、この記録を使う計算から外すだけ）</li></ul></div>
   </div>
   <p class="muted small">実証協力農場（Broad）は、同意は任意です。</p>

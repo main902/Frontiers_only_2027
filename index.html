@@ -2,9 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>子牛の予防獣医療を仕事に</title>
+<title>子牛の予防と改善を仕事に</title>
 <meta name="description" content="2027〜2029年度の事業を、現場の協力メンバー向けに絵で見る目次ページ（全面改訂の試作）">
 <style>
 :root{--bg:#eef1ee;--surface:#fff;--surface2:#f6f8f6;--ink:#1c2622;--muted:#5d6a64;--line:#c9d3cd;
@@ -47,6 +46,15 @@ section.blk{margin:26px 0 0}
 .tile .t{font-weight:800;font-size:.92rem;margin-top:2px}
 .tile .s{font-size:.78rem;color:var(--muted);margin-top:2px;line-height:1.4}
 .lead{margin-top:10px;font-weight:800;color:var(--central);font-size:1.05rem}
+.pil2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:8px}
+.pil2 .koma{padding:14px 14px 12px}
+.pil2 .koma h3{font-size:1.05rem}
+.pil2 ol{margin:8px 0 0;padding-left:1.3em;font-size:.88rem;line-height:1.55}
+.pil2 ol li{margin:3px 0}
+.voice2{margin:8px 0 0;padding:8px 12px;border-left:4px solid var(--central);background:var(--central-bg);border-radius:6px;font-size:.85rem;line-height:1.65}
+.pil2.one{grid-template-columns:1fr}
+.pil2.one .koma p{font-size:.88rem}
+@media (max-width:760px){.pil2{grid-template-columns:1fr}}
 .comic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
 .koma{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g,var(--ink));border-radius:14px;padding:12px 10px 10px;position:relative}
 .koma.deep{--g:var(--deep);--pic-fill:var(--deep-bg)} .koma.broad{--g:var(--broad);--pic-fill:var(--broad-bg)} .koma.app{--g:var(--app);--pic-fill:var(--app-bg)} .koma.central{--g:var(--central);--pic-fill:var(--central-bg)} .koma.rd{--g:var(--rd);--pic-fill:var(--rd-bg)} .koma.other{--g:var(--other);--pic-fill:var(--other-bg)}
@@ -100,33 +108,54 @@ footer{margin-top:30px;font-size:.8rem;color:var(--muted)}
   .years:before{display:none} .years{grid-template-columns:1fr} .year{display:flex;gap:12px;align-items:center;text-align:left} .year .pic{margin:0;width:72px;height:72px;padding:8px}
 }
 </style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
 </head>
 <body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
 <main>
-<div style="background:#fbf3d2;color:#5a4500;border:1px solid #8a6d00;border-radius:10px;padding:6px 12px;margin:0 0 10px;font-size:.85rem">BRDC Frontiers メンバー確認用（2026年10月23日（金）まで公開）。応募準備中の内容です。外部への転送・転載はご遠慮ください。</div>
 
 <!-- 1. 見出し -->
 <section class="hero" aria-labelledby="h-top">
-  <div class="tag">2027〜2029年度　JRA畜産振興事業（応募準備中）　／　BRDC Frontiersの皆さんへ</div>
-  <h1 id="h-top">子牛の予防獣医療を標準化し、効果を数字で示し、対価が得られる仕事にする</h1>
-  <p class="muted small">申請書の事業名（仮）：標準評価に基づく子牛健康管理体系確立事業</p>
-  <p class="catch">病気を減らすことが、仕事になる。</p>
+  <div class="tag">2027〜2029年度　JRA畜産振興事業（応募済み）　／　BRDC Frontiersの皆さんへ</div>
+  <h1 id="h-top">子牛の健康の評価と改善を標準化し、効果を数字で示し、対価が得られる仕事にする</h1>
+  <p class="muted small">申請した事業名：子牛健康標準評価の全国展開・実装事業（2026-10-29、完成版の申請書に合わせて更新）</p>
+  <p class="catch">病気を減らすことも、仕事になる。</p>
   <p class="sub">いつもの診療に、ちょっとだけプラス。3Mを減らして、SDCA・PDCAの輪を回し続ける。</p>
   <div class="flow4">
-    <div class="fk central"><div class="fh">事業でやること</div><svg class="pic"><use href="#p-tape"/></svg><div class="st">① 標準化・客観化</div><h3>予防獣医療のやり方を標準化し、効果を客観化する</h3><p>6領域の標準評価法と農場改善支援手順を作る（Deep 50農場・SDCA）。同じものさしで改善前後の成績を測る（Broad 年50農場（目標）・PDCA）。</p></div>
+    <div class="fk central"><div class="fh">事業でやること</div><svg class="pic"><use href="#p-tape"/></svg><div class="st">① 標準化・客観化</div><h3>評価から改善・再評価までのやり方を標準化し、効果を客観化する</h3><p>6領域の標準評価法と農場改善支援手順を作る（Deep 50農場・SDCA）。同じものさしで改善前後の成績を測る（Broad 年50農場（目標）・PDCA）。</p></div>
     <div class="fa" aria-hidden="true">→</div>
     <div class="fk broad"><div class="fh">農家さんに届くもの</div><svg class="pic"><use href="#p-profile"/></svg><div class="st">② 経済効果の定量化</div><h3>生産性が上がり、予防の経済効果が数字になる</h3><p>子牛健康プロファイルで弱いところを直し、270日齢までの成績（死亡・治療・増体）が良くなる。その成績を共済金・市場価格で円に換算し、かかった時間・検査費と並べる。</p></div>
     <div class="fa" aria-hidden="true">→</div>
-    <div class="fk deep"><div class="fh">現場の獣医師に届くもの</div><svg class="pic"><use href="#p-yen"/></svg><div class="st">③ 対価</div><h3>予防獣医療が、対価を得られる仕事になる</h3><p>効果と費用の数字が料金の根拠になり、治療中心から予防中心（群管理＝ハードヘルス）の診療へ。始める面倒は、スマホのアプリで解決。</p></div>
+    <div class="fk deep"><div class="fh">現場の獣医師に届くもの</div><svg class="pic"><use href="#p-yen"/></svg><div class="st">③ 対価</div><h3>予防獣医療も、対価を得られる仕事になる</h3><p>効果と費用の数字が料金の根拠になり、個体診療に加えて、予防獣医療（群管理＝ハードヘルス）の診療を。始める面倒は、スマホのアプリで解決。</p></div>
     <div class="fa" aria-hidden="true">→</div>
     <div class="fk rd"><div class="fh">その先に</div><svg class="pic"><use href="#p-student"/></svg><div class="st">④ 担い手が増える</div><h3>学生がこの仕事を見て選び、産業動物獣医師が増える</h3><p>農家さんと一緒に、数字で農場を良くする仕事が、実習や現場で見える形になる。</p></div>
+  </div>
+</section>
+
+
+<!-- 1.5 目的 -->
+<section class="blk" aria-labelledby="h-purpose">
+  <span class="k">この事業の目的</span>
+  <h2 id="h-purpose">予防獣医療を、対価の得られる仕事に</h2>
+  <div class="pil2 one">
+    <div class="koma rd"><div class="who">この事業の目的</div><svg class="pic"><use href="#p-student"/></svg><h3>予防獣医療（予防と改善の群管理）を、<br>対価の得られる仕事にし、産業動物獣医師を増やす</h3>
+      <p>個体診療（病気の牛の診断と治療）は、これからも産業動物獣医師の大切な仕事です。本事業は、それに加えて、病気を減らす予防獣医療も対価の得られる仕事にすることをめざします。</p>
+      <ol><li>「何を提供し、どれだけ効き、いくらかかるか」の根拠（標準評価法・改善支援手順、改善前後の成績、時間と費用）をそろえる</li><li>個体診療に加えて、予防獣医療も対価を得られる仕事として成り立つ</li><li>その姿が学生に伝わり、産業動物臨床を志す学生が増える</li></ol>
+      <p class="voice2">学生が産業動物臨床にいちばん魅力を感じるのは、農家と一緒に生産性を上げる群管理だと感じています。それが全国で当たり前の仕事になれば、産業動物臨床を志す学生が増えるはずです。（事業代表者）</p></div>
   </div>
 </section>
 
 <!-- 2. なぜ今か -->
 <section class="blk" aria-labelledby="h-why">
   <span class="k">なぜ今か</span>
-  <h2 id="h-why">治療に追われる仕事だけでは、追いつかない</h2>
+  <h2 id="h-why">治療だけでは、追いつかない</h2>
   <div class="tiles">
     <div class="tile"><svg class="pic"><use href="#p-vets"/></svg><div class="n">4,312人</div><div class="t">産業動物の獣医師は減っている</div><div class="s">新しく選ぶ新卒は11％</div></div>
     <div class="tile"><svg class="pic"><use href="#p-barn"/></svg><div class="n">1人で、もっと多く</div><div class="t">農場は大きくなっている</div><div class="s">獣医師1人が診る頭数は増え続ける</div></div>
@@ -144,7 +173,7 @@ footer{margin-top:30px;font-size:.8rem;color:var(--muted)}
     <div class="comic">
       <div class="koma deep"><div class="who">1　Deep（重点調査農場）50農場　＝ SDCA</div><svg class="pic"><use href="#p-tape"/></svg><h3>標準を作り、守る</h3><p>母牛から子牛・環境まで6領域を、同じ項目・同じ手順・同じ頭数で測り（S・D）、だれが測っても同じ結果になるかを確かめ（C）、現場の気づきで標準を育てる（A）。</p><div class="fact">各農場 3年で2 farm-season（1年に1季節）</div></div>
       <div class="koma broad"><div class="who">2　Broad（実証協力農場）年50農場（目標）　＝ PDCA</div><svg class="pic"><use href="#p-handshake"/></svg><h3>標準で、農場を改善する</h3><p>アプリに登録するだけで参加。追加の資材なしで、手元にあるもの（メジャー・スワブ・生理食塩水・チューブ）でできる項目から始めてProfileを作り、農家さんと改善して、測り直して確かめる。</p><div class="fact">くわしく追加で調べる項目（Add-on）は、担当とセンターの獣医師が農場ごとに一緒に検討</div></div>
-      <div class="koma app"><div class="who">3　土台　＝ 3M削減</div><svg class="pic"><use href="#p-phone"/></svg><h3>スマホで全部完結。<br>「新しいことを始める面倒」は<br>アプリで解決</h3><p>やることはアプリが教えてくれる。覚える・数える・選ぶをなくす。ムリ（採材のためだけの訪問・待機・保定）はK式で、ムダ（数える・一覧・紐付け）はアプリで、ムラ（人による手順の差）は同じ容器・同じ手順で減らす。</p><div class="fact">容器のQRを読む → 撮る → 声で入力。スマホ1台で終わる</div></div>
+      <div class="koma app"><div class="who">3　土台　＝ 3M削減</div><svg class="pic"><use href="#p-phone"/></svg><h3>スマホで全部完結。<br>「新しいことを始める面倒」は<br>アプリで解決</h3><p>やることはアプリが教えてくれる。覚える・数える・選ぶをなくす。ムリ（採材のためだけの訪問・待機・保定）は蓄積式（HPのSOPではK式）で、ムダ（数える・一覧・紐付け）はアプリで、ムラ（人による手順の差）は同じ容器・同じ手順で減らす。</p><div class="fact">容器のQRを読む → 撮る → 声で入力。スマホ1台で終わる</div></div>
     </div>
     <div class="arrows"><div>Deep → Broad：標準（ものさし）を渡す</div><div>Broad → Deep：現場の気づきを返して、標準を育てる</div></div>
   </div>
@@ -154,7 +183,7 @@ footer{margin-top:30px;font-size:.8rem;color:var(--muted)}
 <!-- 4. お願い -->
 <section class="blk" aria-labelledby="h-ask">
   <span class="k">皆さんにお願いしたいこと</span>
-  <h2 id="h-ask">3つだけ。いつもの診療に、ちょっとだけプラス（K式）</h2>
+  <h2 id="h-ask">3つだけ。いつもの診療に、ちょっとだけプラス（蓄積式）</h2>
   <div class="ask">
     <div class="koma deep"><span class="no">1</span><svg class="pic"><use href="#p-steth"/></svg><h3>往診のついでに、<br>余裕があるときに採る</h3><p>診療前・診療の合間に、その農場で必要な項目をアプリで確認。実施する余裕があるときに実施（Routine）。発症牛はいつでも（Event）。</p></div>
     <div class="koma app"><span class="no">2</span><svg class="pic"><use href="#p-qr"/></svg><h3>QRを読む・撮る・声で入力</h3><p>容器のQRを読むと、アプリがStageと検体を振り分けて記録する。評価の種類や頭数を選ばなくてよい。</p></div>
@@ -213,6 +242,17 @@ footer{margin-top:30px;font-size:.8rem;color:var(--muted)}
     <div class="year"><svg class="pic"><use href="#p-qr"/></svg><div class="y">2027年度</div><div class="t">SOP・基準書とアプリで運用開始。Deep 30 farm-season、Broadを全国から募集</div></div>
     <div class="year"><svg class="pic"><use href="#p-check"/></svg><div class="y">2028年度</div><div class="t">Deep 35 farm-season。再現性・必要頭数を検証。EDTA管1本で新しい指標（R&amp;D）も試す</div></div>
     <div class="year"><svg class="pic"><use href="#p-profile"/></svg><div class="y">2029年度</div><div class="t">Deep 35 farm-season。項目を基本・詳細・選択に整理し、標準評価法・改善支援手順・アプリを完成。成果報告会</div></div>
+  </div>
+</section>
+
+<!-- 8. 成績の評価のしかた -->
+<section class="blk" aria-labelledby="h-kotai">
+  <span class="k">成績の評価のしかた</span>
+  <h2 id="h-kotai">成績は、牛個体識別情報を一括で取り寄せて評価します</h2>
+  <div class="pil2 one">
+    <div class="koma central"><div class="who">成績の評価のしかた</div><svg class="pic"><use href="#p-clipboard"/></svg><h3>成績は、牛個体識別情報を<br>一括で取り寄せて評価する</h3>
+      <ol><li>登録のとき、獣医師が説明し、農家さんの同意を口頭で確かめて一覧に記入（署名・郵送はいらない）</li><li>大阪が家畜改良センターから、全農場の分を同じ期間でまとめて取り寄せる（家畜共済の記録も）</li><li>生後7日目〜270日齢の死亡率を、導入前の3年間・まだ導入していない農場と比べる</li><li>減った死亡を円にし、アプリの記録（時間・検査費・改善の費用）と比べて費用対効果を出す</li></ol>
+      <div class="fact">聞き取り・アンケートはしない。先生方が成績を記録して送る作業もない</div></div>
   </div>
 </section>
 

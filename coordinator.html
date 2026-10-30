@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Coordinatorの役目</title>
 <meta name="description" content="Coordinator（地域のまとめ役）向け：まずアプリ、役目、1年の流れ、月1回の発送、2つの箱、数、困ったとき（v2試作）">
@@ -236,15 +235,23 @@ ul.plain li{margin:2px 0}
 .who .card.no{background:var(--surface2)}
 @media (max-width:760px){.who{grid-template-columns:1fr}}
 </style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
 </head>
 <body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
 <main>
-<div style="background:#fbf3d2;color:#5a4500;border:1px solid #8a6d00;border-radius:10px;padding:6px 12px;margin:0 0 10px;font-size:.85rem">BRDC Frontiers メンバー確認用（2026年10月23日（金）まで公開）。応募準備中の内容です。外部への転送・転載はご遠慮ください。</div>
 <nav class="tnav" aria-label="ページ一覧"><a href="index.html">← 目次</a><a href="overview.html">全体図</a><a href="deep-vet.html">Deepの獣医師</a><a href="broad-vet.html">Broadの獣医師</a><a href="farmer.html">農家さん</a><a href="coordinator.html" aria-current="page">Coordinator</a><a href="osaka.html">大阪</a><a href="miyazaki.html">宮崎大学</a><a href="glossary.html">ことば表</a></nav>
 
 <!-- 1. 見出し -->
 <section class="hero" aria-labelledby="h-top">
-  <div class="tag">Coordinator（地域のまとめ役）へ　／　Deepの協力獣医師のうち最大12人</div>
+  <div class="tag">Coordinator（地域のまとめ役）へ　／　BRDC Frontiersの会員（Deepの協力獣医師）</div>
   <h1 id="h-top">Coordinator：キットを配り、冷凍の検体を月1回まとめて送る</h1>
   <p class="sub">数える・決める仕事はアプリがします。Coordinatorがするのは、物を受け渡して、箱に詰めて送ることです。</p>
   <div class="comic" style="margin-top:12px">
@@ -351,7 +358,7 @@ ul.plain li{margin:2px 0}
   <h2 id="h-box">大阪行きと宮崎行きは、別の箱にする</h2>
   <div class="two">
     <div class="card boxc"><svg class="pic"><use href="#p-freezer"/></svg><div><h3>大阪行き（1か月に1箱まで）</h3><ul class="plain"><li>血清の束と初乳の束（同じ冷凍用の箱のまま）</li><li>便の遠沈管は別の袋に入れて、同じ外箱へ</li><li>同じ月なら、ちがう農場の分も1箱にまとめる</li><li>農家さんの<b>同意書の原本</b>（2枚）も入れる</li><li>検体がない月は送らない</li><li>30日を過ぎても捨てずに送る（自動で印）</li></ul></div></div>
-    <div class="card boxc" style="--pic-fill:var(--central-bg)"><svg class="pic"><use href="#p-swab"/></svg><div><h3>宮崎行き（そろったら1便）</h3><ul class="plain"><li>鼻咽頭スワブ（NPS）・水槽スワブ（WTS）。立てたまま凍らせたもの</li><li>その農場のいつもの採材の分がそろったら1便。8頭に届かなくても待ち続けない</li><li>病気の牛のNPSも、次の宮崎便に入れる。便の予定がないときは採材から60日以内に1便</li><li>qPCRにかけるものはアプリが選ぶ</li></ul></div></div>
+    <div class="card boxc" style="--pic-fill:var(--central-bg)"><svg class="pic"><use href="#p-swab"/></svg><div><h3>宮崎行き（そろったら1便）</h3><ul class="plain"><li>鼻咽頭スワブ（NPS）・水槽スワブ（WTS）。立てたまま凍らせたもの</li><li>その農場のいつもの採材の分がそろったら1便。全部そろわなくても待ち続けない</li><li>病気の牛のNPSも、次の宮崎便に入れる。便の予定がないときは採材から60日以内に1便</li><li>qPCRにかけるものはアプリが選ぶ</li></ul></div></div>
   </div>
   <div class="card rdcard"><b>2028年度だけ（R&amp;D、予定）</b>：EDTA管（全血）も、管のまま凍らせて大阪行きの箱へ。複数回採便も別の袋で同じ外箱へ。</div>
 </section>
@@ -361,14 +368,14 @@ ul.plain li{margin:2px 0}
   <span class="k">Coordinatorにかかわる数</span>
   <h2 id="h-num">箱の数はアプリが決める。目安だけ知っておく</h2>
   <div class="numgrid">
-    <div class="nm"><b>最大12人</b><span>Coordinator。1人4〜5農場</span></div>
+    <div class="nm"><b>1人4〜5農場</b><span>Coordinator（BRDC Frontiersの会員）</span></div>
     <div class="nm"><b>30／35／35</b><span>Deepの farm-season（2027／2028／2029年度）</span></div>
     <div class="nm"><b>月1回まで</b><span>大阪への便（1人×1か月で1箱）</span></div>
     <div class="nm"><b>約1便</b><span>宮崎への便（1 farm-seasonあたり）</span></div>
     <div class="nm"><b>30日</b><span>採材から大阪に着くまでの期限。超えても捨てない</span></div>
     <div class="nm"><b>−20℃</b><span>Coordinatorの冷凍庫（家庭用でよい）</span></div>
   </div>
-  <p class="muted small">1 farm-seasonの検体の上限：採血25本（分注で75本）・NPS 8本・WTS 4本・便5本。環境キットは6キットが農場から農場へ回ります（Coordinatorは経由しない）。</p>
+  <p class="muted small">1 farm-seasonの検体の上限：採血25本（分注で75本）・NPS 15本・WTS 4本・便5本。環境キットは6キットが農場から農場へ回ります（Coordinatorは経由しない）。</p>
 </section>
 
 <!-- 8. 困ったとき -->
@@ -393,7 +400,7 @@ ul.plain li{margin:2px 0}
   <details class="gl">
     <summary id="h-gl">このページで使うことば（開く）</summary>
     <dl>
-      <dt>Coordinator</dt><dd>地域のまとめ役。Deepの協力獣医師のうち最大12人</dd>
+      <dt>Coordinator</dt><dd>地域のまとめ役。BRDC Frontiersの会員（Deepの協力獣医師）</dd>
       <dt>farm-season</dt><dd>農場×季節。1農場で1季節くわしく測ると1 farm-season</dd>
       <dt>NPS／WTS</dt><dd>鼻咽頭スワブ／水槽スワブ。宮崎でqPCR（病原体の遺伝子の検査）</dd>
       <dt>血清の束</dt><dd>採血管と同じ番号の小さな管3本（A1・B1・C1）</dd>

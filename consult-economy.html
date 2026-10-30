@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRA2027 相談 成績を円にする</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<link rel="stylesheet" href="flow-common.css">
+<style>
+body{font-size:16px}
+.wrap{max-width:1080px}
+.lead{font-size:1.08rem}
+.three{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin-top:10px}
+.three .st{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--g);border-radius:12px;padding:10px 12px;--pic-fill:var(--gb)}
+.three .st .pic{width:52px;height:52px;display:block;margin:2px 0 4px}
+.three .st .lb{display:inline-block;font-size:.78rem;font-weight:800;color:#fff;background:var(--g);border-radius:999px;padding:1px 9px}
+.three .st h3{font-family:var(--font-display);font-weight:900;font-size:1.02rem;margin:6px 0 4px;line-height:1.35}
+.three .st p{font-size:.88rem;color:var(--muted);margin:0}
+.three .ar{align-self:center;color:var(--muted);font-size:1.3rem}
+.s1{--g:var(--central);--gb:var(--central-bg)} .s2{--g:var(--broad);--gb:var(--broad-bg)} .s3{--g:var(--deep);--gb:var(--deep-bg)}
+.calc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.calc .box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.calc .box h3{font-family:var(--font-display);font-weight:900;font-size:1rem;margin:0 0 4px}
+.calc .box .eq{font-weight:700;background:var(--surface2);border-radius:8px;padding:6px 8px;margin:6px 0;font-size:.95rem}
+.calc .box ul{margin:4px 0 0;padding-left:1.1em;font-size:.9rem}
+.ok{color:var(--broad);font-weight:700} .ng{color:var(--warn,#b45309);font-weight:700}
+.qs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.q{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--g,var(--ink));border-radius:10px;padding:10px 14px}
+.q .qn{font-family:var(--font-num);font-size:.8rem;color:var(--muted)}
+.q h3{font-family:var(--font-display);font-weight:900;font-size:1.02rem;margin:2px 0 6px;line-height:1.4}
+.q p{font-size:.9rem;margin:4px 0}
+.q ul{margin:4px 0 0;padding-left:1.1em;font-size:.9rem}
+.q .now{font-size:.85rem;background:var(--surface2);border-radius:8px;padding:5px 8px;margin-top:6px}
+.q.c{--g:var(--deep)} .q.d{--g:var(--other)}
+.consent{background:var(--surface);border:2px solid var(--ink);border-radius:12px;padding:14px 18px;margin-top:10px}
+.consent .tt{font-family:var(--font-display);font-weight:900;font-size:1.1rem;text-align:center;margin-bottom:6px}
+.consent ol{padding-left:1.4em;font-size:.93rem} .consent li{margin:4px 0}
+.consent .chk{display:inline-block;background:var(--warn-bg,#fff4d6);border-radius:6px;padding:0 6px;font-size:.82rem;font-weight:700}
+.consent table{width:100%;border-collapse:collapse;margin-top:8px;font-size:.9rem}
+.consent td{border:1px solid var(--line);padding:6px 8px}
+.consent td:first-child{width:38%;background:var(--surface2)}
+.note-box{background:var(--surface2);border-radius:10px;padding:8px 12px;font-size:.92rem;margin-top:8px}
+@media (max-width:760px){
+  .three{grid-template-columns:minmax(0,1fr)} .three .ar{transform:rotate(90deg);justify-self:center}
+  .calc,.qs{grid-template-columns:minmax(0,1fr)}
+}
+@media print{.pnav{display:none}}
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
+</head>
+<body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
+
+<div class="wrap">
+<header>
+  <nav class="pnav" aria-label="ページ一覧"><a class="home" href="flow-index.html">目次</a><a href="flow0-overview.html">0 全体図</a><a href="flow1-deep-vet.html">1 Deep獣医師</a><a href="flow2-broad-vet.html">2 Broad獣医師</a><a href="flow3-farmer.html">3 農家</a><a href="flow4-coordinator.html">4 Coordinator</a><a href="flow5-osaka.html">5 中央拠点（大阪）</a><a href="flow6-miyazaki.html">6 宮崎大学</a><a href="consult-economy.html" aria-current="page">相談：成績を円に</a><a class="gloss" href="flow-glossary.html">ことば表</a></nav>
+  <h1>相談　子牛の成績を「円」にする方法と、農家さんの同意書</h1>
+  <p class="sub">Frontiersの皆さんに確認したいことをまとめたページです。下の「確認したいこと」（Q1〜Q6）と「同意書で決めたいこと」（C1〜C5）に、ページのコメント機能でご意見をください。</p>
+</header>
+
+<section class="panel pic-first" aria-labelledby="h-pic">
+  <h2 id="h-pic">絵で見る流れ（まずここだけ）</h2>
+  <p class="sub">予防の効果を、現場の手間を増やさずに「円」にするまで。</p>
+  <div class="pstrip"><div class="pstep central"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-tape"/></svg><div class="pt">同じものさしで測る</div><div class="ps">標準評価法と改善支援手順で、改善の前後を比べる</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep other"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-clipboard"/></svg><div class="pt">成績は「記録」から取る</div><div class="ps">牛個体識別の届出と家畜共済の記録（農家さんの同意のうえ）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-yen"/></svg><div class="pt">単価をかけて円にする</div><div class="ps">死亡・治療・増体の変化 × 決まった年の単価</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep app"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-phone"/></svg><div class="pt">かかった費用と並べる</div><div class="ps">獣医師の時間（アプリの操作記録）と検査費</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep deep"><span class="pn">5</span><svg class="pic" aria-hidden="true"><use href="#p-handshake"/></svg><div class="pt">料金の根拠になる</div><div class="ps">群管理（予防）が対価を得られる仕事に</div></div></div>
+</section>
+
+<section class="panel" aria-labelledby="h-why">
+  <h2 id="h-why">なぜ「円」にしたいのか</h2>
+  <p class="lead">予防獣医療が<b>対価を得られる仕事</b>になるには、「何をするか」「どれだけ効くか」「いくらかかるか」の3つの根拠が要ります。本事業では、次の3段でそれを示します。</p>
+  <div class="three">
+    <div class="st s1"><svg class="pic" aria-hidden="true"><use href="#p-tape"/></svg><span class="lb">① 標準化・客観化</span><h3>予防のやり方をそろえ、効果を客観的に測る</h3><p>6領域の標準評価法と農場改善支援手順。同じものさしで改善の前後を測る。</p></div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="st s2"><svg class="pic" aria-hidden="true"><use href="#p-chart"/></svg><span class="lb">② 経済効果の定量化</span><h3>生産性の改善を、円で示す</h3><p>270日齢までの死亡・治療・増体の変化を円に換算し、かかった費用と並べる。<b>このページの相談はここ</b>。</p></div>
+    <div class="ar" aria-hidden="true">→</div>
+    <div class="st s3"><svg class="pic" aria-hidden="true"><use href="#p-yen"/></svg><span class="lb">③ 対価</span><h3>予防獣医療が、対価を得られる仕事になる</h3><p>効果と費用の数字が、群管理（ハードヘルス）の料金の根拠になる。2029年度に提言として公表。</p></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="h-calc">
+  <h2 id="h-calc">計算のしくみと、いまの計画で足りるか</h2>
+  <div class="calc">
+    <div class="box"><h3>効果（円）</h3><div class="eq">成績の変化 × 単価</div>
+      <ul><li>死亡が減った頭数 × 子牛1頭の価値</li><li>治療が減った件数 × 治療1件の費用</li><li>増体の改善 × 1kgの価値</li></ul></div>
+    <div class="box"><h3>費用</h3><div class="eq">獣医師の時間 ＋ 検査費 ＋ 改善の費用</div>
+      <ul><li>時間：アプリの操作記録から（聞き取りなし）</li><li>検査費：事業の積算から</li><li>改善の費用：農場が何を変えたか・概算</li></ul></div>
+    <div class="box"><h3>費用対効果</h3><div class="eq">効果 ÷ 費用</div>
+      <ul><li>1農場・1年あたり、子牛1頭あたり</li><li>獣医師1時間あたり</li><li>これが料金の根拠になる</li></ul></div>
+  </div>
+  <div class="tbl" style="margin-top:12px"><table>
+    <thead><tr><th>円にするのに必要なもの</th><th>はじめの計画</th><th>判定</th><th>補い方（申請書に反映済み）</th></tr></thead>
+    <tbody>
+      <tr><td>単価（死亡1頭・治療1件・増体1kg）</td><td>決めていなかった</td><td class="ok">統計でそろう</td><td>子牛の市場価格、家畜共済の統計（共済金・診療費）。<b>決まった年の単価で固定</b>し、相場の上下を効果に混ぜない</td></tr>
+      <tr><td>出生・死亡・出荷の頭数と日齢（分母も）</td><td>次の診療で農家さんから聞く</td><td class="ng">抜けが出る</td><td><b>牛個体識別の届出の記録</b>を、農家さんの同意書をもとに大阪が年度ごとに家畜改良センターへ申請して取り寄せる（<b>提供できると回答あり</b>）</td></tr>
+      <tr><td>治療の件数</td><td>採材した発症牛だけ記録</td><td class="ng">全部は取れない</td><td><b>家畜共済（NOSAI）の記録</b>を、同意のうえ年1回取り寄せる</td></tr>
+      <tr><td>増体</td><td>胸囲を段階ごとに測る</td><td class="ok">取れる</td><td>出荷時の体重・価格は統計または個体識別で補う</td></tr>
+      <tr><td>獣医師の時間・検査費</td><td>操作記録・積算</td><td class="ok">取れる</td><td>そのまま</td></tr>
+      <tr><td>農場が改善にかけた費用</td><td>なかった</td><td class="ng">足りない</td><td>アプリに「何を変えたか・概算の費用」の欄を1つ</td></tr>
+    </tbody></table></div>
+  <div class="note-box"><b>円にするのはDeepの50農場だけ</b>（3年間追うので、分母がそろう）。Broadは「指標が動いた」まで。比べる相手は、同じ時期に<b>まだ集中調査に入っていないDeep農場</b>（追加の手間なし）。</div>
+  <div class="note-box"><b>現場の手間は増やしません。</b> 足すのは、参加のときの同意書1枚だけです（病気・治療・死亡・出荷の聞き取りはしません）。同意がない農場も参加でき、採材は止めません（その農場は円の計算から外します）。</div>
+</section>
+
+<section class="panel" aria-labelledby="h-q">
+  <h2 id="h-q">Frontiersの皆さんに確認したいこと</h2>
+  <p class="sub">現場の感覚で「できそう／難しい」「こうした方がよい」を教えてください。分かる範囲で大丈夫です。</p>
+  <div class="qs">
+    <div class="q c"><div class="qn">Q1　個体識別の記録</div><h3>農家さんは、牛個体識別の届出の記録を事業に使うことに、同意してくれそうですか？</h3>
+      <ul><li>抵抗がありそうな点（名前が出る心配、手続きの面倒など）</li><li>説明のときに添えるとよい一言</li></ul>
+      <div class="now">決まったこと：家畜改良センターから「同意書があれば農家ごとに提供できる」と回答あり（2026-10-14）。大阪が年度ごとに申請。農家さんは同意書に署名するだけ。</div></div>
+    <div class="q c"><div class="qn">Q2　共済の記録</div><h3>地域のNOSAIから、農場ごとの子牛の診療・死廃事故の記録を出してもらえそうですか？</h3>
+      <ul><li>どの単位で出るか（件数・日付・診療費・病名など）</li><li>窓口になってくれそうな人・部署</li><li>共済に入っていない農場、NOSAI以外の診療が多い地域はどのくらいあるか</li></ul></div>
+    <div class="q c"><div class="qn">Q3　治療件数の取り方</div><h3>治療の件数は、共済の記録だけで足りますか？</h3>
+      <ul><li>共済に出ない治療（農家さんが自分でする治療など）がどのくらいあるか</li><li>足りない場合、アプリに「治療・死亡・出荷を1タップ（声で）入れる」機能があれば使うか</li></ul></div>
+    <div class="q c"><div class="qn">Q4　単価の決め方</div><h3>子牛1頭・治療1件・増体の「値段」は、何を使うのが現場の感覚に合いますか？</h3>
+      <ul><li>子牛：市場価格（品種・性別・月齢）でよいか。乳用種の雄・交雑種はどうするか</li><li>治療：共済の診療費でよいか。薬代・手間も入れるか</li><li>死亡：子牛の価値か、共済金か</li></ul></div>
+    <div class="q c"><div class="qn">Q5　改善にかかった費用</div><h3>改善を始めるとき、「何を変えたか」と「おおよその費用」をアプリに入れられそうですか？</h3>
+      <ul><li>農家さんに聞けば分かるか、獣医師の見立てでよいか</li><li>ざっくりの区分（〜1万円、〜10万円…）の方が入れやすいか</li></ul></div>
+    <div class="q c"><div class="qn">Q6　いまの群管理の対価</div><h3>いま、健康管理指導や群管理で対価をもらっている例はありますか？</h3>
+      <ul><li>どんな形か（定額・頭数あたり・訪問ごと・成果に応じて など）</li><li>うまくいっている点、続かなかった理由</li></ul>
+      <div class="now">2029年度の提言（費用対効果と実施モデル）の参考にします。</div></div>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="h-c">
+  <h2 id="h-c">同意書（案）と、決めたいこと</h2>
+  <p class="sub">Deepの農場にはお願い、Broadの農場は任意です。正式な文面は、大学の倫理審査とNOSAIとの取り決めに合わせて差し替えます。<span class="chk" style="background:var(--surface2);border-radius:6px;padding:0 6px;font-weight:700">要確認</span>の箇所について、ご意見をください。</p>
+  <div class="qs">
+    <div class="q d"><div class="qn">C1　期間（案を変えました）</div><h3>すべての農場で同じ期間：2025年4月1日〜2030年3月31日、でよいですか？</h3><p>家畜改良センターから「農家ごとに参加日から2年前・1年後のように期間が違うと、費用が増える」と注意がありました（2026-10-14）。そこで、請求のたびに全農場を同じ日付でそろえます。</p><ul><li>1回目（2028年3月）：2025年4月1日〜2028年2月末日（参加前の2年分を含む）</li><li>2回目（2029年3月）：2028年3月1日〜2029年2月末日</li><li>3回目（2029年12月）：2029年3月1日〜2029年11月30日（最終の分析用）</li></ul><p>Deepの50農場は2027年度にそろって登録するので、全農場が同じ期間になります。Broadで同意した農場は、その回の期間だけ同じ日付で加えます（参加前の分は取りません）。</p></div>
+    <div class="q d" style="--g:var(--central)"><div class="qn">C2　取り寄せ方（決まりました）</div><h3>農家さんが家畜改良センターの同意書（別添）に記入・署名し、大阪が利用請求書（別紙3）を添えて年度ごとに申請する</h3><p>家畜改良センターの回答（2026-10-14）：用途は課内確認で問題なし。同意書と利用請求書の様式を受け取りました。費用は例として農家50戸・1年分で約1万円（予算に計上済み）。</p><ul><li><b>同意書（別添）</b>：農家さんが書くのは、氏名又は名称・飼養地住所・<b>管理者等コード番号（10桁）</b>・本人の確認□・日付。利用者（大阪公立大学）と利用目的は大阪が先に印刷しておきます。</li><li><b>注意</b>：氏名・住所・コード番号が家畜改良センターの農家マスタの登録と違うと、エラーで出し直しになります。届出に使っている名義・住所どおりに書いてもらい、獣医師が確かめます。</li><li><b>利用目的</b>は、同意書と利用請求書で同じ文にします。</li></ul></div>
+    <div class="q d"><div class="qn">C3　取りやめたとき</div><h3>同意を取りやめた農場の、それまでの記録はどう扱いますか？</h3><ul><li>A：消す</li><li>B：農場が分からない形の集計にだけ使う</li></ul></div>
+    <div class="q d" style="--g:var(--central)"><div class="qn">C4　同意書の原本（決まりました）</div><h3>Coordinatorの月1回の箱に入れて、大阪へ送る</h3><p>同意書は2枚（家畜改良センターの様式と事業の同意書）。獣医師は2枚とも撮影してアプリに保存し、原本は大阪が家畜改良センターへの申請に使います。</p></div>
+    <div class="q d"><div class="qn">C5　説明と署名</div><h3>説明と署名は、どの場面がよいですか？</h3><p>参加の最初の診療で、農家用の説明と一緒に。署名はその場で／後日でよいか。問い合わせ先は担当の獣医師と大阪公立大学。</p></div>
+  </div>
+
+  <details class="src" style="margin-top:12px" open><summary>同意書（案）の文面</summary>
+  <div class="consent">
+    <div class="tt">記録の利用についての同意書（案）</div>
+    <p style="font-size:.85rem;background:var(--surface2);border-radius:8px;padding:6px 10px">①牛個体識別の記録は、この同意書とあわせて<b>家畜改良センター所定の同意書（別添）</b>にも記入・署名いただきます（家畜改良センターへの申請に使います）。この同意書は、記録を何に使うかの説明と、②家畜共済の記録の同意を兼ねます。</p>
+    <p style="font-size:.93rem">子牛健康標準評価の全国展開・実装事業（仮）　事業実施者　殿</p>
+    <p style="font-size:.93rem">私は、本事業について獣医師から説明を受け、次のことを理解したうえで、私の農場の記録を本事業で使うことに同意します。</p>
+    <ol>
+      <li><b>使う記録</b>　① 牛個体識別の届出の記録：当農場で生まれた・飼っていた子牛の出生・死亡・転出（出荷・移動）の日付、品種、性別　② 家畜共済の記録（加入している場合）：子牛の診療・死廃事故の件数と日付、共済金・診療費</li>
+      <li><b>期間</b>　2025年4月1日から2030年3月31日まで（すべての農場で同じ期間。参加前の記録は、参加前後を比べるために使います）<span class="chk">要確認 C1</span></li>
+      <li><b>目的</b>　子牛の成績（死亡・治療・発育・出荷）の変化と、その経済的な効果を調べるため。</li>
+      <li><b>取り寄せ方</b>　①は、家畜改良センター所定の同意書（別添）に記入・署名いただき、本事業の実施者が利用請求書を添えて年度ごとに家畜改良センターへ申請して取り寄せます。②は、この同意書の写しを添えて共済組合から取り寄せます。農場で手続きをする必要はありません。</li>
+      <li><b>取り扱い</b>　農場名・氏名は伏せて扱い、結果はまとめた数字として公表します。本事業以外の目的には使いません。保存と廃棄は大学の規程に従います。</li>
+      <li><b>取りやめ</b>　いつでも取りやめることができます。取りやめても不利益はなく、採材などの参加は続けられます。取りやめまでに取り寄せた記録の扱い<span class="chk">要確認 C3</span></li>
+      <li><b>問い合わせ先</b>　担当の獣医師、または事業実施者（大阪公立大学）</li>
+    </ol>
+    <table>
+      <tr><td>同意する記録</td><td>□ ① 牛個体識別の届出の記録　　□ ② 家畜共済の記録</td></tr>
+      <tr><td>日付</td><td>　　年　　月　　日</td></tr>
+      <tr><td>農場名</td><td></td></tr>
+      <tr><td>氏名（署名）</td><td></td></tr>
+      
+      <tr><td>加入している共済組合（NOSAI）</td><td></td></tr>
+      <tr><td>説明した獣医師</td><td></td></tr>
+    </table>
+  </div>
+  </details>
+
+  <details class="src" style="margin-top:12px"><summary>家畜改良センターの様式に書く内容（案）</summary>
+  <div class="consent">
+    <div class="tt">同意書（別添）と利用請求書（別紙3）</div>
+    <ol>
+      <li><b>利用者</b>　公立大学法人大阪　大阪公立大学　［所属部署］　担当者：［担当者名］</li>
+      <li><b>利用目的</b>（同意書と利用請求書で同じ文）　日本中央競馬会畜産振興事業「子牛健康標準評価の全国展開・実装事業」（2027〜2029年度）において、参加農場の子牛の出生・死亡・異動（出荷・移動）の記録を用い、子牛の成績の変化と、その経済的な効果を調べるため。</li>
+      <li><b>利用する情報の範囲</b>（利用請求書だけ）　同意管理者の［開始日］〜［終了日］の期間の飼養牛一覧及び異動履歴一覧（出生・転入・転出・死亡の日付、品種、性別）。期間はすべての同意管理者で同じ（C1）。</li>
+      <li><b>情報提供の方法</b>（利用請求書だけ）　電子メール・データファイル（CSV、パスワード付き）</li>
+      <li><b>添付</b>　農家ごとの同意書（別添、個別記入）の原本</li>
+    </ol>
+    <p style="font-size:.85rem">同意書は家畜改良センターのExcel様式（個別記入）に、利用者と利用目的を入れた形で配ります。事業名が確定したら、利用目的の事業名を差し替えます。</p>
+  </div>
+  </details>
+</section>
+
+<section class="panel" aria-labelledby="h-app">
+  <h2 id="h-app">申請書には、こう書きました</h2>
+  <ul class="rules">
+    <li>改善前後の成績（出生・死亡・治療・出荷）は、農家の同意のうえで牛個体識別情報及び家畜共済の記録から取得し、聞き取りに頼らない。</li>
+    <li>死亡・治療・増体の変化を基準年の単価で円換算した効果と、アプリの操作記録・検査費から求めた費用をもとに、客観的な評価に基づく群管理の費用対効果と実施モデルをとりまとめ、提言として公表する（2029年度）。</li>
+    <li>直接目標に「経済評価（費用対効果）：重点調査50農場、提言1式」を追加。経済評価の担当は明治大学（データ解析・統計）。</li>
+  </ul>
+  <p class="sub" style="margin-top:6px">皆さんのご意見で、方法や同意書の文面を直します。</p>
+</section>
+
+</div>
+<script src="flow-map.js"></script>
+<script src="flow-pictos.js"></script>
+</body>
+</html>

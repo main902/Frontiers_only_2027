@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JRA2027 フロー5 中央拠点（大阪） v0.2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap">
+<link rel="stylesheet" href="flow-common.css">
+<style>
+.map .ed{color:var(--muted)} .map .ed.on{color:var(--ink)}
+.map.m5 .nd div{font-size:11px;line-height:1.4;padding:6px 8px}
+.map.m5 .nd div b{font-size:12.5px;margin-bottom:1px}
+.map .rowl{font-family:var(--font-display);font-weight:900;font-size:13px;fill:var(--ink)}
+.nums td{font-size:.88rem}
+.nums td.v{font-family:var(--font-num);white-space:nowrap}
+.trouble{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px 18px;margin-top:6px}
+.trouble div{border-bottom:1px dotted var(--line);padding:5px 0;font-size:.88rem}
+.trouble b{display:block;font-size:.86rem}
+</style>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+.kankei{background:#fff3cf;color:#3d3000;border-bottom:2px solid #c99a00;padding:8px 16px;font-size:.85rem;line-height:1.55;text-align:center}
+.kankei b{color:#8a5a00;margin-right:.5em}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}:root:not([data-theme="light"]) .kankei b{color:#ffd76a}}
+:root[data-theme="dark"] .kankei{background:#3a2f0c;color:#f4e6b8;border-color:#a88420}
+@media print{.kankei{display:block!important;background:none;border:1px solid #000;color:#000}}
+</style>
+</head>
+<body>
+<div class="kankei" role="note"><b>関係者限り</b>このページは、BRDC Frontiersの会員と本事業の協力者だけに共有しています。URLを外部に共有したり、SNSやウェブに載せたりしないでください。内容は申請した計画（2027〜2029年度）で、今後変わることがあります。</div>
+
+<div class="wrap">
+<header>
+  <nav class="pnav" aria-label="ページ一覧"><a class="home" href="flow-index.html">目次</a><a href="flow0-overview.html">0 全体図</a><a href="flow1-deep-vet.html">1 Deep獣医師</a><a href="flow2-broad-vet.html">2 Broad獣医師</a><a href="flow3-farmer.html">3 農家</a><a href="flow4-coordinator.html">4 Coordinator</a><a href="flow5-osaka.html" aria-current="page">5 中央拠点（大阪）</a><a href="flow6-miyazaki.html">6 宮崎大学</a><a href="consult-economy.html">相談：成績を円に</a><a class="gloss" href="flow-glossary.html">ことば表</a></nav>
+  <h1>フロー5　中央拠点（大阪公立大学）</h1>
+  <p class="sub">大阪の担当者が、採材計画とキットづくりから、検体の受け取り・測定・保存、外の施設とのやりとり、結果の取り込みまでを1枚で見る図です。</p>
+</header>
+<section class="panel pic-first" aria-labelledby="h-pic">
+  <h2 id="h-pic">絵で見る流れ（まずここだけ）</h2>
+  <p class="sub">受け取ってから、結果を返すまで。くわしい手順と数は、この下にあります。</p>
+  <div class="pstrip"><div class="pstep central"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-box"/></svg><div class="pt">箱が届く</div><div class="ps">Coordinator・Broadの獣医師から。アプリで受け取り登録</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-tube"/></svg><div class="pt">血清を分ける</div><div class="ps">1本はNOSAIへ（月1回程度）、残りは−80℃で保存</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-lab"/></svg><div class="pt">大阪で測る</div><div class="ps">初乳のBrix・血清TP、便の抽出（核酸は宮崎へ）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">4</span><svg class="pic" aria-hidden="true"><use href="#p-plate"/></svg><div class="pt">外の検査結果を受け取る</div><div class="ps">NOSAI（血液生化学）、全酪連（飼料）、宮崎（qPCR）</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep app"><span class="pn">5</span><svg class="pic" aria-hidden="true"><use href="#p-profile"/></svg><div class="pt">プロファイルを作る</div><div class="ps">アプリが集計。コメントは大阪の獣医師</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep broad"><span class="pn">6</span><svg class="pic" aria-hidden="true"><use href="#p-handshake"/></svg><div class="pt">センターの獣医師として相談にのる</div><div class="ps">担当の獣医師と、くわしく調べるか・どう直すか</div></div></div><h3 style="margin:10px 0 0;font-size:.98rem">年度の初めに</h3><div class="pstrip"><div class="pstep central"><span class="pn">1</span><svg class="pic" aria-hidden="true"><use href="#p-qr"/></svg><div class="pt">QRつきの容器をそろえる</div><div class="ps">容器1本ごとに同じ型。帯の色で区別</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">2</span><svg class="pic" aria-hidden="true"><use href="#p-box"/></svg><div class="pt">キットを作って送る</div><div class="ps">Coordinatorに獣医師の分をまとめて。Broadは追加のときだけ</div></div><div class="parrow" aria-hidden="true">→</div><div class="pstep central"><span class="pn">3</span><svg class="pic" aria-hidden="true"><use href="#p-calendar"/></svg><div class="pt">季節ごとの採材計画</div><div class="ps">どの農場が、どの季節か（農場×季節）</div></div></div>
+  <p class="sub" style="margin-top:8px"><b>人手に頼らない</b>：受付・照合・集計・結果の作成と返却は、アプリが受け持ちます（拠点の人手作業をなくすのが、この事業の土台＝3Mを減らす、の一部です）。重点調査農場では、アプリの記録と牛個体識別情報を照合して、生まれてすぐの記録漏れを確かめます。</p>
+</section>
+
+<section class="panel">
+  <p class="lead">大阪は、事業全体の<b>とりまとめ役</b>です。キットを作って配り、届いた検体を仕分けて測り、NOSAI・宮崎・全酪連とやりとりして、結果をアプリに集めます。</p>
+  <h2 style="margin-top:12px">担当と主な仕事</h2>
+  <div class="roles" style="margin-top:8px">
+    <div class="role central"><div class="no">教員</div><h3>とりまとめ・判断</h3><ul><li>採材計画を獣医師と作る・見直す</li><li>協力獣医師への説明、補助員・学生への教育</li><li>飼料の化学分析の承認、R&amp;Dの計画と判断</li><li><a class="term" href="#g-profile">Farm Profile</a>（農場ごとの結果のまとめ）の解釈、<a class="term" href="#g-season">Season</a>（季節）のまとめ、報告書・委員会</li></ul></div>
+    <div class="role central"><div class="no">補助員1</div><h3>キット・事務</h3><ul><li>発注・経理・外の施設とのやりとり</li><li>キットの発行・ラベル印刷・補充</li><li>NOSAIの依頼書と結果の取り込み、飼料の分析状況</li><li>獣医師・農家からの問い合わせ、貸与遠心機の設定</li></ul></div>
+    <div class="role central"><div class="no">補助員2</div><h3>検体・測定</h3><ul><li>血清の受け取り・切り離し・振り分け（取り違えの責任者）</li><li>糞便の処理、qPCR用の前処理と抽出</li><li>Brix・TP、デンプン（FSC）、2028年度のSRID</li><li><a class="term" href="#g-broad">Broad</a>の簡単な採材計画、<a class="term" href="#g-envkit">環境キット</a>の準備、<a class="term" href="#g-rd">R&amp;D</a>の基礎</li></ul></div>
+    <div class="role central"><div class="no">学生（卒論研究として）</div><h3>手順どおりの作業</h3><ul><li>キットを作る、箱の受け取りと記録</li><li>糞便のDM、デンプン用の乾燥・粉砕</li><li>環境キットの返却の受け取り・データの同期</li><li>冷凍庫の温度記録・在庫の数え、<a class="term" href="#g-biobank">Biobank</a>（−80℃の保存庫）の整理</li><li>判断はしない（補助員2が見る）</li></ul></div>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-gl">
+<h2 id="h-gl">ことば表（このページで使うことば）</h2>
+<p class="sub">アプリやマニュアルは英語のことばをそのまま使います。ここでは、それぞれに<b>日本語の言い方</b>を決めました。本文では「英語（日本語）」の順で、最初に出たところに添えています。全部のことばは <a href="flow-glossary.html" style="color:inherit">共通のことば表</a> にあります。</p>
+<button class="fbtn" id="gltoggle" type="button" aria-expanded="true" aria-controls="glgrid">ことば表を閉じる</button>
+<div class="glgrid" id="glgrid">
+<div class="glgroup"><h3>事業・季節のことば</h3><ul class="gl">
+<li id="g-deep"><b>Deep</b><i>重点調査農場</i><span>くわしく測る50農場。3年間登録して、牛個体識別情報（大阪が家畜改良センターから一括で取り寄せる）で270日齢までの死亡を追う（聞き取りはしない）。</span></li>
+<li id="g-broad"><b>Broad</b><i>実証協力農場</i><span>ふだんの診療でできる簡単なことだけを集める農場。年50農場（目標）（100まで受け入れ）。</span></li>
+<li id="g-season"><b>Season</b><i>季節</i><span>春3〜5月（採材は4〜5月）・夏6〜8月・秋9〜11月・冬12〜2月。3月は測定・QC・準備。</span></li>
+<li id="g-fs"><b>farm-season</b><i>農場×季節</i><span>1つの農場が、1つの季節にくわしく測ること。50農場で100 farm-season（年度30／35／35）。</span></li>
+<li id="g-event"><b>Event</b><i>病気のときの採材</i><span>呼吸器の初診のNPSと、下痢の便。季節に関係なく1年中。Broadでは Clinical Event とも言う。</span></li>
+<li id="g-rd"><b>R&D</b><i>研究開発</i><span>農場が関わるものは2028・2029年度だけ。対象の農場には中央が知らせる。</span></li>
+<li id="g-reference"><b>Reference</b><i>ものさし作りの検体</i><span>標準（ものさし）を作るために別に測る検体。アプリが受け取ったときに選ぶ。</span></li>
+<li id="g-inactive"><b>Inactive年</b><i>くわしく測らない年</i><span>Deepで、くわしく測る季節がない年度。病気のときの採材と記録は続ける。</span></li>
+</ul></div>
+<div class="glgroup"><h3>牛の段階（Stage）</h3><ul class="gl">
+<li id="g-stage"><b>Stage</b><i>牛の段階</i><span>母牛はM1・M2、子牛はP0・P2・P4（P1は採らない、P3は2028年度のR&Dだけ）。アプリが自動で決める。</span></li>
+<li id="g-m1"><b>M1</b><i>分娩前の母牛</i><span>分娩の8〜60日前。</span></li>
+<li id="g-m2"><b>M2</b><i>分娩後の母牛</i><span>分娩後8〜60日。</span></li>
+<li id="g-p0"><b>P0</b><i>生まれて2〜7日の子牛</i><span>初乳を飲んだあと。出生日が分からない子牛は選ばない。</span></li>
+<li id="g-p2"><b>P2</b><i>哺乳後期の子牛</i><span>30日齢から、離乳を始める前まで。</span></li>
+<li id="g-p3"><b>P3</b><i>離乳のころの子牛</i><span>離乳を始めてから、離乳が終わって14日まで。2028年度のR&Dの農場だけ。</span></li>
+<li id="g-p4"><b>P4</b><i>離乳後の子牛</i><span>離乳が終わって15〜60日。採血と健常便。</span></li>
+</ul></div>
+<div class="glgroup"><h3>検体・測るもの</h3><ul class="gl">
+<li id="g-nps"><b>NPS</b><i>鼻の奥の拭い液</i><span>鼻咽頭スワブ。鼻から咽頭まで綿棒を入れて拭う。呼吸器の病原体を調べる。</span></li>
+<li id="g-wts"><b>WTS</b><i>水槽の拭い液</i><span>共有の水槽の内側を拭う。Deepは1 Zoneに1本・1季節に最大4本、Broad B1は1農場1本。</span></li>
+<li id="g-basic"><b>Basic-12</b><i>血液生化学の12項目</i><span>NOSAIで測る。M1・M2・P2・P4の血清。</span></li>
+<li id="g-vit"><b>ビタミンA/E</b><i>ビタミンAとE</i><span>M1とP4の血清で測る。Broadは2人で決めたときだけ。</span></li>
+<li id="g-brix"><b>Brix・TP</b><i>初乳の濃さと血清の総たんぱく</i><span>P0の子牛の血清と初乳で、大阪が測る。</span></li>
+<li id="g-fsc"><b>便スコア・FSC</b><i>便のゆるさ（0〜3）と便のデンプン</i><span>2・3は下痢。FSC（デンプン）はP4の健常便で大阪が測る。</span></li>
+<li id="g-dm"><b>DM</b><i>便の乾物（水分を除いた割合）</i><span>105℃で乾かして測る。大阪。</span></li>
+<li id="g-igg"><b>IgG・SRID</b><i>血清・初乳の免疫（IgG）の量と、その測り方</i><span>2028年度に大阪で測る（Referenceの血清・初乳）。</span></li>
+<li id="g-qpcr"><b>qPCR</b><i>病原体の遺伝子を増やして数える検査</i><span>宮崎で行う。NPS・WTS・下痢の便。</span></li>
+<li id="g-nir"><b>NIR・化学分析</b><i>飼料の分析の2つの方法</i><span>ふだんはNIR（近赤外）。NIRで測れないときだけ、教員が化学分析を承認。</span></li>
+<li id="g-feck"><b>Fe・CK</b><i>鉄と筋肉の酵素</i><span>ふだんは測らない。必要なときだけ保存用のB1で足す。</span></li>
+<li id="g-nucleic"><b>核酸</b><i>DNA・RNA</i><span>抽出してqPCRにかける。糞便は大阪で抽出して宮崎へ。</span></li>
+</ul></div>
+<div class="glgroup"><h3>容器・道具・入れ物</h3><ul class="gl">
+<li id="g-qr"><b>QR</b><i>容器やカードのQRコード</i><span>すべての作業はQRを読むところから始まる。Broad B1のWTSだけ手書きのID。</span></li>
+<li id="g-band"><b>緑の帯／橙の帯</b><i>健常用／診療牛OK</i><span>緑＝健康な牛だけ。橙＝診療する牛に使える。母牛の採血管とWTSは帯なし。</span></li>
+<li id="g-bundle"><b>束（分注の束）</b><i>小さな管3本のセット</i><span>採血管と同じ番号。A1（測定用）・B1（保存・再測定用）・C1（研究用）。</span></li>
+<li id="g-conical"><b>遠沈管</b><i>先のとがった筒</i><span>採便25 mL、NPS 15 mL、WTS 50 mL。</span></li>
+<li id="g-zone"><b>Zone</b><i>牛舎の区画</i><span>環境を測るまとまり。センサーを置くのは、子牛のZone最大3＋分娩前の母牛のZone 1まで。</span></li>
+<li id="g-zonecard"><b>ZoneのQRカード</b><i>区画に貼るカード</i><span>中央が印刷してラミネート。Deepだけ（Broadは使わない）。</span></li>
+<li id="g-switchbot"><b>SwitchBot</b><i>温度・湿度・CO₂のセンサー</i><span>メッシュのかごに入れて柱に留める。3〜7日置く。</span></li>
+<li id="g-envkit"><b>環境キット</b><i>SwitchBotと道具の箱</i><span>SwitchBot最大4台・レーザー距離計・結束バンド・消毒シート・次の農場への送り状。6キットが農場から農場へ回る。</span></li>
+<li id="g-colokit"><b>初乳キット</b><i>初乳を少し凍らせる袋</i><span>手で初乳を与える農場だけに置く。農家が入れて冷凍。</span></li>
+<li id="g-feedlot"><b>FeedLot・Ration</b><i>同じロットの飼料・与える飼料の組み合わせ</i><span>同じFeedLotは送り直さない。</span></li>
+<li id="g-masterkit"><b>Annual Master Kit</b><i>1年分のキットのまとまり</i><span>年度初めに大阪からCoordinatorへ。農場別・季節別＋予備。</span></li>
+<li id="g-reserve"><b>Common reserve</b><i>予備のキット</i><span>こわれたときなどに使う。足りないときは中央拠点に頼む。</span></li>
+<li id="g-maglead"><b>magLEAD</b><i>核酸を抽出する機器</i><span>宮崎（NPS・WTS）と大阪（糞便）にある。</span></li>
+<li id="g-npsabc"><b>NPS-A・B・C／WTS-A・B</b><i>分けた液の名前</i><span>A＝抽出用、B＝宿主応答・保存、C＝Biobank。B・Cは季節の終わりに大阪へ。</span></li>
+</ul></div>
+<div class="glgroup"><h3>人・場所・アプリ</h3><ul class="gl">
+<li id="g-coord"><b>Coordinator</b><i>地域のまとめ役</i><span>Deepの協力獣医師。キットを渡し、冷凍の検体をまとめて月1回まで大阪へ送る（NPS・WTSは宮崎へ）。BRDC Frontiersの会員が担う（1人4〜5農場）。Broadにはいない。</span></li>
+<li id="g-centervet"><b>センター獣医師</b><i>Profileを見る獣医師</i><span>Center Reviewをして、Initial Farm ProfileとAdd-on Reportを作る。</span></li>
+<li id="g-miyazaki"><b>宮崎大学</b><i>qPCRの拠点</i><span>NPS・WTSの送り先（事業の送り状で送る）。</span></li>
+<li id="g-nosai"><b>NOSAI・全酪連</b><i>血液の検査センター・飼料の分析センター</i><span>血液は大阪から送る（現場の作業なし）。飼料は農場から直送。</span></li>
+<li id="g-meiji"><b>明治大学</b><i>データの確認（QC）と解析</i><span>270日齢の成績との関係など。</span></li>
+<li id="g-committee"><b>推進・評価委員会</b><i>年1回の会議（2029年度は2回）</i><span>進み具合と目標の達成を確かめる。</span></li>
+<li id="g-app"><b>アプリ（Farm Profile Platform）</b><i>採材の記録と結果が集まるスマホのアプリ</i><span>W-02などは画面の番号。</span></li>
+<li id="g-profile"><b>Farm Profile</b><i>農場ごとの結果のまとめ</i><span>季節の結果をまとめて、獣医師・農家に返す。</span></li>
+<li id="g-addon"><b>Add-on</b><i>追加の検査</i><span>A1〜A6。必要なときだけ、2人（依頼獣医師＋センター獣医師）で決めてくわしく測る。アプリは自動で決めない。</span></li>
+<li id="g-flag"><b>flag</b><i>印</i><span>問題のある検体も捨てずに送り、アプリが印を付ける。</span></li>
+<li id="g-nxx"><b>N-xx</b><i>数の基準書の番号</i><span>「00_基準書_数・規模」の番号。数がちがうときはこちらが正しい。</span></li>
+<li id="g-time"><b>2時間・4時間・30日</b><i>目標と期限</i><span>採血から血清を分けるまで2時間以内が目標（2〜4時間は黄、4時間超は橙）。採血から30日以内に大阪に着くように。超えても捨てない。</span></li>
+<li id="g-temp"><b>−20℃／−80℃</b><i>短い置き場／長い保存</i><span>−20℃＝現場・Coordinator・大阪の短い置き場。−80℃＝Biobank・研究用（測定待ちには使わない）。</span></li>
+<li id="g-biobank"><b>Biobank</b><i>−80℃の保存庫</i><span>大阪にある。保存用の検体を長く保管する。</span></li>
+<li id="g-qc"><b>QC</b><i>結果の確認</i><span>品質管理。宮崎は教員がランごとに、明治はデータ全体を確認。</span></li>
+<li id="g-dec1"><b>12月1日</b><i>予約枠を開放する日</i><span>病気のときのqPCRの予約枠（Deep・Broad）で使わなかった分を、共通の枠に回す。アプリが行う。</span></li>
+<li id="g-270"><b>270日齢までの成績</b><i>最終の成果指標</i><span>50農場の子牛の、270日齢までの成績。何を指標にするかは、これから決める。3年間追う。</span></li>
+</ul></div>
+</div></section>
+
+<section class="panel" aria-labelledby="h-year">
+  <h2 id="h-year">1年の流れ</h2>
+  <div class="steps">
+    <div class="step central"><b>年度初め（4〜5月）</b><span>キットを作り、<a class="term" href="#g-deep">Deep</a>は<a class="term" href="#g-coord">Coordinator</a>（地域のまとめ役）へまとめて送る。環境キットを点検して最初の農場へ</span></div><span class="arr" aria-hidden="true">→</span>
+    <div class="step central"><b>季節のあいだ</b><span>箱を受け取って仕分け・測定。NOSAIへは月1回程度。補充を送る</span></div><span class="arr" aria-hidden="true">→</span>
+    <div class="step central"><b>季節の終わり</b><span>宮崎から保存用が届く。6領域の速報（季節のまとめ）</span></div><span class="arr" aria-hidden="true">→</span>
+    <div class="step central"><b>3月</b><span>冬（12〜2月）の検体の測定・QC。次の春の準備</span></div><span class="arr" aria-hidden="true">→</span>
+    <div class="step central"><b>年度末</b><span>棚卸し・ラックの照合。環境キットを並べて点検。報告書・委員会の資料</span></div>
+  </div>
+  <p class="sub" style="margin-top:8px"><span class="tag t-rd">R&amp;D</span> 2027年度（予定）：アッセイを作るための新鮮血 約30頭（大阪が別の研究で入っている農場から、各1回）。2028年度：P3（離乳のころ）の検体、同じ子牛から4回の採便、<a class="term" href="#g-igg">IgG（SRID）</a>、EDTA管の全血からDNAを抽出（予定。残りはDNAバンク）。2029年度は12月から新しい採材をしないで、まとめ・解析に使います。</p>
+</section>
+<section class="panel" aria-labelledby="h-map">
+  <h2 id="h-map">受け取ってから先の流れ</h2>
+  <p class="sub">検体の種類ごとに1行です。ボタンを押すと、その行だけが濃くなります。図は横にスクロールできます。</p>
+  <div class="mapbar" role="group" aria-label="表示する行">
+    <span class="gl">見る行</span>
+    <button class="fbtn" data-k="all" aria-pressed="true">全部</button>
+    <button class="fbtn" data-k="blood" aria-pressed="false">血清</button>
+    <button class="fbtn" data-k="colo" aria-pressed="false">02 Brix・TP・IgG</button>
+    <button class="fbtn" data-k="fecal" aria-pressed="false">糞便</button>
+    <button class="fbtn" data-k="nps" aria-pressed="false">NPS・WTS</button>
+    <button class="fbtn" data-k="feed" aria-pressed="false">飼料</button>
+    <button class="fbtn" data-k="env" aria-pressed="false">環境</button>
+    <button class="fbtn" data-k="kit" aria-pressed="false">キット</button>
+  </div>
+  <div class="mapwrap">
+  <svg class="map m5" viewBox="0 0 1240 800" role="img" aria-label="大阪で受け取ってから先の流れ図">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+<g class="rl" data-k="blood"><text class="rowl" x="20" y="42">血清（01 母牛・03 子牛）</text></g>
+<g class="rl" data-k="colo"><text class="rowl" x="20" y="152">子牛の血清・初乳（02）</text></g>
+<g class="rl" data-k="fecal"><text class="rowl" x="20" y="262">糞便（03・05）</text></g>
+<g class="rl" data-k="nps"><text class="rowl" x="20" y="372">NPS・WTSの保存用（04・06）</text></g>
+<g class="rl" data-k="feed"><text class="rowl" x="20" y="482">飼料（01・03）</text></g>
+<g class="rl" data-k="env"><text class="rowl" x="20" y="592">環境（06）</text></g>
+<g class="rl" data-k="kit"><text class="rowl" x="20" y="702">キット</text></g>
+<g class="ed" data-k="blood"><path d="M175,87.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="blood"><path d="M350,87.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="blood"><path d="M525,87.0 H543" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="blood"><path d="M700,87.0 H718" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="colo"><path d="M175,197.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="colo"><path d="M350,197.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="colo"><path d="M525,197.0 H543" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="colo"><path d="M700,197.0 H718" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="fecal"><path d="M175,307.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="fecal"><path d="M350,307.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="fecal"><path d="M525,307.0 H543" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="fecal"><path d="M700,307.0 H718" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="fecal"><path d="M875,307.0 H893" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="feed"><path d="M175,527.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="feed"><path d="M350,527.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="feed"><path d="M525,527.0 H543" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="env"><path d="M175,637.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="env"><path d="M350,637.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="env"><path d="M700,637.0 H718" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="kit"><path d="M175,747.0 H193" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="kit"><path d="M350,747.0 H368" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="kit"><path d="M525,747.0 H543" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="kit"><path d="M700,747.0 H718" marker-end="url(#ah)"/></g>
+<g class="ed" data-k="blood"><path d="M447.5,124 V128 Q447.5,134 453.5,134 H1068" marker-end="url(#ah)"/><text x="798.75" y="148" text-anchor="middle">B1・C1</text></g>
+<g class="ed" data-k="colo"><path d="M272.5,234 V238 Q272.5,244 278.5,244 H1068" marker-end="url(#ah)"/><text x="711.25" y="258" text-anchor="middle">Reference以外</text></g>
+<g class="ed" data-k="fecal"><path d="M447.5,344 V348 Q447.5,354 453.5,354 H1068" marker-end="url(#ah)"/><text x="798.75" y="368" text-anchor="middle">残り</text></g>
+<g class="ed" data-k="nps"><path d="M350,417.0 H1068" marker-end="url(#ah)"/><text x="710.0" y="411.0" text-anchor="middle">NPS-B・NPS-C・WTS-B</text></g>
+<g class="nd deep" data-k="blood"><rect x="20" y="50" width="155" height="74" rx="8"/><foreignObject x="20" y="50" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>届く</b><span>Coordinator・Broad獣医師の箱。凍ったまま</span></div></foreignObject></g>
+<g class="nd central" data-k="blood"><rect x="195" y="50" width="155" height="74" rx="8"/><foreignObject x="195" y="50" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>受け取る</b><span>束のQRを読む。30日超・溶けた疑いは印（捨てない）</span></div></foreignObject></g>
+<g class="nd central" data-k="blood"><rect x="370" y="50" width="155" height="74" rx="8"/><foreignObject x="370" y="50" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>切り離して分ける</b><span>溶かさずに、文字の検体番号で</span></div></foreignObject></g>
+<g class="nd other" data-k="blood"><rect x="545" y="50" width="155" height="74" rx="8"/><foreignObject x="545" y="50" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>A1をNOSAIへ</b><span>大阪に着いてから30日以内（月1回程度）</span></div></foreignObject></g>
+<g class="nd app" data-k="blood"><rect x="720" y="50" width="155" height="74" rx="8"/><foreignObject x="720" y="50" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>結果を取り込む</b><span>数値のExcelを検体番号で照合</span></div></foreignObject></g>
+<g class="nd deep" data-k="colo"><rect x="20" y="160" width="155" height="74" rx="8"/><foreignObject x="20" y="160" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>届く</b><span>血清と同じ箱（初乳は別の袋）</span></div></foreignObject></g>
+<g class="nd central" data-k="colo"><rect x="195" y="160" width="155" height="74" rx="8"/><foreignObject x="195" y="160" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>受け取る</b><span>アプリがReferenceを自動で選ぶ（結果は見ない）</span></div></foreignObject></g>
+<g class="nd central" data-k="colo"><rect x="370" y="160" width="155" height="74" rx="8"/><foreignObject x="370" y="160" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>Brix・TPを測る</b><span>A1を1回だけ溶かす。農場名は見せない</span></div></foreignObject></g>
+<g class="nd central" data-k="colo"><rect x="545" y="160" width="155" height="74" rx="8"/><foreignObject x="545" y="160" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>ReferenceのC1</b><span>−80℃で測定待ち</span></div></foreignObject></g>
+<g class="nd central" data-k="colo"><rect x="720" y="160" width="155" height="74" rx="8"/><foreignObject x="720" y="160" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>IgGを測る（SRID）</b><span>2028年度に大阪で。血清・初乳</span></div></foreignObject></g>
+<g class="nd deep" data-k="fecal"><rect x="20" y="270" width="155" height="74" rx="8"/><foreignObject x="20" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>届く</b><span>遠沈管。血清とは別の袋</span></div></foreignObject></g>
+<g class="nd central" data-k="fecal"><rect x="195" y="270" width="155" height="74" rx="8"/><foreignObject x="195" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>受け取る</b><span>QRを読む。−20℃で短く待つ</span></div></foreignObject></g>
+<g class="nd central" data-k="fecal"><rect x="370" y="270" width="155" height="74" rx="8"/><foreignObject x="370" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>1回だけ溶かして分ける</b><span>DM（乾物、105℃）・デンプン（FSC）・qPCR用</span></div></foreignObject></g>
+<g class="nd central" data-k="fecal"><rect x="545" y="270" width="155" height="74" rx="8"/><foreignObject x="545" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>qPCR用の前処理</b><span>ISOFECAL＋BHA-6</span></div></foreignObject></g>
+<g class="nd central" data-k="fecal"><rect x="720" y="270" width="155" height="74" rx="8"/><foreignObject x="720" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>核酸を抽出</b><span>大阪のmagLEAD</span></div></foreignObject></g>
+<g class="nd other" data-k="fecal"><rect x="895" y="270" width="155" height="74" rx="8"/><foreignObject x="895" y="270" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>宮崎へ送る</b><span>核酸をドライアイスで。一覧を同封</span></div></foreignObject></g>
+<g class="nd other" data-k="nps"><rect x="20" y="380" width="155" height="74" rx="8"/><foreignObject x="20" y="380" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>宮崎大学から</b><span>Seasonの終わりに、ドライアイスで</span></div></foreignObject></g>
+<g class="nd central" data-k="nps"><rect x="195" y="380" width="155" height="74" rx="8"/><foreignObject x="195" y="380" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>受け取る</b><span>QRを読む</span></div></foreignObject></g>
+<g class="nd other" data-k="feed"><rect x="20" y="490" width="155" height="74" rx="8"/><foreignObject x="20" y="490" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>全酪連から連絡</b><span>到着・NIR対象外などの知らせ</span></div></foreignObject></g>
+<g class="nd central" data-k="feed"><rect x="195" y="490" width="155" height="74" rx="8"/><foreignObject x="195" y="490" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>化学分析を承認</b><span>NIRで測れないときだけ。理由を記録</span></div></foreignObject></g>
+<g class="nd app" data-k="feed"><rect x="370" y="490" width="155" height="74" rx="8"/><foreignObject x="370" y="490" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>結果を取り込む</b><span>XML・CSV・PDF。袋の番号で照合</span></div></foreignObject></g>
+<g class="nd central" data-k="feed"><rect x="545" y="490" width="155" height="74" rx="8"/><foreignObject x="545" y="490" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>請求書を確認</b><span>送料も分析料金と一緒に来る</span></div></foreignObject></g>
+<g class="nd deep" data-k="env"><rect x="20" y="600" width="155" height="74" rx="8"/><foreignObject x="20" y="600" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>年度末に戻る</b><span>6キット・24台がそろう</span></div></foreignObject></g>
+<g class="nd central" data-k="env"><rect x="195" y="600" width="155" height="74" rx="8"/><foreignObject x="195" y="600" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>並べて点検</b><span>値のずれ・消毒・電池交換</span></div></foreignObject></g>
+<g class="nd central" data-k="env"><rect x="370" y="600" width="155" height="74" rx="8"/><foreignObject x="370" y="600" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>最初の農場へ</b><span>年度初め。あとは農場から農場へ</span></div></foreignObject></g>
+<g class="nd app" data-k="env"><rect x="545" y="600" width="155" height="74" rx="8"/><foreignObject x="545" y="600" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>データを取り込む</b><span>事業用アカウントのCSV。設置〜回収で切る</span></div></foreignObject></g>
+<g class="nd central" data-k="env"><rect x="720" y="600" width="155" height="74" rx="8"/><foreignObject x="720" y="600" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>知らせる</b><span>7日を超えた・同期していないキット</span></div></foreignObject></g>
+<g class="nd central" data-k="kit"><rect x="20" y="710" width="155" height="74" rx="8"/><foreignObject x="20" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>採材計画</b><span>月別の分娩頭数で季節を決める。毎季節見直す</span></div></foreignObject></g>
+<g class="nd central" data-k="kit"><rect x="195" y="710" width="155" height="74" rx="8"/><foreignObject x="195" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>IDを発行・印刷</b><span>帯（緑・橙）入りのラベル、ZoneのQRカード</span></div></foreignObject></g>
+<g class="nd central" data-k="kit"><rect x="370" y="710" width="155" height="74" rx="8"/><foreignObject x="370" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>貼る・束ねる・照合</b><span>採血管と同じ番号の束を1袋に</span></div></foreignObject></g>
+<g class="nd deep" data-k="kit"><rect x="545" y="710" width="155" height="74" rx="8"/><foreignObject x="545" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>送る</b><span>Deep＝年度初めにCoordinatorへ／Broad＝Add-onのとき</span></div></foreignObject></g>
+<g class="nd central" data-k="kit"><rect x="720" y="710" width="155" height="74" rx="8"/><foreignObject x="720" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>在庫を見て補充</b><span>計画を超えて追加しない</span></div></foreignObject></g>
+<g class="nd central" data-k="kit"><rect x="895" y="710" width="155" height="74" rx="8"/><foreignObject x="895" y="710" width="155" height="74"><div xmlns="http://www.w3.org/1999/xhtml"><b>貸与遠心機</b><span>貸し出し・返却の点検</span></div></foreignObject></g>
+<g class="nd central" data-k="blood colo fecal nps"><rect x="1070" y="50" width="155" height="404" rx="10" style="stroke-width:3"/><foreignObject x="1070" y="50" width="155" height="404"><div xmlns="http://www.w3.org/1999/xhtml"><b>−80℃ Biobank</b><span>保管場所をアプリに登録</span><span>Routineの測定待ちには使わない</span><span>週1回、温度の記録と在庫の数え</span></div></foreignObject></g>
+</svg>
+  </div>
+  <h3 style="margin-top:14px">血清の束が届いたら</h3>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 280" role="img" aria-label="血清の束が届いたら、束のQRを読み、溶かさずに切り離して、A1はNOSAIへ（大阪に着いてから30日以内）、B1は−20℃の保存・再測定用、C1は−80℃のReference・R&D用に分ける。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(30,30)"><text class="name" x="0" y="0" text-anchor="start" >① 届く・受け取る</text><path class="box-deep" d="M10,40 h150 v100 h-150 Z"/><path class="box-lid" d="M10,40 l20,-16 h150 l-20,16 Z"/><path class="tube" d="M30,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M31,83 h8 v18 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="28.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="35.0" y="120" text-anchor="middle"></text><path class="tube" d="M48,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M49,87 h8 v14 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="46.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="53.0" y="120" text-anchor="middle"></text><path class="tube" d="M66,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M67,91 h8 v10 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="64.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="71.0" y="120" text-anchor="middle"></text><path class="tube" d="M92,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M93,83 h8 v18 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="90.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="97.0" y="120" text-anchor="middle"></text><path class="tube" d="M110,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M111,87 h8 v14 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="108.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="115.0" y="120" text-anchor="middle"></text><path class="tube" d="M128,66 h10 v35 a5.0,5 0 0 1 -10,0 Z"/><path class="f-serum" d="M129,91 h8 v10 a4.0,4 0 0 1 -8,0 Z"/><rect class="cap" x="126.5" y="59" width="13" height="8" rx="1.5"/><text class="lab" x="133.0" y="120" text-anchor="middle"></text><text class="note" x="85" y="164" text-anchor="middle" >凍ったまま。束のQRを読む</text><text class="note" x="85" y="180" text-anchor="middle" >30日超・溶けた疑いは印（捨てない）</text></g><line class="arr" x1="214" y1="110" x2="246" y2="110" marker-end="url(#fa)"/><g transform="translate(256,30)"><text class="name" x="0" y="0" text-anchor="start" >② 切り離して分ける</text><path class="tube" d="M30,50 h22 v65 a11.0,5 0 0 1 -22,0 Z"/><path class="f-serum" d="M31,63 h20 v52 a10.0,4 0 0 1 -20,0 Z"/><rect class="cap" x="28.5" y="43" width="25" height="8" rx="1.5"/><text class="lab" x="41.0" y="134" text-anchor="middle">A1</text><path class="tube" d="M94,50 h22 v65 a11.0,5 0 0 1 -22,0 Z"/><path class="f-serum" d="M95,75 h20 v40 a10.0,4 0 0 1 -20,0 Z"/><rect class="cap" x="92.5" y="43" width="25" height="8" rx="1.5"/><text class="lab" x="105.0" y="134" text-anchor="middle">B1</text><path class="tube" d="M158,50 h22 v65 a11.0,5 0 0 1 -22,0 Z"/><path class="f-serum" d="M159,93 h20 v22 a10.0,4 0 0 1 -20,0 Z"/><rect class="cap" x="156.5" y="43" width="25" height="8" rx="1.5"/><text class="lab" x="169.0" y="134" text-anchor="middle">C1</text><text class="note" x="0" y="164" text-anchor="start" >溶かさずに、文字の検体番号で</text><text class="note" x="0" y="180" text-anchor="start" >取り違えは補助員2の責任</text></g><line class="arr" x1="470" y1="80" x2="520" y2="60" marker-end="url(#fa)"/><line class="arr" x1="470" y1="110" x2="520" y2="120" marker-end="url(#fa)"/><line class="arr" x1="470" y1="140" x2="520" y2="180" marker-end="url(#fa)"/><g transform="translate(530,30)"><rect class="st-other" x="0" y="10" width="440" height="46" rx="8"/><text class="stname" x="12" y="30" text-anchor="start" >A1 → NOSAI（Basic-12、ビタミンA/E）</text><text class="note" x="12" y="48" text-anchor="start" >大阪に着いてから30日以内に送る（月1回程度）。採血から測定まで約90日以内</text><rect class="st-deep" x="0" y="72" width="440" height="46" rx="8"/><text class="stname" x="12" y="92" text-anchor="start" >B1 → −20℃ 保存・再測定用</text><text class="note" x="12" y="110" text-anchor="start" >Fe・CKをあとから足すときもB1から。溶かしたA1は使わない</text><rect class="st-central" x="0" y="134" width="440" height="46" rx="8"/><text class="stname" x="12" y="154" text-anchor="start" >C1 → −80℃ Biobank（Reference・R&D）</text><text class="note" x="12" y="172" text-anchor="start" >Referenceは受け取ったときにアプリが選ぶ。結果を見てから選び直さない</text></g><text class="note" x="30" y="262" text-anchor="start" >生化学のTPと屈折計のTPは別の項目として取り込む。由来のちがう値を上書きしない。</text></svg></figure>
+  <p class="sub" style="margin-top:8px">NOSAIに頼む項目：01のM1はBasic-12＋ビタミンA/E、M2はBasic-12。03のP2はBasic-12、P4はBasic-12＋ビタミンA/E。<a class="term" href="#g-feck">FeとCK</a>は必要なときだけ（あとから保存用のB1で足し、次の月の箱に入れる）。生化学のTPと屈折計のTPは別の項目として取り込みます。</p>
+</section>
+<section class="panel" aria-labelledby="h-kit">
+  <h2 id="h-kit">キットを作る流れ</h2>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 250" role="img" aria-label="キットを作る流れ：採材計画からIDを発行してラベルを印刷し、採血管と同じ番号の束を1袋にして照合し、農場別・季節別に箱に入れ、年度初めにCoordinatorへ送る。Broadは Add-on が決まってから送る。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(20,30)"><rect class="st-central" x="0" y="0" width="180" height="150" rx="10"/><g transform="translate(36,8)"><rect class="card" x="20" y="10" width="70" height="60" rx="5"/><line class="mesh" x1="30" y1="28" x2="80" y2="28"/><line class="mesh" x1="30" y1="42" x2="80" y2="42"/><line class="mesh" x1="30" y1="56" x2="66" y2="56"/></g><text class="stname" x="90" y="112" text-anchor="middle" >① 採材計画</text><text class="note" x="90" y="130" text-anchor="middle" >農場×季節×段階の目標数</text></g><line class="arr" x1="202" y1="105" x2="214" y2="105" marker-end="url(#fa)"/><g transform="translate(216,30)"><rect class="st-central" x="0" y="0" width="180" height="150" rx="10"/><g transform="translate(36,8)"><rect x="26" y="14" width="24" height="24" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="27.0" y="15.0" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="15.0" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="15.0" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="19.8" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="19.8" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="24.6" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="24.6" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="24.6" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="15.0" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="24.6" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="34.2" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="34.2" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="34.2" width="3.6" height="3.6" fill="#111"/><rect x="41.4" y="29.4" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="29.4" width="3.6" height="3.6" fill="#111"/><rect x="41.4" y="19.8" width="3.6" height="3.6" fill="#111"/><rect class="f-green" x="58" y="18" width="30" height="8" rx="2"/><rect class="f-orange" x="58" y="32" width="30" height="8" rx="2"/><rect x="26" y="44" width="24" height="24" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="27.0" y="45.0" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="45.0" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="45.0" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="49.8" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="49.8" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="54.6" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="54.6" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="54.6" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="45.0" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="54.6" width="3.6" height="3.6" fill="#111"/><rect x="27.0" y="64.2" width="3.6" height="3.6" fill="#111"/><rect x="36.6" y="64.2" width="3.6" height="3.6" fill="#111"/><rect x="46.2" y="64.2" width="3.6" height="3.6" fill="#111"/><rect x="41.4" y="59.4" width="3.6" height="3.6" fill="#111"/><rect x="31.8" y="59.4" width="3.6" height="3.6" fill="#111"/><rect x="41.4" y="49.8" width="3.6" height="3.6" fill="#111"/></g><text class="stname" x="90" y="112" text-anchor="middle" >② IDを発行・印刷</text><text class="note" x="90" y="130" text-anchor="middle" >帯（緑・橙）入りのラベル</text></g><line class="arr" x1="398" y1="105" x2="410" y2="105" marker-end="url(#fa)"/><g transform="translate(412,30)"><rect class="st-central" x="0" y="0" width="180" height="150" rx="10"/><g transform="translate(36,8)"><path class="bag dash" d="M16,16 q0,-10 10,-10 h66 q10,0 10,10 v66 h-86 Z"/><path class="tube" d="M28,20 h16 v42 a8.0,8 0 0 1 -16,0 Z"/><path class="f-blood" d="M29.5,48 h13 v13 a6.5,7 0 0 1 -13,0 Z"/><rect class="cap" x="26" y="10" width="20" height="12" rx="2"/><rect x="31" y="24" width="10" height="10" fill="#fff" stroke="#111" stroke-width=".6"/><rect x="32.0" y="25.0" width="0.8" height="0.8" fill="#111"/><rect x="34.0" y="25.0" width="0.8" height="0.8" fill="#111"/><rect x="36.0" y="25.0" width="0.8" height="0.8" fill="#111"/><rect x="32.0" y="27.0" width="0.8" height="0.8" fill="#111"/><rect x="36.0" y="27.0" width="0.8" height="0.8" fill="#111"/><rect x="32.0" y="29.0" width="0.8" height="0.8" fill="#111"/><rect x="34.0" y="29.0" width="0.8" height="0.8" fill="#111"/><rect x="36.0" y="29.0" width="0.8" height="0.8" fill="#111"/><rect x="40.0" y="25.0" width="0.8" height="0.8" fill="#111"/><rect x="40.0" y="29.0" width="0.8" height="0.8" fill="#111"/><rect x="32.0" y="33.0" width="0.8" height="0.8" fill="#111"/><rect x="36.0" y="33.0" width="0.8" height="0.8" fill="#111"/><rect x="40.0" y="33.0" width="0.8" height="0.8" fill="#111"/><rect x="38.0" y="31.0" width="0.8" height="0.8" fill="#111"/><rect x="34.0" y="31.0" width="0.8" height="0.8" fill="#111"/><rect x="38.0" y="27.0" width="0.8" height="0.8" fill="#111"/><path class="tube" d="M56,26 h8 v25 a4.0,5 0 0 1 -8,0 Z"/><rect class="cap" x="54.5" y="19" width="11" height="8" rx="1.5"/><text class="lab" x="60.0" y="70" text-anchor="middle"></text><path class="tube" d="M69,26 h8 v25 a4.0,5 0 0 1 -8,0 Z"/><rect class="cap" x="67.5" y="19" width="11" height="8" rx="1.5"/><text class="lab" x="73.0" y="70" text-anchor="middle"></text><path class="tube" d="M82,26 h8 v25 a4.0,5 0 0 1 -8,0 Z"/><rect class="cap" x="80.5" y="19" width="11" height="8" rx="1.5"/><text class="lab" x="86.0" y="70" text-anchor="middle"></text></g><text class="stname" x="90" y="112" text-anchor="middle" >③ 貼る・束ねる・照合</text><text class="note" x="90" y="130" text-anchor="middle" >採血管＋同じ番号の束を1袋</text></g><line class="arr" x1="594" y1="105" x2="606" y2="105" marker-end="url(#fa)"/><g transform="translate(608,30)"><rect class="st-central" x="0" y="0" width="180" height="150" rx="10"/><g transform="translate(36,8)"><path class="box-deep" d="M14,30 h80 v50 h-80 Z"/><path class="box-lid" d="M14,30 l14,-12 h80 l-14,12 Z"/><text class="note" x="54" y="62" text-anchor="middle" >○○牧場</text></g><text class="stname" x="90" y="112" text-anchor="middle" >④ 農場別・季節別に箱へ</text><text class="note" x="90" y="130" text-anchor="middle" >予備のキットも入れる</text></g><line class="arr" x1="790" y1="105" x2="802" y2="105" marker-end="url(#fa)"/><g transform="translate(804,30)"><rect class="st-central" x="0" y="0" width="180" height="150" rx="10"/><g transform="translate(36,8)"><path class="arr" d="M20,40 h60" marker-end="url(#fa)"/><text class="note" x="50" y="66" text-anchor="middle" >冷蔵・常温</text></g><text class="stname" x="90" y="112" text-anchor="middle" >⑤ 送る</text><text class="note" x="90" y="130" text-anchor="middle" >Deep：年度初めにまとめ役へ</text><text class="note" x="90" y="144" text-anchor="middle" >Broad：Add-onが決まってから</text></g><text class="note" x="20" y="215" text-anchor="start" >在庫はアプリで見て補充する。採材計画を超えては送らない。予算を使い切るために増やさない。</text></svg><figcaption class="sub"><a class="term" href="#g-masterkit">Annual Master Kit</a>（1年分のキットのまとまり）は年度初めにCoordinatorへ。予備（<a class="term" href="#g-reserve">Common reserve</a>）も入れます。</figcaption></figure>
+</section>
+<section class="panel" aria-labelledby="h-temp">
+  <h2 id="h-temp">温度の決まり（−20℃と−80℃）</h2>
+<figure class="figwrap"><svg class="fig" viewBox="0 0 1000 240" role="img" aria-label="−20℃は短い置き場（現場、Coordinator、大阪の測定待ち）。−80℃は長い保存（大阪のBiobank、研究用）。溶かすのは1回だけ。"><defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><g transform="translate(30,30)"><rect class="st-deep" x="0" y="0" width="420" height="150" rx="10"/><text class="name" x="20" y="32" text-anchor="start" >−20℃以下</text><text class="lab" x="130" y="32" text-anchor="start" >短いあいだの置き場</text><text class="lab" x="20" y="60" text-anchor="start" >現場の冷凍庫 → Coordinatorの冷凍庫 → 大阪の測定待ち</text><text class="note" x="20" y="84" text-anchor="start" >採血から30日以内に大阪へ。大阪に着いてから30日以内にNOSAIへ</text><text class="note" x="20" y="104" text-anchor="start" >宮崎：NPS・WTSは処理まで立てたまま凍らせておく</text><text class="note" x="20" y="134" text-anchor="start" >Routineの測定待ちはここ（−80℃は使わない）</text></g><line class="arr" x1="470" y1="105" x2="520" y2="105" marker-end="url(#fa)"/><text class="note" x="495" y="95" text-anchor="middle" >保存用</text><g transform="translate(530,30)"><rect class="st-central" x="0" y="0" width="440" height="150" rx="10"/><text class="name" x="20" y="32" text-anchor="start" >−80℃</text><text class="lab" x="100" y="32" text-anchor="start" >長い保存（Biobank・研究用）</text><text class="lab" x="20" y="60" text-anchor="start" >大阪のBiobank：B1・C1、保存用のNPS・WTS、糞便の残り</text><text class="note" x="20" y="84" text-anchor="start" >保管場所をアプリに登録。週1回、温度の記録と在庫の数え</text><text class="note" x="20" y="104" text-anchor="start" >宮崎：保存用（NPS-B・C、WTS-B）は季節の終わりにドライアイスで大阪へ</text><text class="note" x="20" y="134" text-anchor="start" >Reference・R&Dの測定はここから出す</text></g><text class="warn" x="30" y="215" text-anchor="start" >溶かすのは1回だけ。溶かしたA1は凍らせ直さない。再測定は保存用のB1で。</text></svg></figure>
+</section>
+<section class="panel" aria-labelledby="h-num">
+  <h2 id="h-num">大阪で扱う数（上限）</h2>
+  <div class="tbl" style="margin-top:6px">
+  <table class="nums">
+    <thead><tr><th>何</th><th>2027／2028／2029</th><th>メモ</th></tr></thead>
+    <tbody>
+      <tr><td>Deepの採血（1本を3本に分注）</td><td class="v">750／875／875本</td><td>分注で2,250／2,625／2,625本</td></tr>
+      <tr><td>Basic-12（NOSAIへ）</td><td class="v">600／700／700件</td><td>Deep。ほかにBroad 200件／年、2028年度のP3 R&amp;D 50件</td></tr>
+      <tr><td>ビタミンA/E（NOSAIへ）</td><td class="v">300／350／350件</td><td>Deep（M1・P4）。ほかにBroad 40件／年</td></tr>
+      <tr><td>P0の<a class="term" href="#g-brix">Brix・TP</a>（大阪で測る）</td><td class="v">150／175／175件</td><td>Deep。Broad A2の分は別</td></tr>
+      <tr><td>健常便（P4）</td><td class="v">150／175／175本</td><td><a class="term" href="#g-dm">DM</a>（乾物）・<a class="term" href="#g-fsc">デンプン（FSC）</a>。2028年度はP3bの最大50本も</td></tr>
+      <tr><td>下痢便の<a class="term" href="#g-qpcr">qPCR</a>（大阪で<a class="term" href="#g-nucleic">核酸</a>を抽出 → 宮崎）</td><td class="v">200／300／300件</td><td>Deep・Broad半分ずつ予約。12月1日に使わない分を共通枠へ</td></tr>
+      <tr><td>健常便qPCR Reference</td><td class="v">50／100／50件</td><td>2028年度はP3b 最大50＋P4 50。2028・2029年度のP4は予算を確かめて</td></tr>
+      <tr><td>飼料の分析（全酪連）</td><td class="v">99／116／116件</td><td>Deep。ほかにBroad 70件／年、発酵品質 20件／年。同じFeedLotは測り直さない</td></tr>
+      <tr><td>環境</td><td class="v">30／35／35回</td><td>6キット×4台、農場から農場へ</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+<section class="panel" aria-labelledby="h-rule">
+  <h2 id="h-rule">大阪の決まり</h2>
+  <ul class="rules">
+    <li data-n="1">問題のある検体も捨てずに、印（<a class="term" href="#g-flag">flag</a>）を付ける。</li>
+    <li data-n="2">チューブ・遠沈管を溶かすのは1回だけ。A1を溶かしたら凍らせ直さない。</li>
+    <li data-n="3">測るときは、農場名・日齢など子牛の情報を見せない。</li>
+    <li data-n="4"><a class="term" href="#g-reference">Reference</a>（ものさし作りの検体）は受け取ったときにアプリが選ぶ。結果を見てから選び直さない。</li>
+    <li data-n="5">由来のちがう値を上書きしない（生化学のTPと屈折計のTPなど）。</li>
+    <li data-n="6"><a class="term" href="#g-temp">−80℃</a>はBiobank用。Routine（いつもの採材）の測定待ちの置き場にしない。</li>
+    <li data-n="7">後から分からない情報を推測で埋めない。</li>
+    <li data-n="8">キットは採材計画を超えて送らない。予算を使い切るために増やさない。</li>
+  </ul>
+</section>
+<section class="panel" aria-labelledby="h-tr">
+  <h2 id="h-tr">困ったとき</h2>
+  <div class="trouble">
+    <div><b>箱が溶けていた・こわれていた</b>捨てずに受け取り、印を付ける。送った人とCoordinatorに知らせる。</div>
+    <div><b>採材から30日を過ぎて着いた</b>そのまま受け取る（アプリが自動で印を付ける）。</div>
+    <div><b>束のQRとチューブの番号が合わない</b>文字の検体番号で確かめる。分からなければ使わずに保存し、記録する。</div>
+    <div><b>再測定が必要</b>保存用のB1を使う。溶かしたA1は使わない。</div>
+    <div><b>全酪連から「<a class="term" href="#g-nir">NIR</a>対象外」</b>理由を確かめて、化学分析を承認するか決める（教員）。</div>
+    <div><b>環境キットが7日を超えて置かれている</b>担当者に連絡する。本体には38日分しか残らない。</div>
+  </div>
+</section>
+<details class="src"><summary>出典（内部の文書名）</summary><p class="foot">出典：実施マニュアル兼アプリ画面仕様 中央拠点（大阪・宮崎）用 v1.7、SOP-KIT v1.7、実施体制の振り分け案B v0.6（役割の分け方。時間・人件費は入れていない）、00_基準書_数・規模 v0.4（N-11〜N-31、N-42〜N-48）。学生は卒論研究として参加します（2026-10-07の決定）。</p></details>
+</div>
+
+
+<script src="flow-map.js"></script>
+<script src="flow-pictos.js"></script>
+</body>
+</html>
